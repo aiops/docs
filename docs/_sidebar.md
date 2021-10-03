@@ -16,4 +16,4 @@
     - [Engine X](/sasho/logsight.md)
 
 - [Send Logs](/sasho/sasho.md)
-- [Engine X](/sasho/logsight.md))
+- [Engine X](/sasho/logsight.md)
