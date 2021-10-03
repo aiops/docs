@@ -3,17 +3,17 @@
 - Getting started
 
     - [Home](/)
-    - [Send Logs](/sasho/sasho.md)
-    - [Engine X](/sasho/logsight.md)
+    - [Send Logs](/sidebarItems/file1.md)
+    - [Engine X](/sidebarItems/file2.md)
     
 - Customization
 
-    - [Send Logs](/sasho/sasho.md)
-    - [Engine X](/sasho/logsight.md)
+    - [Send Logs]/sidebarItems/file1.md)
+    - [Engine X](/sidebarItems/file2.md)
 
 - Guide
-    - [Send Logs](/sasho/sasho.md)
-    - [Engine X](/sasho/logsight.md)
+    - [Send Logs]/sidebarItems/file1.md)
+    - [Engine X](/sidebarItems/file2.md)
 
-- [Send Logs](/sasho/sasho.md)
-- [Engine X](/sasho/logsight.md)
+- [Send Logs]/sidebarItems/file1.md)
+- [Engine X](/sidebarItems/file2.md)
