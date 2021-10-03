@@ -1,5 +1,19 @@
 <!-- docs/_sidebar.md -->
 
-* [Home](/)
-* [Guide](/sidebarItems/file1.md)
-* [Engine X](/sidebarItems/file2.md)
+- Getting started
+
+    - [Home](/)
+    - [Send Logs](/sasho/sasho.md)
+    - [Engine X](/sasho/logsight.md)
+    
+- Customization
+
+    - [Send Logs](/sasho/sasho.md)
+    - [Engine X](/sasho/logsight.md)
+
+- Guide
+    - [Send Logs](/sasho/sasho.md)
+    - [Engine X](/sasho/logsight.md)
+
+- [Send Logs](/sasho/sasho.md)
+- [Engine X](/sasho/logsight.md))
