@@ -2,7 +2,7 @@
 
 - Getting started
 
-    - [Home](/)
+    - [Docs Logsight AI](/)
     - [Send Logs](/sidebarItems/file1.md)
     - [Engine X](/sidebarItems/file2.md)
     
