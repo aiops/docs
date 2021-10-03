@@ -19,7 +19,18 @@
 
 </details>
 
-WARNING:
+To stop the command, press <kbd>Control</kbd>+<kbd>C</kbd>.
 
-This is something to be warned about.
+| App name | Description          | Requirements   |
+|:---------|:---------------------|:---------------|
+| App 1    | Description text 1.  | Requirements 1 |
+| App 2    | Description text 2.  | None           |
 
+
+| App name | Description                      |
+|:---------|:---------------------------------|
+| App A    | Description text. <sup>1</sup>   |
+| App B    | Description text. <sup>2</sup>   |
+
+1. This is the footnote.
+1. This is the other footnote.
