@@ -2,18 +2,23 @@
 
 - Getting started
 
-    - [Docs Logsight AI](/)
-    - [Send Logs](/sidebarItems/file1.md)
-    - [Engine X](/sidebarItems/file2.md)
+    - [Resources logsight.ai](/file1.md)
+    - [Use cases](/file2.md)
     
-- Customization
+- API
 
-    - [Send Logs](/sidebarItems/file1.md)
-    - [Engine X](/sidebarItems/file2.md)
+    - [Send API](/sidebarItems/file1.md)
+    - [Results API](/sidebarItems/file2.md)
 
-- Guide
-    - [Send Logs](/sidebarItems/file1.md)
-    - [Engine X](/sidebarItems/file2.md)
+- Shipping logs
+    - [Nginx](/sidebarItems/file1.md)
+    - [Apache](/sidebarItems/file2.md)
+    - [AWS Cloudwatch](/sidebarItems/file2.md)
 
-- [Send Logs](/sidebarItems/file1.md)
-- [Engine X](/sidebarItems/file2.md)
+- Getting results
+    - [PagerDuty](/sidebarItems/file1.md)
+    - [Email](/sidebarItems/file2.md)
+
+- Video resources
+    - [Incident detection](/sidebarItems/file1.md)
+    - [Log Compare](/sidebarItems/file2.md)
