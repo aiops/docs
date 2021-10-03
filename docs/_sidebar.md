@@ -1,5 +1,5 @@
 <!-- docs/_sidebar.md -->
 
 * [Home](/)
-* [Guide](/sasho/sasho.md)
-* [Engine X](/sasho/logsight.md)
+* [Guide](/sidebarItems/file1.md)
+* [Engine X](/sidebarItems/file2.md)
