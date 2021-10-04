@@ -2,7 +2,7 @@
 
 
 - **Getting started**
-    - [Docs overview | logsight.ai](/)
+    - [Overview](/)
 
 [comment]: <> (    - [Use cases]&#40;/file1.md&#41;)
   
