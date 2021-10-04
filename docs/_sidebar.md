@@ -2,7 +2,6 @@
 
 
 - **Getting started**
-    - [Resources logsight.ai](/)
     - [Use cases](/file1.md)
   
 - **Shipping logs**
