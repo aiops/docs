@@ -6,22 +6,30 @@
     - [Use cases](/file1.md)
   
 - **Shipping logs**
-    - [Nginx](/sidebarItems/file1.md)
-    - [Apache](/sidebarItems/file2.md)
-    - [AWS Cloudwatch](/sidebarItems/file2.md)
+    - [Filebeat](/sidebarItems/file1.md)
+    - [logstash](/sidebarItems/file2.md)
+
+- **Log management**
+    - [Incidents](/log_management/incidents.md)
+    - [Log Quality](/log_management/log_quality.md)
+    - [Log Compare](/log_management/log_compare.md)
   
-- **API**
-    - [Quick Start](/API/quick_start.md)
-    - [REST API](/API/rest_api.md)
+- **SDK & API**
+    - [Quick Start](/sdk_api/quick_start.md)
+    - [REST API](/sdk_api/rest_api.md)
     
-- **Alerts**
-    - [PagerDuty](/sidebarItems/file1.md)
-    - [Email](/sidebarItems/file2.md)
+- **Alerting**
+    - [Email](/alerting/email.md)
+    - [PagerDuty](/alerting/pager_duty.md)
+    - [Prometheus](/alerting/prometheus.md)
+
+- **Admin**
+    - [Accounts](/admin/accounts.md)
+    - [Authentication Tokens](/admin/auth_tokens.md)
 
 - **Videos**
-    - [Introduction](/videos/videos.md)
-    - [Incident detection](/sidebarItems/file1.md)
-    - [Log Compare](/sidebarItems/file2.md)
+    - [Introduction](/videos/logsight_intro.md)
+
 
 - **Links**
     - [![Twitter](assets/img/twitter.svg)@logsight](http://twitter.com/logsight)
