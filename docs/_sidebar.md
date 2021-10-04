@@ -3,7 +3,8 @@
 
 - **Getting started**
     - [Docs overview | logsight.ai](/)
-    - [Use cases](/file1.md)
+
+[comment]: <> (    - [Use cases]&#40;/file1.md&#41;)
   
 - **Shipping logs**
     - [Filebeat](/shipping_logs/filebeats.md)

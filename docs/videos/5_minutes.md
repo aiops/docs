@@ -1,5 +1,4 @@
-5 minutes to logsight.ai 
-========================
+# 5 minutes to logsight.ai 
 
 !> add Text describing the video.... `#/`.
 
