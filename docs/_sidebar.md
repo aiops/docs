@@ -11,9 +11,12 @@
     - [logstash](/shipping_logs/logstash.md)
 
 - **Log management**
-    - [Incidents](/log_management/incidents.md)
-    - [Log Quality](/log_management/log_quality.md)
-    - [Log Compare](/log_management/log_compare.md)
+
+[comment]: <> (    - [Incidents]&#40;/log_management/incidents.md&#41;)
+
+[comment]: <> (    - [Log Quality]&#40;/log_management/log_quality.md&#41;)
+
+[comment]: <> (    - [Log Compare]&#40;/log_management/log_compare.md&#41;)
   
 - **SDK & API**
     - [Quick Start](/sdk_api/quick_start.md)
