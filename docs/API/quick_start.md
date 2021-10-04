@@ -27,24 +27,24 @@ $ cd logsight_quick_start
 Create a virtual env
 --------------------
 
-Create a Python virtual environment to decouple and isolate the packages
+Create apython virtual environment to decouple and isolate the packages
 we will install from you environment.
 
 ``` {.sourceCode .console}
-$ python3 -m venv venv
+$python3 -m venv venv
 $ source venv/bin/activate
 ```
 
 Prepare code file
 -----------------
 
-You can start with an empty Python file:
+You can start with an emptypython file:
 
 ``` {.sourceCode .console}
 $ touch quick_start.py
 ```
 
-Alternatively, you can download the Python file directly from git:
+Alternatively, you can download thepython file directly from git:
 
 ``` {.sourceCode .console}
 $ curl https://raw.githubusercontent.com/aiops/logsight-sdk-py/main/docs/source/quick_start/quick_start.py --output quick_start.py
@@ -63,7 +63,7 @@ $ curl https://raw.githubusercontent.com/aiops/logsight-sdk-py/main/docs/source/
 Install the client library
 --------------------------
 
-Install the Incident Detector client library for python with pip:
+Install the Incident Detector client library forpython with pip:
 
 ``` {.sourceCode .console}
 $ pip install logsight-sdk-py
@@ -74,7 +74,7 @@ or directly from the sources:
 ``` {.sourceCode .console}
 $ git clone https://github.com/aiops/logsight-sdk-py.git
 $ cd logsight-sdk-py
-$ python setup.py install
+$python setup.py install
 ```
 
 Create environment variables
@@ -118,7 +118,7 @@ Code example
 ============
 
 The following code snippets show what can be achieved with the Logsight
-SDK client library for Python:
+SDK client library forpython:
 
 -   Authenticate the client
 -   Attach the logger
@@ -131,7 +131,7 @@ Load packages
 
 Load the various packages used in this quick start guide.
 
-``` {.sourceCode .python}
+```python
 import sys
 import time
 import logging
@@ -146,7 +146,7 @@ Authenticate the client
 
 To enable client authentication, set your PRIVATE\_KEY and e-mail.
 
-``` {.sourceCode .python}
+```python
 PRIVATE_KEY = os.getenv('LOGSIGHT_PRIVATE_KEY') or 'mgewxky59zm1euavowtjon9igc'
 EMAIL = os.getenv('LOGSIGHT_EMAIL') or 'jorge.cardoso.pt@gmail.com'
 ```
@@ -155,7 +155,7 @@ Indicate the name of the application to which you will send log data.
 For example, apache\_server, kafka, website or backend. This quick guide
 sends log data to the application quick\_start\_app.
 
-``` {.sourceCode .python}
+```python
 APP_NAME = 'quick_start_app'
 ```
 
@@ -182,7 +182,7 @@ Load log data from a file
 -   Split log messages and remove the timestamp
 -   Store log\_records with tuples of the form: (log level, log message)
 
-``` {.sourceCode .python}
+```python
 log_records = []
 try:
     f = open('Hadoop_2k.log', 'r')
@@ -207,7 +207,7 @@ Send log records
     buffered records to be sent
 -   Store a timestamp indicating when the last log record was sent
 
-``` {.sourceCode .python}
+```python
 dt_start = now()
 print('Starting log records sending', dt_start)
 
@@ -237,7 +237,7 @@ Detect the anomaly status of the latest data point
     logsight.ai AI-driven processing to finish
 -   Query logsight.ai for possible incidents
 
-``` {.sourceCode .python}
+```python
 sleep_time = 60
 print(f'Sleeping {sleep_time} seconds')
 time.sleep(sleep_time)
@@ -252,7 +252,7 @@ Show incidents
 Iterate over the list of incidents received and print the incidents'
 properties
 
-``` {.sourceCode .python}
+```python
 for j, i in enumerate(incidents):
     print('Incident:', j + 1, 'Score:', i.total_score, '(', i.timestamp_start, i.timestamp_end, ')')
 ```
@@ -260,10 +260,10 @@ for j, i in enumerate(incidents):
 Run the application
 ===================
 
-Run the Python code from your quick\_start directory.
+Run thepython code from your quick\_start directory.
 
 ``` {.sourceCode .console}
-$ python quick_start.py
+$python quick_start.py
 ```
 
 Clean up resources
