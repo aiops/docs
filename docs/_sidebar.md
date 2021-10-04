@@ -2,6 +2,7 @@
 
 
 - **Getting started**
+    - [Resources logsight.ai](/)
     - [Use cases](/file1.md)
   
 - **Shipping logs**
@@ -21,5 +22,5 @@
     - [Log Compare](/sidebarItems/file2.md)
 
 - **Links**
-- [![Twitter](assets/img/twitter.svg)@jhildenbiddle](http://twitter.com/jhildenbiddle)
-- [![GitHub](assets/img/github.svg)GitHub](https://github.com/jhildenbiddle/docsify-tabs)
+- [![Twitter](assets/img/twitter.svg)@logsight](http://twitter.com/logsight)
+- [![GitHub](assets/img/github.svg)GitHub](https://github.com/aiops)
