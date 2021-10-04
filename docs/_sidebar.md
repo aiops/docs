@@ -6,8 +6,8 @@
     - [Use cases](/file1.md)
   
 - **Shipping logs**
-    - [Filebeat](/sidebarItems/file1.md)
-    - [logstash](/sidebarItems/file2.md)
+    - [Filebeat](/shipping_logs/filebeats.md)
+    - [logstash](/shipping_logs/logstash.md)
 
 - **Log management**
     - [Incidents](/log_management/incidents.md)
