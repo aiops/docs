@@ -164,7 +164,7 @@ Attach the logger
 
 Add logsight.ai logging handler to your logging system:
 
-``` python
+```{python} 
 handler = LogsightLogger(PRIVATE_KEY, EMAIL, APP_NAME)
 handler.setLevel(logging.DEBUG)
 
