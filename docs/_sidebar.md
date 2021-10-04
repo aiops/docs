@@ -2,7 +2,7 @@
 
 - Getting started
     - [Resources logsight.ai](/)
-    - [Use cases](file1.md)
+    - [Use cases](/\#/file1.md)
   
 - Shipping logs
     - [Nginx](sidebarItems/file1.md)
