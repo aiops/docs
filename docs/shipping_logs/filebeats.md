@@ -15,6 +15,9 @@ curl -o connect-filebeat.sh https://raw.githubusercontent.com/aiops/connector-fi
 \<private key\> is your private key which can be found in the Integration and Profile tab inside logsight.ai platform.<br>
 \<application name\> is the name of the application you have already created.<br>
 \<module\> is the name of the system that you want to connect. For example, if you have running nginx service, the \<module\> will be nginx.
+<br>
+<br>
+Read more about the module of interest in the supported systems bellow.
 
 ### Supported systems
 
