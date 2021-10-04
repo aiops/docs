@@ -6,7 +6,7 @@
 [video website](https://www.youtube.com/embed/z1Gg_y_6-C0 ':include :type=iframe width=540px height=350px')
 
 
-## Projections
+### Projections
 
 Over the next 5 years, the adoption of Cloud Computing and Microservices will continuously increase.
 The global Cloud Computing market is expected to grow at 18%,
@@ -17,7 +17,7 @@ Industry 4.0, Edge Computing, self-driving cars, smart home, and smart cities br
 and reliability of critical cloud infrastructures
 
 
-## Failures are inevitable
+### Failures are inevitable
 
 A recent study exposed that almost 25% of small and medium-sized companies reported that their per-hour downtime cost was more than $40,000. 
 With only 27% stating that their cost of downtime per hour was under $10,000.
@@ -25,14 +25,14 @@ To guarantee availability and reliability, and avoid downtime, companies must re
 Logs have been one of the referred ways to troubleshoot and repair systems.
 
 
-## Applications of logs 
+### Applications of logs 
 
 In fact, application and system logs can be effectively exploited to support many tasks ranging 
 from debugging, IT performance monitoring, security, regulatory compliance, policy compliance, 
 IT operations troubleshooting, applications troubleshooting, to business analytics.
 
 
-## Approaches to troubleshooting
+### Approaches to troubleshooting
 
 Nowadays, DevOps have two time-consuming options to troubleshoot IT failures using logs:
 + Log Search and 
@@ -49,7 +49,7 @@ Fewer companies use Log Analysis:
 + It often causes human fatigue
 
 
-## Logsight.ai's solution  
+### Logsight.ai's solution  
 
 An effective solution is to rely on what we call automated log analytics through AI and pre-trained failure models. 
 It works in the following way: 
@@ -60,7 +60,7 @@ It works in the following way:
 + In such situations, we send customers detailed reports of incidents in real-time
 
 
-## Beyond the Status Quo
+### Beyond the Status Quo
 
 Logsight goes beyond the status quo and makes a radical shift from log analysis to log analytics.
 
@@ -72,7 +72,7 @@ In contrast, Logsight relies on:
 + To build an AI-driven solution for log analytics
 
 
-## Use case 
+### Use case 
 
 To demonstrate the benefits of Logsight, we benchmarked the performance of using a traditional log search approach with our AI-driven log analytics solution.
 The use case involved troubleshooting an IT system undergoing a latent failure.
@@ -92,7 +92,7 @@ This corresponds to less that 2% of the time requires by the log search approach
 + 90 seconds for the AI-driven processing
 
 
-## Beyond the Status Quo
+### Beyond the Status Quo
 
 When we compare the troubleshooting efficiency of log search and log analysis to log analytics, it is clear that the time savings materialize in a significant reduction on the number of DevOps required to operate IT systems. Not only the cost of managing IT decreases, but the Mean Time To Repair (MTTR) systems is also significantly reduced. 
 
@@ -101,7 +101,7 @@ When we compare the troubleshooting efficiency of log search and log analysis to
 + Log analytics achieves the greater efficiency due to the use of modern Deep Learning algorithms and knowledge captured by pretrained failure models
 
 
-## Innovation 
+### Innovation 
 
 Logsight drives its Innovation from tree pillars:
 
