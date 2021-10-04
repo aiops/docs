@@ -1,7 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 - Getting started
-    - [Resources logsight.ai](/file1.md)
+    - [Resources logsight.ai](/)
     - [Use cases](/file2.md)
   
 - Shipping logs
