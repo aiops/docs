@@ -11,7 +11,6 @@
   
 - API
     - [Quick Start](/API/quick_start.md)
-    - [Quick Start RST](/API/quick_start.rst)
     
 - Getting results
     - [PagerDuty](/sidebarItems/file1.md)
