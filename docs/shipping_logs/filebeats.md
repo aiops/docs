@@ -5,11 +5,11 @@ Filebeat modules simplify the collection, parsing, and visualization of common l
 To start sending logs from your system to logsight.ai via Filebeats you need to execute the following steps:
 
 #### Download the connector script
-```
+```console
 curl -o connect-filebeat.sh https://raw.githubusercontent.com/aiops/connector-filebeat/main/connect-filebeat.sh
 ```
 #### Connect to your system and start sending logs
-```
+```console
 ./connect-filebeat.sh -t <private key> -a <application name> -m <module>
 ```
 \<private key\> is your private key which can be found in the Integration and Profile tab inside logsight.ai platform.<br>
