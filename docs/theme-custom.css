@@ -1,0 +1,19 @@
+:root {
+  --base-font-size: 15px;
+  --theme-color   : var(--mono-shade2);
+  --content-max-width  : 100em;
+  --navbar-root-margin  : 0 0 0 .5em;
+  --sidebar-nav-strong-padding : 1em 0;
+
+  --sidebar-nav-pagelink-background-position          : 0px center;
+  --sidebar-nav-pagelink-padding                      : 0.0em 0 0.0em 20px;
+
+  }
+
+p {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
