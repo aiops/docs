@@ -12,8 +12,9 @@
   
 - **API**
     - [Quick Start](/API/quick_start.md)
+    - [REST API](/API/rest_api.md)
     
-- **Getting results**
+- **Alerts**
     - [PagerDuty](/sidebarItems/file1.md)
     - [Email](/sidebarItems/file2.md)
 
