@@ -1,5 +1,17 @@
 # docs
 
+
+## Install docsify locally
+
+```bash
+sudo apt install npm
+sudo npm i docsify-cli -g
+```
+
+```bash
+docsify serve docs
+```
+
 ## Instructions
 
 If you want to write the docs for the API, specifically Sending Logs API, to preserve the structure we need to:

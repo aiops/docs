@@ -7,20 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <!-- Theme -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
-   
-  
-  
 </head>
+
 <body>
-<!--   <div id="app"></div> -->
-<!--   <script>
-    window.$docsify = {
-      name: '',
-      repo: '',
-      loadSidebar: true
-    }
-  </script> -->
   <div id="app"></div>
   <script>
         window.$docsify = {
@@ -33,10 +24,15 @@
         loadSidebar: true,
         maxLevel: 4,
         subMaxLevel: 2
-   
+
+        pagination: {
+          previousText: '上一章节',
+          nextText: '下一章节',
+          crossChapter: true,
+          crossChapterText: true,
+        },
       };
     </script>
-
 
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
@@ -48,5 +44,6 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
