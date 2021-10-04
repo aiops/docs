@@ -6,41 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  
-      <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
-      title="vue"
-    />
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css"
-      title="dark"
-      disabled
-    />
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/buble.css"
-      title="buble"
-      disabled
-    />
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/pure.css"
-      title="pure"
-      disabled
-    />
-    <style>
-      nav.app-nav li ul {
-        min-width: 100px;
-      }
-
-      #carbonads {
-        box-shadow: none !important;
-        width: auto !important;
-      }
-    </style>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css" />
+   
   
   
 </head>
@@ -53,9 +20,12 @@
       loadSidebar: true
     }
   </script> -->
+  <div id="app"></div>
   <script>
         window.$docsify = {
-       
+        name: 'logsight',
+        autoHeader: true,
+        routerMode: 'history',
         auto2top: true,
         executeScript: true,
         loadSidebar: true,
@@ -67,13 +37,12 @@
   
   
   <!-- Docsify v4 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-<!--       <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script> -->
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
 </body>
 </html>
