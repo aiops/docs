@@ -28,7 +28,8 @@
     - [Authentication Tokens](/admin/auth_tokens.md)
 
 - **Videos**
-    - [Introduction](/videos/logsight_intro.md)
+    - [5 minutes](/videos/5_minutes.md)
+    - [Teaser](/videos/teaser.md)
 
 
 - **Links**
