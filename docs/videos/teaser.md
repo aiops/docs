@@ -1,5 +1,3 @@
-Videos
-======
 
 Logsight.ai Teaser 
 ------------------
