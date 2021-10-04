@@ -1,6 +1,5 @@
 :root {
   --base-font-size: 15px;
-  --theme-color   : var(--mono-shade2);
   --content-max-width  : 100em;
   --navbar-root-margin  : 0 0 0 .5em;
   --sidebar-nav-strong-padding : 1em 0;
