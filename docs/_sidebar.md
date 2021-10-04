@@ -2,7 +2,7 @@
 
 
 - **Getting started**
-    - [Overview](/overview.md)
+    - [Docs overview | logsight.ai](/)
     - [Use cases](/file1.md)
   
 - **Shipping logs**
