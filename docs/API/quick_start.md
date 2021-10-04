@@ -19,7 +19,7 @@ Create a directory
 
 Create a directory to store your quick start exercise:
 
-``` {.sourceCode .console}
+```bash
 $ mkdir logsight_quick_start
 $ cd logsight_quick_start
 ```
@@ -30,7 +30,7 @@ Create a virtual env
 Create apython virtual environment to decouple and isolate the packages
 we will install from you environment.
 
-``` {.sourceCode .console}
+```bash
 $python3 -m venv venv
 $ source venv/bin/activate
 ```
@@ -40,13 +40,13 @@ Prepare code file
 
 You can start with an emptypython file:
 
-``` {.sourceCode .console}
+```bash
 $ touch quick_start.py
 ```
 
 Alternatively, you can download thepython file directly from git:
 
-``` {.sourceCode .console}
+```bash
 $ curl https://raw.githubusercontent.com/aiops/logsight-sdk-py/main/docs/source/quick_start/quick_start.py --output quick_start.py
 ```
 
@@ -56,7 +56,7 @@ Download a log data file
 As a example, we will use a sample log data file from Apache Hadoop
 platform:
 
-``` {.sourceCode .console}
+```bash
 $ curl https://raw.githubusercontent.com/aiops/logsight-sdk-py/main/docs/source/quick_start/Hadoop_2k.log --output Hadoop_2k.log
 ```
 
@@ -65,13 +65,13 @@ Install the client library
 
 Install the Incident Detector client library forpython with pip:
 
-``` {.sourceCode .console}
+```bash
 $ pip install logsight-sdk-py
 ```
 
 or directly from the sources:
 
-``` {.sourceCode .console}
+```bash
 $ git clone https://github.com/aiops/logsight-sdk-py.git
 $ cd logsight-sdk-py
 $python setup.py install
@@ -89,7 +89,7 @@ variables for authentication:
 
 Copy the following text to your bash file:
 
-``` {.sourceCode .console}
+```bash
 $ export LOGSIGHT_PRIVATE_KEY=<replace-with-your-anomaly-detector-key>
 $ export LOGSIGHT_EMAIL=<replace-with-your-email>
 ```
@@ -100,7 +100,7 @@ console window to make the changes effective.
 For the impatient
 -----------------
 
-``` {.sourceCode .console}
+```bash
 mkdir logsight_quick_start
 cd logsight_quick_start
 python3 -m venv venv
@@ -262,8 +262,8 @@ Run the application
 
 Run thepython code from your quick\_start directory.
 
-``` {.sourceCode .console}
-$python quick_start.py
+```bash
+$ python quick_start.py
 ```
 
 Clean up resources
