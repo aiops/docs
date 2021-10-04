@@ -131,7 +131,7 @@ Load packages
 
 Load the various packages used in this quick start guide.
 
-```python {.sourceCode .python}
+``` {.sourceCode .python}
 import sys
 import time
 import logging
