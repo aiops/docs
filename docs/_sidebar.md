@@ -38,6 +38,10 @@
     - [Teaser](/videos/teaser.md)
 
 
+- **Videos**
+    - [5 minutes](/videos/5_minutes.md)
+
+
 - **Links**
     - [![Twitter](/assets/img/twitter.svg)@logsight](http://twitter.com/logsight)
     - [![GitHub](/assets/img/github.svg)GitHub](https://github.com/aiops)
