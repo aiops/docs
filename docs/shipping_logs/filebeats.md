@@ -1,19 +1,9 @@
-## This is a new section
+## Easy integration with Filebeat
 
 Filebeat modules simplify the collection, parsing, and visualization of common log formats.
 
-A typical module (say, for the Nginx logs) is composed of one or more filesets (in the case of Nginx, access and error). A fileset contains the following:
+# Supported systems
 
-Filebeat input configurations, which contain the default paths where to look for the log files. These default paths depend on the operating system. The Filebeat configuration is also responsible with stitching together multiline events when needed.
-Elasticsearch Ingest Node pipeline definition, which is used to parse the log lines.
-Fields definitions, which are used to configure Elasticsearch with the correct types for each field. They also contain short descriptions for each of the fields.
-Sample Kibana dashboards, when available, that can be used to visualize the log files.
-Filebeat automatically adjusts these configurations based on your environment and loads them to the respective Elastic Stack components.
-
-
-
-
-| Supported systems |
 <div class="ulist itemizedlist"> 
     <ul class="itemizedlist"> 
         <li class="listitem"> 
