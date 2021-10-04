@@ -31,7 +31,7 @@ Create apython virtual environment to decouple and isolate the packages
 we will install from you environment.
 
 ```bash
-$python3 -m venv venv
+$ python3 -m venv venv
 $ source venv/bin/activate
 ```
 
@@ -74,7 +74,7 @@ or directly from the sources:
 ```bash
 $ git clone https://github.com/aiops/logsight-sdk-py.git
 $ cd logsight-sdk-py
-$python setup.py install
+$ python setup.py install
 ```
 
 Create environment variables
