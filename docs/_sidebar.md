@@ -19,6 +19,7 @@
     - [Email](/sidebarItems/file2.md)
 
 - **Videos**
+    - [Introduction](/videos/videos.md)
     - [Incident detection](/sidebarItems/file1.md)
     - [Log Compare](/sidebarItems/file2.md)
 
