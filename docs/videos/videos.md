@@ -1,8 +1,8 @@
-Prerequisites
-=============
+Videos
+======
 
-Create a directory
-------------------
+Introduction
+------------
 
 <iframe width="540" height="350" 
 src="https://www.youtube.com/embed/z1Gg_y_6-C0"
@@ -12,4 +12,4 @@ allowfullscreen>
 </iframe>
 
 
-[vieo website](https://www.youtube.com/embed/z1Gg_y_6-C0 ':include :type=iframe width=100% height=400px')
+[video website](https://www.youtube.com/embed/z1Gg_y_6-C0 ':include :type=iframe width=540px height=350px')
