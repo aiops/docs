@@ -6,11 +6,15 @@
 
   --sidebar-nav-pagelink-background-position          : 0px center;
   --sidebar-nav-pagelink-padding                      : 0.0em 0 0.0em 20px;
+
+    /* Nav Container */
+    --sidebar-nav-background                      : ;
+    --sidebar-nav-indent                          : 0em;
   }
 
 p {
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
+  margin-top: 1.0em;
+  margin-bottom: 0.0em;
   margin-left: 0;
   margin-right: 0;
 }
