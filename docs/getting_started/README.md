@@ -7,7 +7,7 @@
 
 ![Twitter](./getting_started/shipping_logs.png)
 
-## Website
+## Logsight UI
 
 asas
 
