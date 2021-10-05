@@ -3,6 +3,20 @@
 > An awesome project.
 
 
+## Shipping logs
+
+![Twitter](./getting_started/shipping_logs.png)
+
+## Website
+
+asas
+
+
+## SDK and API
+
+asasas
+
+
 > [!NOTE]
 > An alert of type 'note' using global style 'callout'.
 
