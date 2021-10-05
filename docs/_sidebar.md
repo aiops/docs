@@ -4,7 +4,7 @@
     - [Overview](/)
 
 - **Shipping logs**
-    - [70+ Connectors with Filebeat](/shipping_logs/filebeats.md)
+    - [Connectors](/shipping_logs/filebeats.md)
     - [Upload files](/shipping_logs/upload_files.md)
 
 - **SDK & API**

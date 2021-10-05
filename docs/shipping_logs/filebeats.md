@@ -6,7 +6,7 @@ To start sending logs from your system to logsight.ai via Filebeats you need to 
 
 #### Download the connector script
 ```console
-curl -o connect-filebeat.sh https://raw.githubusercontent.com/aiops/connector-filebeat/main/connect-filebeat.sh
+curl -o connect-filebeat.sh https://raw.githubusercontent.com/aiops/connectors/main/filebeat.sh
 ```
 #### Connect to your system and start sending logs
 ```console
