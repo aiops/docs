@@ -17,26 +17,41 @@
   <div id="app"></div>
   <script>
         window.$docsify = {
-        name: 'logsight.ai',
-        search: 'auto',
-        nameLink: 'https://logsight.ai',
-        logo: 'https://demo.logsight.ai/assets/img/logol.png',
-        homepage: '/getting_started/README.md',
-        auto2top: true,
-        executeScript: true,
-        loadSidebar: true,
-        maxLevel: 4,
-        subMaxLevel: 1,
-        relativePath: true,
+          name: 'logsight.ai',
+          search: 'auto',
+          nameLink: 'https://logsight.ai',
+          logo: 'https://demo.logsight.ai/assets/img/logol.png',
+          homepage: '/getting_started/README.md',
+          auto2top: true,
+          executeScript: true,
+          loadSidebar: true,
+          maxLevel: 4,
+          subMaxLevel: 1,
+          relativePath: true,
 
-        'flexible-alerts': {
-          style: 'flat',
-        }
+          'flexible-alerts': {
+            style: 'flat',
+          },
 
-<!--        pagination: {-->
-<!--          crossChapter: true,-->
-<!--          crossChapterText: true,-->
-<!--        }-->
+  <!--        pagination: {-->
+  <!--          crossChapter: true,-->
+  <!--          crossChapterText: true,-->
+  <!--        }-->
+
+          plugins: [
+            function(hook) {
+              var footer = [
+                '<br><br><hr/>',
+                '<footer>',
+                '<span><a href="https://logsight.ai/">logsight.ai</a> &copy;2021</span>',
+                '</footer>'
+              ].join('');
+
+              hook.afterEach(function(html) {
+                return html + footer;
+              });
+            }
+          ],
 
       };
     </script>
