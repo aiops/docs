@@ -1,36 +1,28 @@
-[Logsight](https://link.com)
+## Upload file
 
-```html
-<h1> heey </h1>
-<table>
-    <td>Logsight</td>
-</table>
+Logsight supports file upload to simplify ingest of batches of logs.
+
+To upload files into logsight, first the user needs to create an application in Integration.
+
+![image](https://user-images.githubusercontent.com/22328259/136199581-ddae8a6d-310f-4f24-aa5e-6e3ec6f3dd86.png)
+
+In the process of uploading a log file, the user needs to select the application inside logsight and choose the type of file to upload.
+
+Currently, we support three log file formats for file upload:
+
+1. Syslog 
+2. Native JSON files with the following structure
+```json 
+{
+    "logMessages": [
+      {
+        "private-key": "mvotr2fqri48dp1o7i0rdjliau",
+        "app": "string",
+        "timestamp": "string",
+        "level": "string",
+        "message": "string"
+      }
+    ]
+    }
 ```
-
-## This is a new section
-
-<details>
-<summary>Heading</summary>
-
-+ markdown list 1
-    + nested list 1
-    + nested list 2
-+ markdown list 2
-
-</details>
-
-To stop the command, press <kbd>Control</kbd>+<kbd>C</kbd>.
-
-| App name | Description          | Requirements   |
-|:---------|:---------------------|:---------------|
-| App 1    | Description text 1.  | Requirements 1 |
-| App 2    | Description text 2.  | None           |
-
-
-| App name | Description                      |
-|:---------|:---------------------------------|
-| App A    | Description text. <sup>1</sup>   |
-| App B    | Description text. <sup>2</sup>   |
-
-1. This is the footnote.
-1. This is the other footnote.
+3. Logstash based files. We support all files that are output from logstash.
