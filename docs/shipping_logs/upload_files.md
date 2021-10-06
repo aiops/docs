@@ -5,11 +5,11 @@
 
 Logsight supports file upload to simplify ingest of batches of logs.
 
-To upload files into logsight, first the user needs to create an application in Integration.
+- To upload files into logsight, first the user needs to create an application in Integration.
 
-In the process of uploading a log file, the user needs to select the application inside logsight and choose the type of file to upload.
+- In the process of uploading a log file, the user needs to select the application inside logsight and choose the type of file to upload.
 
-Currently, we support three log file formats for file upload:
+- Currently, we support three log file formats for file upload:
 
 1. Syslog 
 2. Native JSON files with the following structure
@@ -27,3 +27,5 @@ Currently, we support three log file formats for file upload:
     }
 ```
 3. Logstash based files. We support all files that are output from logstash.
+
+After uploading of the file, the user will be redirected to the dashboard where the results will be displayed within few moments.
