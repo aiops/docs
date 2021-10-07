@@ -33,22 +33,3 @@ Our log analytics platform also provides important features to support troublesh
 
 ![Logs](./getting_started/shipping_logs.png ':size=800' )
 
-### Logsight UI
-
-#### Incidents Detection
-describe....
-
-#### Log Quality
-describe....
-
-#### Log Comparison
-describe....
-
-#### Log Variables 
-describe....
-
-
-### SDK and API
-
-asasas
-
