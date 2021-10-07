@@ -19,6 +19,6 @@
     - [Teaser](/videos/teaser.md)
 
 - **Links**
-    - [![Twitter](/assets/img/twitter.svg)@logsight](http://twitter.com/logsight)
-    - [![GitHub](/assets/img/github.svg)GitHub](https://github.com/aiops)
+    - [![Twitter]@logsight(http://twitter.com/logsight)
+    - [![GitHub]@GitHub(https://github.com/aiops)
     - [Charts to Use](/chart_examples.md)
