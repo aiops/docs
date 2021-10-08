@@ -1,8 +1,7 @@
 # Overview
 
-`Logsight.ai` is the next generation of proactive troubleshooting platforms which rely on Deep Learning and AI-powered Log Analytics
-to discovery log data insights.
-
+`Logsight.ai` is the next generation of proactive troubleshooting [AIOps](https://en.wikipedia.org/wiki/Artificial_Intelligence_for_IT_Operations) platforms which rely on Deep Learning and AI-powered Log Analytics to discovery log data insights. Our platform delivers an 
+observability and troubleshooting platform for modern enterprise engineering teams, helping them to proactively discover emerging failure, solve issues more quickly. 
 
 ## Operating workflow
 
