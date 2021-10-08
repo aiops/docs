@@ -1,11 +1,11 @@
 <!-- docs/_sidebar.md -->
 
-- **Getting started**
-    - [Overview](/)
+- **Get started**
+    - [Overview](/README.md)
 
-- **Shipping logs**
-    - [Connectors](/shipping_logs/filebeats.md)
-    - [Upload files](/shipping_logs/upload_files.md)
+- **Send logs**
+    - [Connectors](/send_logs/filebeats.md)
+    - [Upload files](/send_logs/upload_files.md)
 
 - **Logsight UI**
     - [Look and feel](/logsight_ui/logsight_ui.md)

@@ -1,9 +1,8 @@
 # 5 minutes to logsight.ai 
 
+> Slides are also available: [pdf](videos/5_minutes.pdf ':ignore')
+
 [video website](https://www.youtube.com/embed/z1Gg_y_6-C0 ':include :type=iframe width=440px height=300px')
-
-
-Slides: [pdf](videos/5_minutes.pdf ':ignore')
 
 
 ### Projections
