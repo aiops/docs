@@ -11,8 +11,8 @@
     - [Look and feel](/logsight_ui/logsight_ui.md)
 
 - **SDK & API**
-    - [Quick Start](/sdk_api/quick_start.md)
-    - [REST API](/sdk_api/rest_api.md)
+    - [Quick Start](https://logsight-sdk-py.readthedocs.io/en/latest/detecting_incidents/quick_guide.html)
+    - [REST API](https://logsight-sdk-py.readthedocs.io/en/latest/api/description.html)
     
 - **Videos**
     - [5 minutes](/videos/5_minutes.md)
