@@ -11,6 +11,7 @@
     - [Look and feel](/logsight_ui/logsight_ui.md)
 
 - **SDK & API**
+    - [Sending logs](/sdk_api/sending_logs.md)
     - [Quick Start](https://logsight-sdk-py.readthedocs.io/en/latest/detecting_incidents/quick_guide.html)
     - [REST API](https://logsight-sdk-py.readthedocs.io/en/latest/api/description.html)
     
