@@ -12,7 +12,7 @@ to discovery log data insights.
 4. `Notification`. We send you a notification when an incident is in progress.
 
  
-![Logs](./getting_started/how_it_works.png ':size=1000' )
+![Logs](./getting_started/how_it_works.png ':size=900' )
 
 
 Our log analytics platform also provides important features to support troubleshooting:
@@ -31,7 +31,7 @@ The two most common options to deploy `Logsight.ai` are:
   + You use your preferred log monitoring solution and use our AI-powered Log Analytics as an extension 
 
 
-![Logs](./getting_started/logsight_architecture.png ':size=700' )
+![Logs](./getting_started/logsight_architecture.png ':size=900' )
 
 Our log analytics platform also provides important features to support troubleshooting:
 + `Log collection`. Log shippers act as Lightweight agents installed on servers of your infrastructure for collecting logs.
@@ -52,5 +52,5 @@ The SDK for Python provider the greater customization for you to integrate your 
 Beats and Logstash provide out-of-the-box connector for dozens of systems (e.g., MySQL, Apache, Github, Kafka)  
 
 
-![Logs](./getting_started/shipping_logs.png ':size=600' )
+![Logs](./getting_started/shipping_logs.png ':size=900' )
 
