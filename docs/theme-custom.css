@@ -7,20 +7,21 @@
   --sidebar-nav-pagelink-background-position          : 0px center;
   --sidebar-nav-pagelink-padding                      : 0.0em 0 0.0em 20px;
 
-    /* Nav Container */
-    --sidebar-nav-background                      : ;
-    --sidebar-nav-indent                          : 0em;
+  /* Nav Container */
+  --sidebar-nav-background                      : ;
+  --sidebar-nav-indent                          : 0em;
 
-    /* Base */
-    --base-line-height     : 1.7;
+  /* Base */
+  --base-line-height     : 1.7;
 
-    /* Code */
-    --code-font-family                  : Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-    --code-font-size                    : calc(var(--font-size-m) * 0.895);
-    --code-inline-border-radius         : var(--border-radius-s);
-    --code-inline-margin                : 0 0.15em;
-    --code-inline-padding               : 0.125em 0.4em;
-  }
+  /* Code */
+  --code-font-family                  : Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  --code-font-size                    : calc(var(--font-size-m) * 0.895);
+  --code-inline-border-radius         : var(--border-radius-s);
+  --code-inline-margin                : 0 0.15em;
+  --code-inline-padding               : 0.125em 0.4em;
+}
+
 
 p {
   margin-top: 1.0em;

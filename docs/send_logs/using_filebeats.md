@@ -1,16 +1,16 @@
-## Filebeat
+# Using Filebeat
 
 Filebeat simplifies the collection, parsing, and visualization of common log formats.
 
 To start sending logs from your system to `logsight.ai` via `Filebeats` you need to execute the following steps:
 
-### Download the connector script
+## Download the connector script
 
 ```bash
 curl -o connect-filebeat.sh https://raw.githubusercontent.com/aiops/connectors/main/filebeat.sh
 ```
 
-### Start sending logs
+## Start sending logs
 
 Connect to your system and execute the connector script: 
 
@@ -24,7 +24,7 @@ Connect to your system and execute the connector script:
 
 Read more about the module of interest in the supported systems bellow.
 
-### Supported systems
+## Supported systems
 
 |      |      |      |      |      |      |      |      |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |

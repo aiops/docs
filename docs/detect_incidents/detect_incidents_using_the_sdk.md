@@ -1,3 +1,9 @@
+# Detect incidents using the SDK
+
+> [!TIP]
+> Documentation of the Python SDK be found at [logsight-sdk-py.readthedocs.io](https://logsight-sdk-py.readthedocs.io/en/latest/)
+
+
 Prerequisites
 =============
 

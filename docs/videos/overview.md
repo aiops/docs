@@ -1,9 +1,17 @@
-# 5 minutes to logsight.ai 
+## Teaser 
 
+> [!NOTE]
+> The first video we build to express the underlying power of logsight.ai
+
+[video website](https://www.youtube.com/embed/IOFzTcprv_k ':include :type=iframe width=440px height=300px')
+
+
+## 5 minutes to logsight.ai 
+
+> [!NOTE]
 > Slides are also available: [pdf](videos/5_minutes.pdf ':ignore')
 
 [video website](https://www.youtube.com/embed/z1Gg_y_6-C0 ':include :type=iframe width=440px height=300px')
-
 
 ### Projections
 

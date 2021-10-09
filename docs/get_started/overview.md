@@ -20,7 +20,7 @@ Our log analytics platform also provides important features to support troublesh
 + `Log variables`. You can visualize and analyze how the variables of your applications affect its health.    
 
 
-## Typical deployment scenarios
+## Deployment scenarios
 
 The two most common options to deploy `Logsight.ai` are: 
 
@@ -30,7 +30,7 @@ The two most common options to deploy `Logsight.ai` are:
   + You use your preferred log monitoring solution and use our AI-powered Log Analytics as an extension 
 
 
-![Logs](./get_started/logsight_architecture.png ':size=900' )
+![Logs](/get_started/logsight_architecture.png ':size=900' )
 
 Our log analytics platform also provides important features to support troubleshooting:
 + `Log collection`. Log shippers act as Lightweight agents installed on servers of your infrastructure for collecting logs.
