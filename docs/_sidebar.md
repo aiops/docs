@@ -1,7 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 - **Get started**
-    - [Overview](/README.md)
+    - [Overview](/get_started/README.md)
 
 - **Send logs**
     - [Connectors](/send_logs/filebeats.md)
