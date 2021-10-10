@@ -21,8 +21,8 @@
     - [Integration](/logsight_ui/integration_page.md)
     - [Dashboard](/logsight_ui/dashboard_page.md)
     - [Incidents](/logsight_ui/incidents_page.md)
-    - [Log Compare](/logsight_ui/incidents_page.md)
-    - [Log Quality](/logsight_ui/incidents_page.md)
+    - [Log Compare](/logsight_ui/log_compare.md)
+    - [Log Quality](/logsight_ui/log_quality.md)
     - [Variable Analysis](/logsight_ui/variable_analysis_page.md)
     
 - **Videos**
