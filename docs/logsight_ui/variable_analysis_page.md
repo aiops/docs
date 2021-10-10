@@ -1,5 +1,5 @@
-# Variable analysis page
+# Variable Analysis page
 
-![variable analysis page](../assets/images/variable_analysis_page.png)
+![variable analysis page](../assets/images/variable_analysis.png)
 
 

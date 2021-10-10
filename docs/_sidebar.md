@@ -2,34 +2,28 @@
 
 - **Get started**
     - [Overview](/)
-
 - **Send logs**
     - [Shipping logs](/send_logs/shipping_logs.md)
     - [Using Filebeat](/send_logs/using_filebeats.md)
     - [Upload files](/send_logs/upload_files.md)
     - [Using the SDK](/send_logs/send_logs_using_the_sdk.md)
-  
 - **Detect incidents**
     - [Using the SDK](/detect_incidents/detect_incidents_using_the_sdk.md)
-
 - **Monitor deployments**
-    - [Set tags](/monitor_deployments/set_tags.md)
     - [Compare versions](/monitor_deployments/compare_versions.md)
-
-- **Analyze code**
+- **Improve code**
     - [Analyze log quality](/analyze_code/analyze_log_quality.md)
-    
 - **Administration**
     - [User info](/administration/user_info.md)
     - [View account](/administration/view_account.md)
     - [Manage applications](/administration/manage_applications.md)
-    
 - **Logsight UI**
-    - [Integration page](/logsight_ui/integration_page.md)
-    - [Dashboard page](/logsight_ui/dashboard_page.md)
-    - [Incidents page](/logsight_ui/incidents_page.md)
-    - [Variable analysis page](/logsight_ui/variable_analysis_page.md)
-    - [Kibana page](/logsight_ui/kibana_page.md)
+    - [Integration](/logsight_ui/integration_page.md)
+    - [Dashboard](/logsight_ui/dashboard_page.md)
+    - [Incidents](/logsight_ui/incidents_page.md)
+    - [Log Compare](/logsight_ui/incidents_page.md)
+    - [Log Quality](/logsight_ui/incidents_page.md)
+    - [Variable Analysis](/logsight_ui/variable_analysis_page.md)
     
 - **Videos**
     - [Overview](/videos/overview.md)
