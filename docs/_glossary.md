@@ -1,5 +1,5 @@
 
-# Glossary
+# Key concepts
 
 #### Incident
 An unplanned interruption to or quality reduction of an IT service.
