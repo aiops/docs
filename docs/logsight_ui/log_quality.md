@@ -1,5 +1,5 @@
-# Variable analysis page
+# Log Quality
 
-![Log Quality page](../assets/images/log_quality.png)
+![Log Quality](../assets/images/log_quality.png)
 
 

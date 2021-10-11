@@ -1,5 +1,5 @@
-# Variable analysis page
+# Log Compare
 
-![Log Compare page](../assets/images/log_compare.png)
+![Log Compare](../assets/images/log_compare.png)
 
 

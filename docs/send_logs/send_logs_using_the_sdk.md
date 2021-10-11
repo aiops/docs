@@ -36,8 +36,8 @@ from logsight.logger import LogsightLogger
 from logsight.
 
 handler = LogsightLogger('xteitdidb0xd32thtt35ccruy', 
-                         'jorge.cardoso.pt@gmail.com', 
-                         'test_app')
+                         'devops@acme.com', 
+                         'HTTP Server')
 
 logger = logging.getLogger(__name__)
 logger.addHandler(handler)
