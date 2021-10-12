@@ -15,3 +15,5 @@ Tags make a point as a specific point in Git history.
 #### Linguistic quality
 
 #### Log types
+
+#### Cognitive anomalies
