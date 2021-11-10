@@ -2,6 +2,7 @@
 
 - **Get started**
     - [Overview](/)
+    - [Deployment](/get_started/deployment.md)
  
 - **Send logs**
     - [Shipping logs](/send_logs/shipping_logs.md)
@@ -10,14 +11,17 @@
     - [Using the SDK](/send_logs/send_logs_using_the_sdk.md)
  
 - **Detect incidents**
-    - [Using the SDK](/detect_incidents/detect_incidents_using_the_sdk.md)
+  - [Incident Detector](/detect_incidents/incident_detector.md) 
+  - [Dashboard](/detect_incidents/dashboard.md) 
+  - [Using the SDK](/detect_incidents/detect_incidents_using_the_sdk.md)
  
 - **Monitor deployments**
-    - [Set tags](/monitor_deployments/set_tags.md)
-    - [Compare versions](/monitor_deployments/compare_versions.md)
- 
+  - [Stage Verifier](/monitor_deployments/stage_verifier.md)
+  - [Compare versions](/monitor_deployments/compare_versions.md)
+  - [Set tags](/monitor_deployments/set_tags.md)
+    
 - **Improve code**
-    - [Analyze log quality](/analyze_code/analyze_log_quality.md)
+    - [Code Inspector](/analyze_code/code_inspector.md)
 
 - **Administration**
     - [User info](/administration/user_info.md)

@@ -14,6 +14,16 @@
   /* Base */
   --base-line-height     : 1.7;
 
+  /* Links */
+  --link-border-bottom                : ;
+  --link-border-bottom--hover         : ;
+  --link-color                        : var(--theme-color);
+  --link-color--hover                 : var(--theme-color);
+  --link-text-decoration              : none;
+  --link-text-decoration--hover       : underline;
+  --link-text-decoration-color        : var(--theme-color);
+  --link-text-decoration-color--hover : var(--theme-color);
+
   /* Code */
   --code-font-family                  : Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
   --code-font-size                    : calc(var(--font-size-m) * 0.895);

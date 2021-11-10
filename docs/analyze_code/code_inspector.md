@@ -1,4 +1,4 @@
-# Analyze log quality
+# Code Inspector
 
 > [!TIP]
 > An overview of the quality page can be found at [Log Quality](./logsight_ui/log_quality.md)
