@@ -1,7 +1,7 @@
 # Code Inspector
 
-> [!TIP]
-> An overview of the quality page can be found at [Log Quality](./logsight_ui/log_quality.md)
+![Code Inspector](./code_inspector.png)
+
 
 The quality of a analysis result heavily depends on the input. Therefore, event
 logs should be treated as first-class citizens in the information systems supporting the processes to be analyzed. Unfortunately, event logs are often merely
@@ -40,8 +40,8 @@ Check the results
 ![Log linguistic analysis](../assets/images/log_linguistic_analysis.png)
 
 
-
-
+> [!TIP]
+> An overview of the quality page can be found at [Log Quality](./logsight_ui/log_quality.md)
 
 
 

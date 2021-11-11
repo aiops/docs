@@ -1,7 +1,6 @@
-# Overview
+# Stage Verifier
 
-> logsight.ai considers....
-
+![Stage Verifier](./stage_verifier.png)
 
 Our log analytics platform also provides important features to support troubleshooting:
 + `Log comparison`. You can compare logs to identify key differences that led to incidents. 

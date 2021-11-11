@@ -1,7 +1,8 @@
 # Incident Detector
 
-> `logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
+![Incident Detector](./incident_detector.png)
 
+`logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
 
 ## Processing Workflow
 
