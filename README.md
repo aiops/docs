@@ -3,10 +3,18 @@
 
 ## Install docsify locally
 
+### Linux
 ```bash
 sudo apt install npm
 sudo npm i docsify-cli -g
 ```
+
+### MacOS
+```bash
+brew install node
+sudo npm i docsify-cli -g
+```
+
 
 ## Clone and serve
 

@@ -1,6 +1,8 @@
 
 # Key Concepts
 
+#### Incident dashboard
+
 #### Incident
 An unplanned interruption to or quality reduction of an IT service.
 
@@ -18,6 +20,14 @@ Errors should be an indication that the application itself is broken in some way
 
 #### Linguistic quality
 
-#### Log types
+#### Log type
+A log type (or log template) is a structured description of an unstructured log message. 
+It typically includes variables (e.g., IP address, service name) and a textual description.
+Groups of log messages are clustered into a log template representing a state of a system.
 
 #### Cognitive anomalies
+
+
+#### Severity score
+
+

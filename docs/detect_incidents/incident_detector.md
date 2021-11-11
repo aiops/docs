@@ -36,3 +36,8 @@ Logsight Incident Detection takes a different approach. It extracts the semantic
 <div align=center>
 <img width="500" src="/detect_incidents/cognitive_analysis.png"/>
 </div>
+
+
+> [!NOTE]
+> Central log management is still very relevant today and can be a key, but undervalued, tool for an organization's threat detection and response capabilities
+> (source Gartner)

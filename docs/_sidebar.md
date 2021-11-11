@@ -13,6 +13,7 @@
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
   - [Dashboard](/detect_incidents/dashboard.md) 
+  - [Incidents](/detect_incidents/incidents.md) 
   - [Using the SDK](/detect_incidents/detect_incidents_using_the_sdk.md)
  
 - **Monitor deployments**
