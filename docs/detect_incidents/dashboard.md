@@ -3,9 +3,13 @@
 > The incident dashboard provides a bird's-eye view of the health of all your applications managed by `logsight.ai`
 
 
-`Time frame` Use the time panel to select the time frame in which logging analytics should run. Alternatively, you can select one of the predefined ranges. 
+`Time frame` Use the time panel to select the time frame in which logging analytics should run. 
+By default, the dashboard will show the health of your apps over the last 24 hours,
+but you can change this to the last 1 hour, 3 hours, 7 days (1 week), 14 days (2 weeks) or 365 days (12 months).
+Alternatively, you can select the custom button and enter a start and end date.
 
-`Log levels` A log level indicates how important a given log message is. The most common logging levels are DEBUG, INFO, WARN, ERROR and FATAL ([see pag. 11 of syslog specification](https://www.rfc-editor.org/rfc/rfc5424)).
+`Log levels` A log level indicates how important a given log message is. The most common logging levels are DEBUG, INFO, WARN, ERROR and FATAL ([see pag. 11 of syslog specification](https://www.rfc-editor.org/rfc/rfc5424)). 
+The total count of log messages of each log level is shown.
 
 `Cognitive anomalies` refer to log messages which are correlated with software failures.
 In contrast to log level anomalies, cognitive anomalies are identified by inferring the semantics meaning of messages.

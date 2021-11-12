@@ -4,6 +4,7 @@
 
 `logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
 
+
 ## Processing Workflow
 
 1. `Shipping logs`. You set up a log collector to gather logs across your infrastructure and ship the logs to our centralized logging platform.
@@ -40,5 +41,4 @@ Logsight Incident Detection takes a different approach. It extracts the semantic
 
 
 > [!NOTE]
-> Central log management is still very relevant today and can be a key, but undervalued, tool for an organization's threat detection and response capabilities
-> (source Gartner)
+> Central log management is still very relevant today and can be a key, but undervalued, tool for an organization's threat detection and response capabilities – Gartner

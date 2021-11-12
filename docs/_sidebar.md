@@ -18,22 +18,19 @@
  
 - **Monitor deployments**
   - [Stage Verifier](/monitor_deployments/stage_verifier.md)
-  - [Compare versions](/monitor_deployments/compare_versions.md)
-  - [Set tags](/monitor_deployments/set_tags.md)
+  - [Dashboard](/monitor_deployments/dashboard.md)
+  - [Using the SDK](/monitor_deployments/using_the_sdk.md)
     
 - **Improve code**
     - [Code Inspector](/analyze_code/code_inspector.md)
-
+    - [Dashboard](/analyze_code/dashboard.md) 
+  
 - **Administration**
     - [User info](/administration/user_info.md)
     - [View account](/administration/view_account.md)
     - [Manage applications](/administration/manage_applications.md)
   
 - **Logsight UI**
-    - [Dashboard](/logsight_ui/dashboard.md)
-    - [Incidents](/logsight_ui/incidents.md)
-    - [Log Compare](/logsight_ui/log_compare.md)
-    - [Log Quality](/logsight_ui/log_quality.md)
     - [Variable Analysis](/logsight_ui/variable_analysis.md)
     - [Integration](/logsight_ui/integration.md)
     
