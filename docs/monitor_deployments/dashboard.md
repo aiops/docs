@@ -2,6 +2,14 @@
 
 > The stage verifier dashboard provides a bird's-eye view of applications' deployments managed by `logsight.ai`
 
+
+<br>
+
+![Logs](./dashboard.png ':size=1200')
+
+<br>
+
+
 `Time frame` Use the datepicker on the right top corner.
 
 ![Log compare select timeframe](../assets/images/log_compare_select_timeframe.png)
@@ -13,13 +21,6 @@ The newest version is called the candidate version.
 Click on the LogCompare button to start the computation.
 
 ![Log compare select version](../assets/images/log_compare_select_version.png)
-
-
-<br>
-
-![Logs](./dashboard.png ':size=1200')
-
-<br>
 
 
 `Compare overview` is a heatmap that shows the overall difference between the baseline version and the candidate version overtime.
