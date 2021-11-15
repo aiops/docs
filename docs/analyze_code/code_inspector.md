@@ -20,8 +20,6 @@ We access your code or you ship the logs to our centralized logging platform.
 <img width="1000" src="/analyze_code/how_it_works.png"/>
 </div>
 
-> [!WARNING] Update image
-
 
 ## Intelligent NLU
 

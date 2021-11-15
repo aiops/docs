@@ -19,8 +19,6 @@ Ship the logs of the baseline version and candidate version to our centralized l
 <img width="1000" src="/monitor_deployments/how_it_works.png"/>
 </div>
 
-> [!WARNING] Update image
-
 
 ## Intelligent Verification
 
@@ -30,13 +28,9 @@ A log record usually contains: timestamp, level, thread ID, component ID, text, 
 Template mining converts the text field, which describes a state of an IT system, into a feature vector of variables/values. 
 Feature vectors are needed since they enable AI-driven processing of logs. 
 
-> [!WARNING] Update image 
-> Replace by image
-> 
-> Unstructured log >  structured log records
-> 
-> "Customer ID 34 started purchase workflow at worker a87ca34" >>>> 
-> {'template': "Customer ID * started purchase workflow at worker *", 'v1': '34', 'v2': 'a87ca34'}
+<div align=center>
+<img width="600" src="/monitor_deployments/template_mining.png"/>
+</div>
 
 ### Semantic analysis
 The baseline version and candidate version of an application are compared using semantics.
