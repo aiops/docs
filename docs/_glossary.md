@@ -1,7 +1,8 @@
 
-# Key Concepts
+# Glossary
 
 ### Anomaly types
+To complete ...
 
 #### Incident group
 An incident group is a group of cognitive anomalies, flow anomalies and critical anomalies.
@@ -17,7 +18,7 @@ For example, *unable to acquire token*.
 A critical anomaly is a cognitive anomaly associated with a new log type or with a flow anomaly.
 
 #### Anomaly score
-XXX
+To complete ...
 
 #### Severity score
 A severity score quantifies the severity of an incident. The higher the value, the higher the severity of an incident.
@@ -32,13 +33,26 @@ It typically includes variables (e.g., IP address, service name) and a textual d
 Groups of log messages are clustered into a log template representing a state of a system.
 
 #### Baseline version
-A log
+To complete ...
 
 #### Candidate version
-A log
+To complete ...
 
 #### Log group
-A log
+To complete ...
+
+
+#### Continuous verification
+Continuous verification addresses reliability requirements of production systems. 
+It places automated health and quality gates in the release stages of DevOps pipelines.
+The gates validate the functionality, security or performance of applications.
+
+
+#### Deployment abnormality
+
+The main challenge facing of deployments is validating the health of newly deployed service instances. 
+
+To complete ...
 
 #### Tag
 Tags make a point as a specific point in Git history.

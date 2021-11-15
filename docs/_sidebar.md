@@ -38,6 +38,6 @@
     - [Overview](/videos/overview.md)
 
 - **Links**
-    - [Key Concepts](/_glossary?id=incident)
+    - [Glossary](/_glossary?id=incident)
     - [Twitter @logsight](http://twitter.com/logsight)
     - [GitHub @GitHub](https://github.com/aiops)
