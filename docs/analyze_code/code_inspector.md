@@ -23,16 +23,31 @@ We access your code or you ship the logs to our centralized logging platform.
 > [!WARNING] Update image
 
 
-## Intelligent NLP
+## Intelligent NLU
 
-### Level analysis
-To come ...
+### Level analysis and log recommendation
+Log levels classify log records (i.e., system states) according to predefined keywords such as ERROR, WARNING and INFO. Developers need to correctly assigned log levels to log statements. Otherwise, incorrect levels will mislead SRE and operators while troubleshooting system failures.
+
+However, correctly assigning log levels is difficult since typically there are no practical specifications, guidelines or automated tool. 
+
+`logsight.ai` provides a solution to this problem.
+It uses natural language understanding (NLU), AI models to automatically infer the semantics of log messages and verify that it matches log levels.
+The AI models were trained by extracting insights from 1000s well-known open source projects.
+
+`logsight.ai` is able, not only to identify level mismatches, but also gives recommendations on the more suitable 
+log level to assign to a given message.  
+
 
 ### Linguistic analysis
-To come ...
+Writing meaningful log messages is one of the most important best practices to follow while writing software. Short or cryptic log message are of little help during the troubleshooting of systems. A log file may be the only source of information left to understand the root cause of a failure.
 
-### Intelligent recommendation
-To come ...
+Unfortunately, many log messages are unclear and lack contextual information. They are too short or too long. They mingle English and other languages. They do not contain subjects or verbs. 
+
+`logsight.ai` overcomes this problem by automatically characterizing and evaluating the quality of log messages.
+NLU and large AI models trained over 1000s well-known open source projects capture de facto best practices.
+This knowledge is distilled into neural models which qualify log quality in real time.
+
+
 
 
 > [!NOTE]

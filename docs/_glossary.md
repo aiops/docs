@@ -41,7 +41,6 @@ To complete ...
 #### Log group
 To complete ...
 
-
 #### Continuous verification
 Continuous verification addresses reliability requirements of production systems. 
 It places automated health and quality gates in the release stages of DevOps pipelines.
