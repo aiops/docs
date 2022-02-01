@@ -3,12 +3,23 @@
 - **Get started**
     - [Overview](/)
     - [Deployment](/get_started/deployment.md)
- 
-- **Send logs**
-    - [Shipping logs](/send_logs/shipping_logs.md)
-    - [Using Filebeat](/send_logs/using_filebeats.md)
-    - [Upload files](/send_logs/upload_files.md)
+
+- **REST API**
+    - [User](/rest_api/user.md)
+    - [Application](/rest_api/application.md)
+    - [Send logs](/rest_api/shipping_logs.md)
+    - [Results](/rest_api/results.md)
     - [Using the SDK](/send_logs/send_logs_using_the_sdk.md)
+ 
+[//]: # (- **Send logs**)
+
+[//]: # (    - [Shipping logs]&#40;/send_logs/shipping_logs.md&#41;)
+
+[//]: # (    - [Using Filebeat]&#40;/send_logs/using_filebeats.md&#41;)
+
+[//]: # (    - [Upload files]&#40;/send_logs/upload_files.md&#41;)
+
+[//]: # (    - [Using the SDK]&#40;/send_logs/send_logs_using_the_sdk.md&#41;)
  
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
