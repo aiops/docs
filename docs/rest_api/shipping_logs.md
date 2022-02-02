@@ -1,9 +1,9 @@
-#Logs API
+# Logs API
 logsight.ai exposes an API that allows you to send your logs from anywhere.
 
 ## Send logs
 
-####Request:
+#### Request:
 ```
 POST /api/v1/logs
 ```
@@ -25,7 +25,7 @@ POST /api/v1/logs
 
 <strong>"logFormat"</strong> The format of the logs can be <i>unknown</i>, then the logs are automatically parsed with logsight.ai, or <i>JSON</i> where the log data is already structured and has JSON format.
 
-####Response:
+#### Response:
 ```
 Status 200 OK
 ```

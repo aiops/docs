@@ -1,11 +1,15 @@
-#User API
+# User API
+
 logsight.ai allows you to perform user login via REST API.
+
 ## User login
 
-####Request:
+#### Request:
+
 ```
 POST /api/v1/auth/login
 ```
+
 ```json
 {
   "email": "user@company.com",
@@ -13,17 +17,21 @@ POST /api/v1/auth/login
 }
 ```
 
-####Response:
+#### Response:
+
 ```
 Status 200 OK
 ```
+
 ```json
 {
-  "token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…"
 }
 ```
 
-All subsequent requests (e.g., using Application API) require an authorization header with the received authorization token:
+All subsequent requests (e.g., using Application API) require an authorization header with the received authorization
+token:
+
 ```
 --header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…’
 
