@@ -1,10 +1,11 @@
 # User info
 
 > [!TIP]
-> The user info screen can be found in the [Integration page](/logsight_ui/integration_page.md)
-> and also in the [View account](/administration/view_account.md)
+> The user info screen can be found in the `in the User Settings page`.
 
-The user info section contains the `Username` (email) and the `private-key` of the user. The `private-key` is important when the user sends data to logsight, it is used as user identifier inside the platform.
+The user info section contains the `Username` (email) and the `User ID` of the user. The `User ID` is important for several operations in logsight (e.g., creating applications, sending logs, etc.). It is used as user identifier inside the platform.
 
-![img.png](../assets/images/user_info.png)
+<p align="center">
+  <img src="./user_info.png" />
+</p>
 

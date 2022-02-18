@@ -20,7 +20,7 @@ The severity score can be seen by hovering over cells.
 
 <br>
 
-![Logs](./dashboard.png ':size=1200')
+![Logs](./dashboard_marked.png ':size=1200')
 
 <br>
 

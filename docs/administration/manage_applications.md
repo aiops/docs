@@ -1,11 +1,13 @@
 # Manage applications
 
 > [!TIP]
-> The manage application screen can be found in the [Integration page](/logsight_ui/integration_page.md)
+> The manage application screen can be found in the `User Settings page`.
 
-In this section the user can learn how to create and delete `applications`.
+In this section the user can create and delete `applications`.
 
-![Manage applications](../assets/images/manage_applications.png)
+<p align="center">
+  <img src="./applications.png" />
+</p>
 
 An `application` in logsight.ai is an independent source of log data. An example of an application may be a payment service, database, or authentication service (a single app).
 

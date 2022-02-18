@@ -1,8 +1,9 @@
 
 # Glossary
 
-### Anomaly types
-To complete ...
+[//]: # (### Anomaly types)
+
+[//]: # (To complete ...)
 
 #### Incident group
 An incident group is a group of cognitive anomalies, flow anomalies and critical anomalies.
@@ -17,8 +18,9 @@ For example, *unable to acquire token*.
 #### Critical anomaly
 A critical anomaly is a cognitive anomaly associated with a new log type or with a flow anomaly.
 
-#### Anomaly score
-To complete ...
+[//]: # (#### Anomaly score)
+
+[//]: # (To complete ...)
 
 #### Severity score
 A severity score quantifies the severity of an incident. The higher the value, the higher the severity of an incident.
@@ -32,14 +34,19 @@ A log type (or log template) is a structured description of an unstructured log 
 It typically includes variables (e.g., IP address, service name) and a textual description.
 Groups of log messages are clustered into a log template representing a state of a system.
 
-#### Baseline version
-To complete ...
+[//]: # (#### Baseline version)
 
-#### Candidate version
-To complete ...
+[//]: # (To complete ...)
 
-#### Log group
-To complete ...
+[//]: # ()
+[//]: # (#### Candidate version)
+
+[//]: # (To complete ...)
+
+[//]: # ()
+[//]: # (#### Log group)
+
+[//]: # (To complete ...)
 
 #### Continuous verification
 Continuous verification addresses reliability requirements of production systems. 
@@ -47,11 +54,13 @@ It places automated health and quality gates in the release stages of DevOps pip
 The gates validate the functionality, security or performance of applications.
 
 
-#### Deployment abnormality
+[//]: # (#### Deployment abnormality)
 
-The main challenge facing of deployments is validating the health of newly deployed service instances. 
+[//]: # ()
+[//]: # (The main challenge facing of deployments is validating the health of newly deployed service instances. )
 
-To complete ...
+[//]: # ()
+[//]: # (To complete ...)
 
 #### Tag
 Tags make a point as a specific point in Git history.

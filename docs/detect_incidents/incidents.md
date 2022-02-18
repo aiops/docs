@@ -7,7 +7,7 @@
 
 <br>
 
-![Logs](./incidents.png ':size=1200')
+![Logs](./incidents_marked.png ':size=1200')
 
 <br>
 
