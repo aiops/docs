@@ -4,6 +4,8 @@
 
 `logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
 
+> [!NOTE]
+> The incident detector REST API is in development. The feature is available only via the UI.
 
 ## Processing Workflow
 

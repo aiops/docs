@@ -25,7 +25,11 @@ Status 200 OK
 
 ```json
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…",
+  "user": {
+    "id": "1290xjXJsazK-sJwnxM",
+    "email": "user@company.com"
+  }
 }
 ```
 

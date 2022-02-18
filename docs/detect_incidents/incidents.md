@@ -1,13 +1,9 @@
 # Incidents
 
-> XXXX
-
-
 `Time frame` Use the time panel to select the time frame in which logging analytics should run. Alternatively, you can select one of the predefined ranges. 
 
-`Applications' incidents` The heat map shows for each registered application its health status. 
-Red cells indicate the presence of incidents, while green cells represent healthy applications. 
-The severity score can be seen by hovering over cells. 
+`Top incidents` ranks the *k* incidents by the highest severity score.
+
 
 <br>
 
@@ -15,7 +11,14 @@ The severity score can be seen by hovering over cells.
 
 <br>
 
-`Critical anomalies` are cognitive anomalies which are also new types or that are associated with flow anomalies.
+`Incident details` shows the most important log messages which are part of an incident. 
+The button *View details* provides further information about the incident.
 
 `Cognitive anomalies` refer to log messages which are correlated with software failures.
 In contrast to log level anomalies, cognitive anomalies are identified by inferring the semantics meaning of messages.
+
+`Log level anomalies` refer to log messages which are correlated with software failures identified by their log level.
+
+`Flow anomalies (in development)` are changes observed in sequences of log messages. 
+
+`New log types (in development)` identifies one or more log type which were not observed during the normal operation of an application. They only occurred during the anomaly time frame.

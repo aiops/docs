@@ -2,10 +2,11 @@
 
 ![Code Inspector](./code_inspector.png)
 
-
 `logsight.ai` supports the semantic and linguistic analysis of code and log data,
 and provides recommendations to improve the quality of the logs.
 
+> [!NOTE]
+> The code inspector UI and API are in development.
 
 ## Processing Workflow
 

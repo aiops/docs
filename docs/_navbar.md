@@ -1,3 +1,2 @@
-+ SDK & API docs
-  + [Python SDK](https://logsight-sdk-py.readthedocs.io/en/latest/)
-  + [REST API](https://logsight.ai/api_v1/)
++ API docs
+  + [REST API](https://logsight.ai/swagger-ui/index.html)
