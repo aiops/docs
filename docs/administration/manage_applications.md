@@ -5,9 +5,7 @@
 
 In this section the user can create and delete `applications`.
 
-<p align="center">
-  <img src="./applications.png" />
-</p>
+![View accounts](./applications.png)
 
 An `application` in logsight.ai is an independent source of log data. An example of an application may be a payment service, database, or authentication service (a single app).
 
