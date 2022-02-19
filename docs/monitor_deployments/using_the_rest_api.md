@@ -9,6 +9,13 @@
 4. `Send logs`.
 5. `Obtain results`
 
+> ```$URL = https://logsight.ai``` for using the web service.
+> 
+> ```$URL = http://localhost:8080``` for using on-premise service.
+> 
+
+
+
 ### 1. Create and activate user
 #### Create user
 To create logsight.ai user, send the following request.
@@ -42,7 +49,7 @@ The response that is returned by the endpoint will be the `userId` of the create
 
 After the user creation, the user receives an email with activation link. The activation link, for example:
 
-`https://logsight.ai/auth/activate?uuid=5441e771-1ea3-41c4-8f31-2e71828693de&token=60af8472-fed8-46f0-9e9b-4f986c2b24dc`
+`$URL/auth/activate?uuid=5441e771-1ea3-41c4-8f31-2e71828693de&token=60af8472-fed8-46f0-9e9b-4f986c2b24dc`
 
 consists of `uuid` (the `userId`) and a `token`. There are two options to activate the user:
 1. Clicking on the link
@@ -110,7 +117,7 @@ token:
 
 Example for creating application:
 
-curl -X POST 'localhost:8080/api/v1/application'
+curl -X POST '$URL/api/v1/application'
      -H 'Content-Type: application/json'
      -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9...'
      -d '{"applicatonName": "myService"}'
