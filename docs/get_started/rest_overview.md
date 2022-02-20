@@ -1,4 +1,4 @@
-# REST API
+# API Overview
 
 > To create application sources, send logs, get intelligent insights, and automate your workflows, build with logsight.ai REST API.
 
