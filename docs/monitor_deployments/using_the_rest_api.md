@@ -9,22 +9,20 @@
 4. `Send logs`
 5. `Obtain results`
 
-During the tutorial, the following placeholders can be found. Depending on the installation that you have (e.g., web service, or on-premise), you will be required to replace the placeholders with the corresponding value.
+Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
+with the correct value.
 
-> ```$URL = https://logsight.ai``` for using the web service.
-> 
-> ```$URL = https://demo.logsight.ai``` for using the demo service.
-> 
-> ```$URL = http://localhost:8080``` for using on-premise service.
-> 
++ web service: ```$URL = https://logsight.ai``` 
++ demo service: ```$URL = https://demo.logsight.ai``` 
++ on-premise service: ```$URL = http://localhost:8080``` 
 
 
+## Create and activate user
+### Create user
 
-### 1. Create and activate user
-#### [Create user](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 To create logsight.ai user, send the following request.
 
-Request:
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 
 ```
 POST /api/v1/users
@@ -38,7 +36,7 @@ POST /api/v1/users
 }
 ```
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 
 ```
 Status 201 CREATED
@@ -51,7 +49,11 @@ Status 201 CREATED
 ```
 The response that is returned by the endpoint will be the `userId` of the created user. The `userId` has usages in subsequent requests (e.g., when creating application).
 
-#### [Activate user](https://demo.logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST) (not needed in on-premise installation)
+
+### Activate user 
+
+> [!INFO]
+> not needed in on-premise installation
 
 After the user creation, the user receives an email with activation link. The activation link, for example:
 
@@ -62,7 +64,7 @@ consists of `userId` and a `activationToken`. There are two options to activate 
 2. Taking the `userId` and the `activationToken` and sending an activation request:
 
 
-Request:
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
 
 ```
 POST /api/v1/users/activate
@@ -75,7 +77,7 @@ POST /api/v1/users/activate
 }
 ```
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
 
 ```
 Status 200 OK
@@ -83,9 +85,10 @@ Status 200 OK
 
 After user activation, the user needs to authenticate by sending the following request
 
-### 2. [Login user](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
-Request:
+## Login user
+
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
 ```
 POST /api/v1/auth/login
@@ -98,7 +101,7 @@ POST /api/v1/auth/login
 }
 ```
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
 ```
 Status 200 OK
@@ -124,7 +127,7 @@ curl -X POST '$URL/api/v1/application'
      -d '{"applicatonName": "myservice"}'
 ```
 
-### 3. [Create application](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
+## Create application
 
 An application is an independent source of log data. An example of an application may be a payment
 service, database, or authentication service (a single app). By writing Application name and creating the app in the
@@ -132,7 +135,8 @@ background, several services are enabled that are ready to provide insights and 
 
 To create an application the user needs to send the following request (don't forget to add the token in the request header).
 
-Request:
+
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
 
 ```
 POST /api/v1/users/{userId}/applications
@@ -144,7 +148,7 @@ For example: POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/application
 }
 ```
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
 
 ```
 Status 201 OK
@@ -161,14 +165,14 @@ The response contains an `applicationId` which is an UUID data type. It is impor
 that specific application.
 
 
-### 4. [Send logs](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+## Send logs
 After setting up the prerequisites (i.e., creating user, activate user, login user, and create application) the user can now send logs for its application.
 
 The `Stage Verifier` supports the continuous verification of deployments, comparing tests, detecting test flakiness and other log verification tasks. In all of these tasks the underlying operation on abstract level is comparing sets of logs from different deployment versions, running and failing tests, etc.
 
 To send logs the user needs to send the following request.
 
-Request:
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
 POST /api/v1/logs
 ```
@@ -202,7 +206,7 @@ We recommend sending logs in larger batches to minimize network calls. The user 
 
 `logs` is a list of log messages. The messages can be in raw format or JSON. logsight.ai automatically parses the log fields.
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
 Status 200 OK
 ```
@@ -219,16 +223,17 @@ Status 200 OK
 `receiptId` is identifier of the received log batch.
 `source` tells the way that this batch was sent (via REST API)
 
-### 4. Obtain results
+
+## Obtain results
 
 After sending logs, the user can obtain results from the `Stage Verifier` by performing the following steps:
 1. (Optional) Executing control (`flush`) operation on the log stream - This performs a flush operation and guarantees the user the all of his previoysly sent logs are processed by our pipeline before getting results.
 2. Obtain the results
 
-#### 1. [Flush](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST) (optional)
+### Flush (optional)
 To perform `flush` operation after sending the logs, the user needs to send a request containing the <i>LAST RECEIVED</i> `receiptId`.
 
-Request:
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
 ```
 POST /api/v1/logs/flush
 ```
@@ -238,7 +243,7 @@ POST /api/v1/logs/flush
 }
 ```
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
 ```
 Status 200 OK
 ```
@@ -252,10 +257,11 @@ Status 200 OK
 `flushId` is identifier of the flush command. This can be optionally used as part of the result request below, which guarantees that all of the logs sent before the flush are already processed and results can be obtained in full.
 `status` "PENDING" means that the flush is being performed.
 
-#### 2. [Obtain results](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
+
+### Obtain results
 To obtain the results form the `Stage Verifier` the user needs to perform the following query. 
 
-Request:
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
 POST /api/v1/logs/compare
 ```
@@ -270,7 +276,7 @@ POST /api/v1/logs/compare
 
 If the user did not perform `flush` prior getting the results, the `flushId` field should be left out. This is an optional parameter. Without `flush` the user will still get results from the `Stage Verifier`.
 
-Response:
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
 Status 200 OK
 ```
@@ -300,44 +306,27 @@ Status 200 OK
 }
 ```
 
-`risk` - Risk score of the comparison. In case of deployments (new version comparing with old version), the risk translates to `deployment risk`.
-
-`totalLogCount` - The total count of log messages from both `tags`.
-
-`baselineLogCount` - The total count of log messages from the `baselineTag`.
-
-`candidateLogCount` -  The total count of log messages from the `compareTag`.
-
-`candidateChangePercentage` - The percentage change in total count of logs from the `candidateTag` compared to `baselineTag`.
-
-`addedStatesTotalCount` - Total number of added states from the `candidateTag` compared to `baselineTag`.
-
-`addedStatesFaultPercentage` - Percentage of added states, which are identified as faults.
-
-`addedStatesReportPercentage` - Percentage of added states, which are identified as report (normal behaviour).
-
-`deletedStatesTotalCount` - The total count of deleted states from the `candidateTag` compared to `baselineTag`.
-
-`deletedStatesFaultPercentage` - Percentage of deleted states, which are identified as faults.
- 
-`deletedStatesReportPercentage` - Percentage of deleted states, which are identified as report.
-
-`frequencyChangeTotalCount` - The total count of states that changed in occurrence frequency from the `candidateTag` compared to `baselineTag`.
-
-`frequencyChangeFaultPercentage` - Percentage of states that changed in occurrence frequency, which are identified as faults.
-
-`frequencyChangeReportPercentage` - Percentage of states that changed in occurrence frequency, which are identified as report.
-
-`recurringStatesTotalCount` -  The total count of recurring states from the `candidateTag` compared to `baselineTag`.
-
-`recurringStatesFaultPercentage` - Percentage of recurring states, which are identified as fault.
-
-`recurringStatesReportPercentage` - Percentage of recurring states, which are identified as report.
-
-`link` - Link that points to the UI where the user can see a detailed report.
++ `risk` - Risk score of the comparison. In case of deployments (new version comparing with old version), the risk translates to `deployment risk`.
++ `totalLogCount` - The total count of log messages from both `tags`.
++ `baselineLogCount` - The total count of log messages from the `baselineTag`.
++ `candidateLogCount` -  The total count of log messages from the `compareTag`.
++ `candidateChangePercentage` - The percentage change in total count of logs from the `candidateTag` compared to `baselineTag`.
++ `addedStatesTotalCount` - Total number of added states from the `candidateTag` compared to `baselineTag`.
++ `addedStatesFaultPercentage` - Percentage of added states, which are identified as faults.
++ `addedStatesReportPercentage` - Percentage of added states, which are identified as report (normal behaviour).
++ `deletedStatesTotalCount` - The total count of deleted states from the `candidateTag` compared to `baselineTag`.
++ `deletedStatesFaultPercentage` - Percentage of deleted states, which are identified as faults.
++ `deletedStatesReportPercentage` - Percentage of deleted states, which are identified as report.
++ `frequencyChangeTotalCount` - The total count of states that changed in occurrence frequency from the `candidateTag` compared to `baselineTag`.
++ `frequencyChangeFaultPercentage` - Percentage of states that changed in occurrence frequency, which are identified as faults.
++ `frequencyChangeReportPercentage` - Percentage of states that changed in occurrence frequency, which are identified as report.
++ `recurringStatesTotalCount` -  The total count of recurring states from the `candidateTag` compared to `baselineTag`.
++ `recurringStatesFaultPercentage` - Percentage of recurring states, which are identified as fault.
++ `recurringStatesReportPercentage` - Percentage of recurring states, which are identified as report.
++ `link` - Link that points to the UI where the user can see a detailed report.
 
 
-#### Detailed report view
+### Detailed report view
 ![Logs](./detailed_report.png ':size=1200')
 
 
