@@ -5,11 +5,15 @@
 
 1. `Create and activate user`
 2. `Login user`
-3. `Create application`.
-4. `Send logs`.
+3. `Create application`
+4. `Send logs`
 5. `Obtain results`
 
+During the tutorial, the following placeholders can be found. Depending on the installation that you have (e.g., web service, or on-premise), you will be required to replace the placeholders with the corresponding value.
+
 > ```$URL = https://logsight.ai``` for using the web service.
+> 
+> ```$URL = https://demo.logsight.ai``` for using the demo service.
 > 
 > ```$URL = http://localhost:8080``` for using on-premise service.
 > 
@@ -17,7 +21,7 @@
 
 
 ### 1. Create and activate user
-#### Create user
+#### [Create user](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 To create logsight.ai user, send the following request.
 
 Request:
@@ -47,15 +51,16 @@ Status 201 CREATED
 ```
 The response that is returned by the endpoint will be the `userId` of the created user. The `userId` has usages in subsequent requests (e.g., when creating application).
 
+#### [Activate user](https://demo.logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST) (not needed in on-premise installation)
+
 After the user creation, the user receives an email with activation link. The activation link, for example:
 
-`$URL/auth/activate?uuid=5441e771-1ea3-41c4-8f31-2e71828693de&token=60af8472-fed8-46f0-9e9b-4f986c2b24dc`
+`$URL/auth/activate?userId=5441e771-1ea3-41c4-8f31-2e71828693de&activationToken=60af8472-fed8-46f0-9e9b-4f986c2b24dc`
 
-consists of `uuid` (the `userId`) and a `token`. There are two options to activate the user:
+consists of `userId` and a `activationToken`. There are two options to activate the user:
 1. Clicking on the link
-2. Taking the `userId` and the `token` and sending an activation request:
+2. Taking the `userId` and the `activationToken` and sending an activation request:
 
-#### Activate user
 
 Request:
 
@@ -78,7 +83,7 @@ Status 200 OK
 
 After user activation, the user needs to authenticate by sending the following request
 
-### 2. Login user
+### 2. [Login user](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
 Request:
 
@@ -110,22 +115,18 @@ Status 200 OK
 ```
 
 All subsequent requests (e.g., creating application, sending logs, or obtaining results) require an authorization header with the received authorization
-token:
+token. Example for creating application:
 
 ```
---header 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…’
-
-Example for creating application:
-
 curl -X POST '$URL/api/v1/application'
      -H 'Content-Type: application/json'
      -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9...'
-     -d '{"applicatonName": "myService"}'
+     -d '{"applicatonName": "myservice"}'
 ```
 
-### 3. Create application
+### 3. [Create application](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
 
-An application in logsight.ai is an independent source of log data. An example of an application may be a payment
+An application is an independent source of log data. An example of an application may be a payment
 service, database, or authentication service (a single app). By writing Application name and creating the app in the
 background, several services are enabled that are ready to provide insights and analysis for the shipped logs.
 
@@ -135,9 +136,8 @@ Request:
 
 ```
 POST /api/v1/users/{userId}/applications
-(e.g., /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications)
 ```
-
+For example: POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications
 ```json
 {
   "applicatonName": "myservice"
@@ -161,7 +161,7 @@ The response contains an `applicationId` which is an UUID data type. It is impor
 that specific application.
 
 
-### 4. Send logs
+### 4. [Send logs](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 After setting up the prerequisites (i.e., creating user, activate user, login user, and create application) the user can now send logs for its application.
 
 The `Stage Verifier` supports the continuous verification of deployments, comparing tests, detecting test flakiness and other log verification tasks. In all of these tasks the underlying operation on abstract level is comparing sets of logs from different deployment versions, running and failing tests, etc.
@@ -225,7 +225,7 @@ After sending logs, the user can obtain results from the `Stage Verifier` by per
 1. (Optional) Executing control (`flush`) operation on the log stream - This performs a flush operation and guarantees the user the all of his previoysly sent logs are processed by our pipeline before getting results.
 2. Obtain the results
 
-#### 1. Flush (optional)
+#### 1. [Flush](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST) (optional)
 To perform `flush` operation after sending the logs, the user needs to send a request containing the <i>LAST RECEIVED</i> `receiptId`.
 
 Request:
@@ -252,7 +252,7 @@ Status 200 OK
 `flushId` is identifier of the flush command. This can be optionally used as part of the result request below, which guarantees that all of the logs sent before the flush are already processed and results can be obtained in full.
 `status` "PENDING" means that the flush is being performed.
 
-#### 2. Obtain results
+#### 2. [Obtain results](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 To obtain the results form the `Stage Verifier` the user needs to perform the following query. 
 
 Request:
@@ -263,7 +263,7 @@ POST /api/v1/logs/compare
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "baselineTag": "v1.0.1",
-  "compareTag": "v1.0.2",
+  "candidateTag": "v1.0.2",
   "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" // optional
 }
 ```
@@ -295,7 +295,7 @@ Status 200 OK
   "recurringStatesTotalCount": 2,
   "recurringStatesFaultPercentage": 0,
   "recurringStatesReportPercentage": 0,
-  "detailedReportLink": "http://logsight.ai/pages/compare?applicationId=a26ab2f2-89e9-4e3a-bc9e-66011537f32f&baselineTag=v1.0.1&compareTag=v1.0.2",
+  "link": "$URL/pages/compare?applicationId=a26ab2f2-89e9-4e3a-bc9e-66011537f32f&baselineTag=v1.0.1&compareTag=v1.0.2",
   
 }
 ```
@@ -334,7 +334,7 @@ Status 200 OK
 
 `recurringStatesReportPercentage` - Percentage of recurring states, which are identified as report.
 
-`detailedReportLink` - Link that points to the UI where the user can see a detailed report.
+`link` - Link that points to the UI where the user can see a detailed report.
 
 
 #### Detailed report view
