@@ -7,20 +7,21 @@
 2. `Login user`
 3. `Create application`
 4. `Send logs`
-5. `Obtain results`
+5. `Tag and flush`
+6. `Verify`
 
 Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
 with the correct value.
 
 + web service: ```$URL = https://logsight.ai``` 
 + demo service: ```$URL = https://demo.logsight.ai``` 
-+ on-premise service: ```$URL = http://localhost:8080``` 
++ on-premise service: ```$URL = http://localhost:8080```
 
 
 ## Create and activate user
 ### Create user
 
-To create logsight.ai user, send the following request.
+To create a user, send the following request.
 
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 
@@ -52,8 +53,7 @@ The response that is returned by the endpoint will be the `userId` of the create
 
 ### Activate user 
 
-> [!INFO]
-> not needed in on-premise installation
+> Not needed in on-premise installation
 
 After the user creation, the user receives an email with activation link. The activation link, for example:
 
@@ -118,7 +118,7 @@ Status 200 OK
 ```
 
 All subsequent requests (e.g., creating application, sending logs, or obtaining results) require an authorization header with the received authorization
-token. Example for creating application:
+token. Example for creating an application:
 
 ```
 curl -X POST '$URL/api/v1/application'
@@ -133,15 +133,15 @@ An application is an independent source of log data. An example of an applicatio
 service, database, or authentication service (a single app). By writing Application name and creating the app in the
 background, several services are enabled that are ready to provide insights and analysis for the shipped logs.
 
-To create an application the user needs to send the following request (don't forget to add the token in the request header).
-
+To create an application, send the following request (don't forget to add the token in the request header).
+For example, POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications
 
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
 
 ```
 POST /api/v1/users/{userId}/applications
 ```
-For example: POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications
+
 ```json
 {
   "applicatonName": "myservice"
@@ -161,16 +161,17 @@ Status 201 OK
 }
 ```
 
-The response contains an `applicationId` which is an UUID data type. It is important for subsequent requests related to
-that specific application.
+The response contains an `applicationId` to be used in subsequent requests.
 
 
 ## Send logs
-After setting up the prerequisites (i.e., creating user, activate user, login user, and create application) the user can now send logs for its application.
 
-The `Stage Verifier` supports the continuous verification of deployments, comparing tests, detecting test flakiness and other log verification tasks. In all of these tasks the underlying operation on abstract level is comparing sets of logs from different deployment versions, running and failing tests, etc.
+After setting up the prerequisites (i.e., creating user, activate user, login user, and create application), you can send logs to an application.
+`logs` is a list of log messages. The messages can be in raw format or JSON. logsight.ai automatically parses the log fields.
 
-To send logs the user needs to send the following request.
+We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
+
+To send logs, execute the following request.
 
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
@@ -187,6 +188,36 @@ POST /api/v1/logs
 }
 ```
 
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+```
+Status 200 OK
+```
+```json
+{
+  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
+  "logsCount": 2,
+  "receiptId": "525c5234-9012-4f3b-8f64-c8a6ec418e7a",
+  "source": "restBatch"
+}
+```
+
++ `logsCount` is the count of the log messages sent in the batch.
++ `receiptId` is identifier of the received log batch.
++ `source` tells the way that this batch was sent (via REST API)
+
+
+## Tag and flush
+
+### Tag
+
+The `Stage Verifier` uses tags to compare logs. 
+A `tag` is any string that can identify a particular set of log records. 
+For example,
+
++ [Semantic versioning](https://semver.org/) (e.g., v1.0.0, v1.0.1)
++ Test run number (e.g., run_1, run_2)
+
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
 POST /api/v1/logs
 ```
@@ -200,11 +231,6 @@ POST /api/v1/logs
           ]
 }
 ```
-We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
-
-`tag` is an identifier variable that represents the version of the logs, which later is utilized in the aforementioned tasks. For example, in deployment verification the `Stage Verifier` performs an operation of intelligent compare between the logs that belong to two different tags. A tag could be a version tag (v1.0.0, v1.0.1), a test run number (run_1, run_2), or any kind of string that later can be utilized to refer to a particular set of log data.
-
-`logs` is a list of log messages. The messages can be in raw format or JSON. logsight.ai automatically parses the log fields.
 
 [Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
@@ -219,19 +245,11 @@ Status 200 OK
 }
 ```
 
-`logsCount` is the count of the log messages sent in the batch.
-`receiptId` is identifier of the received log batch.
-`source` tells the way that this batch was sent (via REST API)
+### Flush
 
+> (Optional) The flush operation guarantees that all the logs sent are processed by logsight.ai before getting the results.
 
-## Obtain results
-
-After sending logs, the user can obtain results from the `Stage Verifier` by performing the following steps:
-1. (Optional) Executing control (`flush`) operation on the log stream - This performs a flush operation and guarantees the user the all of his previoysly sent logs are processed by our pipeline before getting results.
-2. Obtain the results
-
-### Flush (optional)
-To perform `flush` operation after sending the logs, the user needs to send a request containing the <i>LAST RECEIVED</i> `receiptId`.
+To perform the `flush` operation after sending the logs, the client needs to send a request containing the last received `receiptId`.
 
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
 ```
@@ -254,12 +272,13 @@ Status 200 OK
 }
 ```
 
-`flushId` is identifier of the flush command. This can be optionally used as part of the result request below, which guarantees that all of the logs sent before the flush are already processed and results can be obtained in full.
-`status` "PENDING" means that the flush is being performed.
++ `flushId` identifies a flush
++ `status` "PENDING" means that the flush is being performed. <span style="color:red">Which other states can be returned?</span> 
 
 
-### Obtain results
-To obtain the results form the `Stage Verifier` the user needs to perform the following query. 
+## Verify
+
+After sending the logs, the client can compare logs indexed with different tags by making the following call. 
 
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
@@ -274,7 +293,8 @@ POST /api/v1/logs/compare
 }
 ```
 
-If the user did not perform `flush` prior getting the results, the `flushId` field should be left out. This is an optional parameter. Without `flush` the user will still get results from the `Stage Verifier`.
+If the user did not perform `flush` prior to the verification, the `flushId` field should be left out.
+Without `flush`, a verification will be made with the logs stored in logsight.ai.
 
 [Response](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
@@ -302,7 +322,6 @@ Status 200 OK
   "recurringStatesFaultPercentage": 0,
   "recurringStatesReportPercentage": 0,
   "link": "$URL/pages/compare?applicationId=a26ab2f2-89e9-4e3a-bc9e-66011537f32f&baselineTag=v1.0.1&compareTag=v1.0.2",
-  
 }
 ```
 
