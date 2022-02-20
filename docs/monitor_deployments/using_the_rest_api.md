@@ -280,6 +280,9 @@ Status 200 OK
 
 After sending the logs, the client can compare logs indexed with different tags by making the following call. 
 
+If the user did not perform `flush` prior to the verification, the `flushId` field should be left out.
+Without `flush`, a verification will be made with the logs stored in logsight.ai.
+
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
 POST /api/v1/logs/compare
@@ -292,9 +295,6 @@ POST /api/v1/logs/compare
   "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" // optional
 }
 ```
-
-If the user did not perform `flush` prior to the verification, the `flushId` field should be left out.
-Without `flush`, a verification will be made with the logs stored in logsight.ai.
 
 [Response](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
