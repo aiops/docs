@@ -4,7 +4,7 @@
 ## Steps
 
 1. `Create and activate user`
-2. `Login user`
+2. `Get token`
 3. `Create application`
 4. `Send logs`
 5. `Tag and flush`
@@ -86,7 +86,18 @@ Status 200 OK
 After user activation, the user needs to authenticate by sending the following request
 
 
-## Login user
+## Get token
+
+Requests, such as creating application, sending logs and verify, require to obtain an authorization token (valid for 10 days).
+
+```
+curl -X POST '$URL/api/v1/application'
+     -H 'Content-Type: application/json'
+     -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9...'
+     -d '{"applicatonName": "myservice"}'
+```
+
+Clients can obtain a token by making the following call. 
 
 [Request](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
@@ -115,16 +126,6 @@ Status 200 OK
     "email": "user@company.com"
   }
 }
-```
-
-All subsequent requests (e.g., creating application, sending logs, or obtaining results) require an authorization header with the received authorization
-token. Example for creating an application:
-
-```
-curl -X POST '$URL/api/v1/application'
-     -H 'Content-Type: application/json'
-     -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9...'
-     -d '{"applicatonName": "myservice"}'
 ```
 
 ## Create application
