@@ -172,7 +172,7 @@ After setting up the prerequisites (i.e., creating user, activate user, login us
 
 We support the following log formats: `syslog` and `JSON`. 
 
-JSON-formatted log messages require a timestamp with field name that is one of ['@timestamp', 'timestamp', 'timestamp_iso8601', 'EventTime'].
+JSON-formatted log messages require a `timestamp` with field name that is one of `['@timestamp', 'timestamp', 'timestamp_iso8601', 'EventTime']` and a field `message` (string).
 
 We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
 
