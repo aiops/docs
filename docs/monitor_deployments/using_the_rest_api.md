@@ -188,20 +188,20 @@ Syslog
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "tag": "v1.0.1",
   "logs": [
-        "Feb  1 18:20:29 kernel: [33160.926181] audit: type=1400 audit(1643736029.672:10417): apparmor=DENIED operation=open profile=snap.whatsapp-for-linux.whatsapp-for-linux name=/proc/zoneinfo pid=58597 comm=PressureMonitor requested_mask=r denied_mask=r fsuid=1000 ouid=0",
-        "Feb  1 18:20:30 kernel: [33161.927066] audit: type=1400 audit(1643736030.676:10418): apparmor=DENIED operation=open profile=snap.whatsapp-for-linux.whatsapp-for-linux name=/proc/zoneinfo pid=58597 comm=PressureMonitor requested_mask=r denied_mask=r fsuid=1000 ouid=0"
-          ]
+        "Feb 14 17:50:52 admin kernel: [24652.948683] [UFW BLOCK] IN=wlp2s0 OUT= MAC=01:00:5e:00:00:01:98:9b:cb:c7:bb:33:08:00 SRC=192.168.178.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0xC0 TTL=1 ID=55766 DF PROTO=2",
+        "Feb 14 17:51:12 admin kernel: [24672.916808] [UFW BLOCK] IN=wlp2s0 OUT= MAC=01:00:5e:00:00:01:98:9b:cb:c7:bb:33:08:00 SRC=192.168.178.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0xC0 TTL=1 ID=57968 DF PROTO=2"
+                 ]
 }
 ```
 
-JSON 
+JSON-serialized strings 
 ```json
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "tag": "v1.0.1",
   "logs": [
-        {"@timestamp":"2021-03-23T01:02:51.007Z","message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006"},
-        {"@timestamp":"2021-03-23T01:02:51.007Z","message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005"}
+        "{\"@timestamp\":\"2021-03-23T01:02:51.007Z\",\"message\":\"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006\"}",
+        "{\"@timestamp\":\"2021-03-23T01:02:51.007Z\",\"message\":\"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005\"}"
         ]
 }
 ```
