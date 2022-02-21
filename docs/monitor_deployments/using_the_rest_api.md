@@ -168,7 +168,11 @@ The response contains an `applicationId` to be used in subsequent requests.
 ## Send logs
 
 After setting up the prerequisites (i.e., creating user, activate user, login user, and create application), you can send logs to an application.
-`logs` is a list of log messages. The messages can be in raw format or JSON. logsight.ai automatically parses the log fields.
+`logs` is a list of log messages.
+
+We support the following log formats: syslog; JSON. 
+
+JSON-formatted log messages require a timestamp with field name that is one of ['@timestamp', 'timestamp', 'timestamp_iso8601', 'EventTime'].
 
 We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
 
