@@ -172,7 +172,7 @@ After setting up the prerequisites (i.e., creating user, activate user, login us
 
 We support the following log formats: `syslog` and `JSON`. 
 
-JSON-formatted log messages require a `timestamp` with field name that is one of `['@timestamp', 'timestamp', 'timestamp_iso8601', 'EventTime']` and a field `message` (string).
+JSON-formatted log messages require a `timestamp` with field name that is one of `['@timestamp', 'timestamp', 'timestamp_iso8601', 'EventTime']` and a field `message` (string). You can add any additional fields, they will be indexed, but they will not be used for processing.
 
 We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
 
@@ -200,8 +200,8 @@ JSON
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "tag": "v1.0.1",
   "logs": [
-        {"@timestamp":"2021-03-23T01:02:51.007Z","Severity":"INFO","message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006","Thread":"default - 2"},
-        {"@timestamp":"2021-03-23T01:02:51.007Z","Severity":"INFO","message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005","Thread":"default - 4"}
+        {"@timestamp":"2021-03-23T01:02:51.007Z","message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006"},
+        {"@timestamp":"2021-03-23T01:02:51.007Z","message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005"}
         ]
 }
 ```
