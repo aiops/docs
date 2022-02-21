@@ -183,8 +183,8 @@ POST /api/v1/logs
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "tag": "v1.0.1",
   "logs": [
-        "Feb  1 18:20:29 kernel: [33160.926181] audit: type=1400 audit(1643736029.672:10417): apparmor="DENIED" operation="open" profile="snap.whatsapp-for-linux.whatsapp-for-linux" name="/proc/zoneinfo" pid=58597 comm="PressureMonitor" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0",
-        "Feb  1 18:20:30 kernel: [33161.927066] audit: type=1400 audit(1643736030.676:10418): apparmor="DENIED" operation="open" profile="snap.whatsapp-for-linux.whatsapp-for-linux" name="/proc/zoneinfo" pid=58597 comm="PressureMonitor" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0"
+        "Feb  1 18:20:29 kernel: [33160.926181] audit: type=1400 audit(1643736029.672:10417): apparmor=DENIED operation=open profile=snap.whatsapp-for-linux.whatsapp-for-linux name=/proc/zoneinfo pid=58597 comm=PressureMonitor requested_mask=r denied_mask=r fsuid=1000 ouid=0",
+        "Feb  1 18:20:30 kernel: [33161.927066] audit: type=1400 audit(1643736030.676:10418): apparmor=DENIED operation=open profile=snap.whatsapp-for-linux.whatsapp-for-linux name=/proc/zoneinfo pid=58597 comm=PressureMonitor requested_mask=r denied_mask=r fsuid=1000 ouid=0"
           ]
 }
 ```
