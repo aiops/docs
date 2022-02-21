@@ -186,9 +186,15 @@ POST /api/v1/logs
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "tag": "v1.0.1",
+  //for syslog
   "logs": [
         "Feb  1 18:20:29 kernel: [33160.926181] audit: type=1400 audit(1643736029.672:10417): apparmor=DENIED operation=open profile=snap.whatsapp-for-linux.whatsapp-for-linux name=/proc/zoneinfo pid=58597 comm=PressureMonitor requested_mask=r denied_mask=r fsuid=1000 ouid=0",
         "Feb  1 18:20:30 kernel: [33161.927066] audit: type=1400 audit(1643736030.676:10418): apparmor=DENIED operation=open profile=snap.whatsapp-for-linux.whatsapp-for-linux name=/proc/zoneinfo pid=58597 comm=PressureMonitor requested_mask=r denied_mask=r fsuid=1000 ouid=0"
+          ],
+  //for json
+  "logs": [
+        "{\"@timestamp\":\"2021-03-23T01:02:51.007Z\",\"LoggerClassName\":\"org.slf4j.impl.Slf4jLogger\",\"LoggerName\":\"SCHEDULER\",\"Severity\":\"INFO\",\"message\":\"Started job execution\",\"Thread\":\"default - 2\",\"ThreadId\":315,\"mdc\":{},\"ndc\":\"\",\"SourceClassName\":\"com.admin.ad.co.frontend.common.si.SchedulableBase\",\"SourceMethodName\":\"perform\",\"SourceLineNumber\":80,\"exception\":null,\"StackTrace\":null,\"tag\":\"fail\"}",
+        "{\"@timestamp\":\"2021-03-23T01:03:51.007Z\",\"LoggerClassName\":\"org.slf4j.impl.Slf4jLogger\",\"LoggerName\":\"SCHEDULER\",\"Severity\":\"INFO\",\"message\":\"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006\",\"Thread\":\"default - 2\",\"ThreadId\":315,\"mdc\":{},\"ndc\":\"\",\"SourceClassName\":\"com.admin.ad.co.frontend.common.si.SchedulableBase\",\"SourceMethodName\":\"perform\",\"SourceLineNumber\":80,\"exception\":null,\"StackTrace\":null,\"tag\":\"fail\"}",
           ]
 }
 ```
