@@ -3,16 +3,15 @@
 
 ## Steps
 
-Prerequisites ([Already performed these steps? Jump to Send Logs and Verify](/monitor_deployments/using_the_rest_api.md?id=send-logs))
+Prerequisites ([Already performed these steps? Jump to Send Logs and Detect incidents](/detect_incidents/using_the_rest_api.md?id=send-logs))
 1. `Create and activate user`
 2. `Get token`
 3. `Create application`
 
-Verify
-
+Detecting incidents
 4. `Send logs`
 5. `Flush (optional)`
-6. `Verify`
+6. `Detect incidents`
 
 Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
 with the correct value.
@@ -229,44 +228,7 @@ Status 200 OK
 + `source` tells the way that this batch was sent (via REST API)
 
 
-## Tag and flush
-
-### Tag
-
-The `Stage Verifier` uses tags to compare logs. 
-A `tag` is any string that can identify a particular set of log records. 
-For example,
-
-+ [Semantic versioning](https://semver.org/) (e.g., v1.0.0, v1.0.1)
-+ Test run number (e.g., run_1, run_2)
-
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
-```
-POST /api/v1/logs
-```
-```json
-{
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "tag": "v1.0.2", // new version released
-  "logs": [
-        "Feb  2 18:21:22 kernel: [33160.926181] audit: type=1400 audit(1643736029.672:10417): apparmor="DENIED" operation="open" profile="snap.whatsapp-for-linux.whatsapp-for-linux" name="/proc/zoneinfo" pid=58597 comm="PressureMonitor" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0",
-        "Feb  2 18:21:10 kernel: [33161.927066] audit: type=1400 audit(1643736030.676:10418): apparmor="DENIED" operation="open" profile="snap.whatsapp-for-linux.whatsapp-for-linux" name="/proc/zoneinfo" pid=58597 comm="PressureMonitor" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0"
-          ]
-}
-```
-
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
-```
-Status 200 OK
-```
-```json
-{
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "logsCount": 2,
-  "receiptId": "525c5234-9012-4f3b-8f64-c8a6ec418e7a",
-  "source": "restBatch"
-}
-```
+## Flush logs
 
 ### Flush
 
@@ -299,23 +261,22 @@ Status 200 OK
 + `status` "PENDING" means that the flush is being performed. <span style="color:red">Which other states can be returned?</span> 
 
 
-## Verify
+## Detect Incidents
 
-After sending the logs, the client can compare logs indexed with different tags by making the following call. 
+After sending the logs, the client can get insights from the logs in the form of summarized incidents. 
 
-If the user did not perform `flush` prior to the verification, the `flushId` field should be left out.
-Without `flush`, a verification will be made with the logs stored in logsight.ai.
+If the user did not perform `flush` prior to the getting results, the `flushId` field should be left out.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
+[Request](http://localhost:8080/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
 ```
-POST /api/v1/logs/compare
+POST /api/v1/logs/incidents
 ```
 ```json
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "baselineTag": "v1.0.1",
-  "candidateTag": "v1.0.2",
   "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" // optional
+  "startTime": "YYYY-MM-DDTHH:mm:ss.SSSSSS+HH:00",
+  "stopTime": "YYYY-MM-DDTHH:mm:ss.SSSSSS+HH:00"
 }
 ```
 
@@ -325,51 +286,23 @@ Status 200 OK
 ```
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "risk": 0,
-  "totalLogCount": 4,
-  "baselineLogCount": 2,
-  "candidateLogCount": 2,
-  "candidateChangePercentage": 0,
-  "addedStatesTotalCount": 0,
-  "addedStatesFaultPercentage": 0,
-  "addedStatesReportPercentage": 0,
-  "deletedStatesTotalCount": 0,
-  "deletedStatesFaultPercentage": 0,
-  "deletedStatesReportPercentage": 0,
-  "frequencyChangeTotalCount": 0, 
-  "frequencyChangeFaultPercentage": {"decrease": 0, "increase": 0},
-  "frequencyChangeReportPercentage": {"decrease": 0, "increase": 0},
-  "recurringStatesTotalCount": 2,
-  "recurringStatesFaultPercentage": 0,
-  "recurringStatesReportPercentage": 0,
-  "link": "$URL/pages/compare?applicationId=a26ab2f2-89e9-4e3a-bc9e-66011537f32f&baselineTag=v1.0.1&compareTag=v1.0.2",
+  "data": [
+    {
+      "applicationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "semanticThreats": {},
+      "startTimestamp": "string",
+      "stopTimestamp": "string",
+      "totalScore": 0
+    }
+  ]
 }
 ```
 
-+ `risk` - Risk score of the comparison. In case of deployments (new version comparing with old version), the risk translates to `deployment risk`.
-+ `totalLogCount` - The total count of log messages from both `tags`.
-+ `baselineLogCount` - The total count of log messages from the `baselineTag`.
-+ `candidateLogCount` -  The total count of log messages from the `compareTag`.
-+ `candidateChangePercentage` - The percentage change in total count of logs from the `candidateTag` compared to `baselineTag`.
-+ `addedStatesTotalCount` - Total number of added states from the `candidateTag` compared to `baselineTag`.
-+ `addedStatesFaultPercentage` - Percentage of added states, which are identified as faults.
-+ `addedStatesReportPercentage` - Percentage of added states, which are identified as report (normal behaviour).
-+ `deletedStatesTotalCount` - The total count of deleted states from the `candidateTag` compared to `baselineTag`.
-+ `deletedStatesFaultPercentage` - Percentage of deleted states, which are identified as faults.
-+ `deletedStatesReportPercentage` - Percentage of deleted states, which are identified as report.
-+ `frequencyChangeTotalCount` - The total count of states that changed in occurrence frequency from the `candidateTag` compared to `baselineTag`.
-+ `frequencyChangeFaultPercentage` - Percentage of states that changed in occurrence frequency, which are identified as faults.
-+ `frequencyChangeReportPercentage` - Percentage of states that changed in occurrence frequency, which are identified as report.
-+ `recurringStatesTotalCount` -  The total count of recurring states from the `candidateTag` compared to `baselineTag`.
-+ `recurringStatesFaultPercentage` - Percentage of recurring states, which are identified as fault.
-+ `recurringStatesReportPercentage` - Percentage of recurring states, which are identified as report.
-+ `link` - Link that points to the UI where the user can see a detailed report.
-
-
-### Detailed report view
-![Logs](./detailed_report.png ':size=1200')
++ `data` - List of incidents that are recorded in the specific interval.
++ `semanticThreats` -  List of log messages that were detected as threats by the semantic analysis. 
++ `startTimestamp` - Time when the incident started.
++ `stopTimestamp` - Time when the incident ended.
++ `totalScore` - Score that correlates with the severity of the incident.
 
 
 

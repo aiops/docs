@@ -22,22 +22,21 @@
 
 [//]: # (  - [Using the SDK]&#40;/send_logs/send_logs_using_the_sdk.md&#41;)
  
-[//]: # (- **Send logs**)
+- **Send logs**
 
-[//]: # (    - [Shipping logs]&#40;/send_logs/shipping_logs.md&#41;)
+    - [Using Filebeat](/send_logs/using_filebeats.md)
 
-[//]: # (    - [Using Filebeat]&#40;/send_logs/using_filebeats.md&#41;)
-
+[//]: # ()
 [//]: # (    - [Upload files]&#40;/send_logs/upload_files.md&#41;)
 
+[//]: # ()
 [//]: # (    - [Using the SDK]&#40;/send_logs/send_logs_using_the_sdk.md&#41;)
 
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
   - [Dashboard](/detect_incidents/dashboard.md) 
-  - [Incidents](/detect_incidents/incidents.md) 
-
-[//]: # (  - [Using the SDK]&#40;/detect_incidents/detect_incidents_using_the_sdk.md&#41;)
+  - [Incidents](/detect_incidents/incidents.md)
+  - [Using the REST API](/detect_incidents/using_the_rest_api.md)
  
 - **Monitor deployments**
   - [Stage Verifier](/monitor_deployments/stage_verifier.md)

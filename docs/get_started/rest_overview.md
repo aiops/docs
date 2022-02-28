@@ -8,5 +8,5 @@
 ## Hands-on guides
 
 + [Stage Verifier](https://docs.logsight.ai/#/monitor_deployments/stage_verifier)
-+ [Incident Detector](https://docs.logsight.ai/#/detect_incidents/incident_detector.md) (API in development)
++ [Incident Detector](https://docs.logsight.ai/#/detect_incidents/incident_detector.md)
 + Code Inspector (API in development)
