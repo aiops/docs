@@ -280,7 +280,7 @@ POST /api/v1/logs/incidents
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
+[Response](https://demo.logsight.ai/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
 ```
 Status 200 OK
 ```
