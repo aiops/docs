@@ -17,6 +17,16 @@
 <div id="app"></div>
 <script>
     window.$docsify = {
+
+        mustache: {
+            data: {
+                url: {
+                    name: 'http://localhost:8080',
+                }
+            }
+        },
+
+
         name: 'logsight.ai',
         search: 'auto',
         nameLink: 'https://logsight.ai',
@@ -53,13 +63,6 @@
                 });
             }
         ],
-        mustache: {
-          data: {
-            url: {
-              name: 'http://localhost:8080',
-      }
-    }
-  }
 
     };
 </script>
