@@ -267,7 +267,7 @@ After sending the logs, the client can get insights from the logs in the form of
 
 If the user did not perform `flush` prior to the getting results, the `flushId` field should be left out.
 
-[Request](http://localhost:8080/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
 ```
 POST /api/v1/logs/incidents
 ```
