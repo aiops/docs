@@ -25,7 +25,7 @@
   --link-text-decoration-color--hover : var(--theme-color);
 
   /* Code */
-  --code-font-family                  : Inconsolata, Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+  --code-font-family                  : Roboto, Helvetica, Arial, sans-serif;
   --code-font-size                    : calc(var(--font-size-m) * 0.895);
   --code-inline-border-radius         : var(--border-radius-s);
   --code-inline-margin                : 0 0.15em;
