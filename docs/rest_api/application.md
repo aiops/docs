@@ -16,9 +16,11 @@ POST /api/v1/application
 
 ```json
 {
-  "applicatonName": "myService"
+  "applicatonName": "myservice"
 }
 ```
+
+`applicationName` must be a string containing only lowercase, numeric, or underscore characters.
 
 #### Response:
 

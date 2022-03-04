@@ -175,7 +175,7 @@ After setting up the prerequisites (i.e., creating user, activate user, login us
 
 We support the following log formats: `syslog` and `JSON`. 
 
-JSON-formatted log messages require a `timestamp` with field name that is one of `['@timestamp', 'timestamp', 'timestamp_iso8601', 'EventTime']` (we support timestamp formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)) and a field `message` (string). You can add any additional fields, they will be indexed, but they will not be used for processing.
+JSON-formatted log messages require a `timestamp` (we support timestamp formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)), a field `message` (string), and `level`, which is the log level.
 
 We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
 
@@ -185,26 +185,20 @@ To send logs, execute the following request.
 ```
 POST /api/v1/logs
 ```
-Syslog
+JSON
 ```json
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
   "tag": "v1.0.1",
   "logs": [
-        "Feb 14 17:50:52 admin kernel: [24652.948683] [UFW BLOCK] IN=wlp2s0 OUT= MAC=01:00:5e:00:00:01:98:9b:cb:c7:bb:33:08:00 SRC=192.168.178.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0xC0 TTL=1 ID=55766 DF PROTO=2",
-        "Feb 14 17:51:12 admin kernel: [24672.916808] [UFW BLOCK] IN=wlp2s0 OUT= MAC=01:00:5e:00:00:01:98:9b:cb:c7:bb:33:08:00 SRC=192.168.178.1 DST=224.0.0.1 LEN=32 TOS=0x00 PREC=0xC0 TTL=1 ID=57968 DF PROTO=2"
-                 ]
-}
-```
-
-JSON-serialized strings 
-```json
-{
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "tag": "v1.0.1",
-  "logs": [
-        "{\"@timestamp\":\"2021-03-23T01:02:51.007Z\",\"message\":\"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006\"}",
-        "{\"@timestamp\":\"2021-03-23T01:02:51.007Z\",\"message\":\"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005\"}"
+        {
+          "level": "INFO",
+          "timestamp":"2021-03-23T01:02:51.00700",
+          "message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006"},
+        {
+          "level": "INFO",
+          "timestamp":"2021-03-23T01:02:51.00700",
+          "message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005"}
         ]
 }
 ```
