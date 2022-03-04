@@ -194,11 +194,13 @@ JSON
         {
           "level": "INFO",
           "timestamp":"2021-03-23T01:02:51.00700",
-          "message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006"},
+          "message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006"
+        },
         {
           "level": "INFO",
           "timestamp":"2021-03-23T01:02:51.00700",
-          "message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005"}
+          "message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005"
+        }
         ]
 }
 ```
