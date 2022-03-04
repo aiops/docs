@@ -3,8 +3,9 @@
 - **Get started**
     - [Overview](/)
     - [Deployment](/get_started/deployment.md)
-    - [Installation](/get_started/installation.md)
     - [API Overview](/get_started/rest_overview.md)
+
+[//]: # (    - [Installation]&#40;/get_started/installation.md&#41;)
 
 [//]: # ()
 [//]: # (- **REST API**)
