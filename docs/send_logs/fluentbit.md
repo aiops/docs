@@ -3,7 +3,7 @@
 logsight.ai enables integration with Logstash.
 
 ## Prerequisites
-1. [Install and configure `Logstash`](./logstash.md)
+1. [Install and configure `Logstash`](../send_logs/logstash.md)
 
 ## Configure Logstash HTTP input
 ```
