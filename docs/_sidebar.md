@@ -7,32 +7,10 @@
 
 [//]: # (    - [Installation]&#40;/get_started/installation.md&#41;)
 
-[//]: # ()
-[//]: # (- **REST API**)
-
-[//]: # (  - [Users]&#40;/rest_api/user.md&#41;)
-
-[//]: # (  - [Authentication]&#40;/rest_api/authentication.md&#41;)
-
-[//]: # (  - [Applications]&#40;/rest_api/application.md&#41;)
-
-[//]: # (  - [Logs]&#40;/rest_api/shipping_logs.md&#41;)
-
-[//]: # (  - [Control]&#40;/rest_api/results.md&#41;)
-
-[//]: # (  - [Compare]&#40;/rest_api/compare.md&#41;)
-
-[//]: # (  - [Using the SDK]&#40;/send_logs/send_logs_using_the_sdk.md&#41;)
- 
 - **Send logs**
-
-    - [Using Filebeat](/send_logs/using_filebeats.md)
-
-[//]: # ()
-[//]: # (    - [Upload files]&#40;/send_logs/upload_files.md&#41;)
-
-[//]: # ()
-[//]: # (    - [Using the SDK]&#40;/send_logs/send_logs_using_the_sdk.md&#41;)
+  - [Logstash](./send_logs/logstash.md)
+  - [FluentBit](./send_logs/fluentbit.md)
+  - [REST API](./send_logs/rest-api.md)
 
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
