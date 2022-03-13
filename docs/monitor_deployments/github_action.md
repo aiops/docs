@@ -7,6 +7,9 @@ with the correct value.
 + demo service: ```$URL = https://demo.logsight.ai``` 
 + on-premise service: ```$URL = http://localhost:8080```
 
+The workflow below uses our GitHub Actions:
+1. https://github.com/aiops/logsight-init-action
+2. https://github.com/aiops/log-verification-action
 ## Prerequisites
 
 1. `Create and activate logsight user at https://logsight.ai`
