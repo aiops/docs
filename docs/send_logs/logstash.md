@@ -36,10 +36,11 @@ filter {
    # structuring the output event
    ruby {  
         code => '
+                # create an application in logsight http://localhost:4200/pages/profile or via the API and use the ID here
 		event.set("applicationId", "c87f6960-69f6-4ecc-888a-7ac58a69fae5")
-		# tag can be set dynamicallym=, e.g., container_image_id
+		# tag can be set dynamically, e.g., container_image_id
 		event.set("tag", event.get('tag')) 
-        # this needs to contain the message of the log 
+                # this needs to contain the message of the log 
 		event.set("message", event.get('[log][msg]'))
 		' 
         }
@@ -70,4 +71,4 @@ output {
         }
 }
 ```
-To generate the Basic authorization header you can use https://www.debugbear.com/basic-auth-header-generator, Postman, or .
+To generate the Basic authorization header you can use https://www.debugbear.com/basic-auth-header-generator, Postman, or in Linux base systems (`echo -n user:password | base64`) .
