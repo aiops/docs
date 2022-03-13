@@ -11,7 +11,7 @@ logsight.ai enables integration with Logstash.
 
 ### Configure FluentBit
 
-1. FluentBit config file
+Logstash HTTP output is needed to send the logs from FluentBit. 
 ```
 [OUTPUT]
     Name http
@@ -22,3 +22,16 @@ logsight.ai enables integration with Logstash.
     Format json_lines
     json_date_format iso8601
 ```
+
+In case you want to specify `applicationId` and `tag` in FluentBit you can do that by using FILTER.
+
+```
+[FILTER]
+    Name modify
+    Match *
+    Add applicationId 70e975af-1761-4a1d-b135-0cbdfc2db080
+    # your tag, e.g., ("container_image_id")
+    Add tag your_tag
+```
+
+If you don't specify them in the FluentBit filter, you need to specify them in the Logstash config.

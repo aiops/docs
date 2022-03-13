@@ -37,7 +37,7 @@ filter {
    ruby {  
         code => '
                 # create an application in logsight http://localhost:4200/pages/profile or via the API and use the ID here
-		event.set("applicationId", "c87f6960-69f6-4ecc-888a-7ac58a69fae5")
+		event.set("applicationId", event.get('applicationId'))
 		# tag can be set dynamically, e.g., container_image_id
 		event.set("tag", event.get('tag')) 
                 # this needs to contain the message of the log 
