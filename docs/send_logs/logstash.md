@@ -66,9 +66,9 @@ output {
         format => message
         message => '{"applicationId":"%{applicationId}", "logs":[{"timestamp":"%{@timestamp}", "message":"%{message}"}], "tag":"%{tag}"}'
         headers => {
-            "Authorization" => "Basic c2FzaG9uZWRlbGtvc2tpQGdtYWlsLmNvbTpzYXNobzEyMw=="
+            "Authorization" => "Basic HEADER_TOKEN"
                     }
         }
 }
 ```
-To generate the Basic authorization header you can use https://www.debugbear.com/basic-auth-header-generator, Postman, or in Linux base systems (`echo -n user:password | base64`) .
+To generate the Basic authorization `HEADER_TOKEN` you can use https://www.debugbear.com/basic-auth-header-generator, Postman, or in Linux base systems (`echo -n user:password | base64`) .
