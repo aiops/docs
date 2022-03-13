@@ -27,6 +27,7 @@ docker run --network="host" -it fluent/fluent-bit:1.8 /fluent-bit/bin/fluent-bit
 2. If you configure FluentBit via config file
 ```
 [OUTPUT]
+    Name http
     # your logstash host
     Host 127.0.0.1 
     # your logstash port
