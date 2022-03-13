@@ -37,8 +37,10 @@ filter {
    ruby {  
         code => '
 		event.set("applicationId", "c87f6960-69f6-4ecc-888a-7ac58a69fae5")
-		event.set("tag", event.get('tag')) // e.g., container_image_id
-		event.set("message", event.get('[log][msg]')) // this needs to contain the message of the log 
+		# tag can be set dynamicallym=, e.g., container_image_id
+		event.set("tag", event.get('tag')) 
+        # this needs to contain the message of the log 
+		event.set("message", event.get('[log][msg]'))
 		' 
         }
    # cleaning the message
@@ -68,4 +70,4 @@ output {
         }
 }
 ```
-To generate the Basic authorization header you can use https://www.debugbear.com/basic-auth-header-generator or Postman.
+To generate the Basic authorization header you can use https://www.debugbear.com/basic-auth-header-generator, Postman, or .
