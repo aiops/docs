@@ -1,12 +1,5 @@
 # Verify stages using the REST API
 
-Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
-with the correct value.
-
-+ web service: ```$URL = https://logsight.ai``` 
-+ demo service: ```$URL = https://demo.logsight.ai``` 
-+ on-premise service: ```$URL = http://localhost:8080```
-
 The workflow below uses our GitHub Actions:
 1. https://github.com/aiops/logsight-init-action
 2. https://github.com/aiops/log-verification-action
@@ -34,15 +27,14 @@ To enable the logsight Stage Verifier quality gate check into your workflow add 
         run: |
           curl "https://raw.githubusercontent.com/aiops/log-verification-action/main/fluentbit_config_generator.sh" --output fluent_bit_config_generator.sh
           bash fluent_bit_config_generator.sh ${ { secrets.LOGSIGHT_USERNAME } } ${ { secrets.LOGSIGHT_PASSWORD } } FLUENTBIT_INPUT ${ { steps.init.outputs.application-id} } ${ { github.sha } } MESSAGE_FIELD $URL 12345 > fluent-bit.conf
-          cat fluent-bit.conf
           curl "https://raw.githubusercontent.com/aiops/log-verification-action/main/docker-compose.yml" --output docker-compose.yml
           docker-compose up -d
           
       - name: 🚀 Conduct Tests from your application
 
-      - name: Verify logs
-        uses: aiops/log-verification-action@main
+      - name: Verify Deployment Logs
         id: verify-logs
+        uses: aiops/log-verification-action@main
         with:
           logsight-url: $URL
           username: ${ { secrets.LOGSIGHT_USERNAME } }
@@ -57,6 +49,14 @@ To enable the logsight Stage Verifier quality gate check into your workflow add 
 > Important is that Logsight Init and Install FluentBit are executed as steps prior your application generates logs (e.g., prior testing). 
 > 
 > The Stage Verifier is called afterwards.
+
+
+1. Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
+with the correct value.
+
++ web service: ```$URL = https://logsight.ai``` 
++ demo service: ```$URL = https://demo.logsight.ai``` 
++ on-premise service: ```$URL = http://localhost:8080```
 
 
 2. `application-name` is a string that usually refers to the name of the service. Currently with ${ { github.ref } } is set to the branch name. However, youm can change it to any desired string.
@@ -79,7 +79,7 @@ To enable the logsight Stage Verifier quality gate check into your workflow add 
     Format json_lines
     json_date_format iso8601"
 ```
-6. `baseline-tag` refers to the version of your repository that is alredy working (e.g., in production).
-7. `compare-tag` refers to the current release. 
-8. Both `tags` are strings, and you can use any to tag. Often we relate tags to the commit id (${ { github.sha } }) 
+7. `baseline-tag` refers to the version of your repository that is alredy working (e.g., in production).
+8. `compare-tag` refers to the current release. 
+9. Both `tags` are strings, and you can use any to tag. Often we relate tags to the commit id (${ { github.sha } }) 
 
