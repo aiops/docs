@@ -32,7 +32,7 @@ To enable the logsight Stage Verifier quality gate check into your workflow add 
           
       - name: 🚀 Conduct Tests from your application
 
-      - name: Verify Deployment Logs
+      - name: Logsight Stage Verifier
         id: verify-logs
         uses: aiops/log-verification-action@main
         with:
