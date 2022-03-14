@@ -31,7 +31,7 @@ In case you want to specify `applicationId` and `tag` in FluentBit you can do th
     Match *
     Add applicationId 70e975af-1761-4a1d-b135-0cbdfc2db080
     # your tag, e.g., ("container_image_id")
-    Add tag your_tag
+    Add "tag" "your_tag"
 ```
 
 If you don't specify them in the FluentBit filter, you need to specify them in the Logstash config.
