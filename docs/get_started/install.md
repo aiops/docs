@@ -1,4 +1,4 @@
-# Logsight Installation
+# Logsight On-Premise Installation
 
 The [logsight-install](https://github.com/aiops/logsight-install) github repository contains a collection of scripts and other resources for an on-premise installation of [logsight.ai](https://logsight.ai).
 
