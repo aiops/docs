@@ -4,6 +4,7 @@
     - [Overview](/)
     - [Deployment](/get_started/deployment.md)
     - [API Overview](/get_started/rest_overview.md)
+    - [On-Premise Installation](/get_started/install.md)
 
 [//]: # (    - [Installation]&#40;/get_started/installation.md&#41;)
 
