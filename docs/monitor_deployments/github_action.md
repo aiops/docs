@@ -15,7 +15,8 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 1. If you wish, we recommend setting up `LOGSIGHT_USERNAME` and `LOGSIGHT_PASSWORD` as secrets to your repository:
    1. go to `project settings -> secrets -> actions -> new repository secret`
    2. or, proceed with writing the username and passwords as strings (we don't recommend this for safety reasons)
-```yaml
+
+```
 - name: Logsight Setup
   uses: aiops/logsight-setup-action@main
   id: setup
