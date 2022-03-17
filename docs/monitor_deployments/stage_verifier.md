@@ -1,7 +1,7 @@
 # Stage Verifier
 
 <div align=center>
-<img width="300" src="/monitor_deployments/stage_verifier.png"/>
+<img width="200" src="/monitor_deployments/stage_verifier.png"/>
 </div>
 
 `logsight.ai` supports the continuous verification of deployments, comparing tests, detecting test flakiness 
