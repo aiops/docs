@@ -1,6 +1,6 @@
-# Verify stages using the REST API
+# Verify stages using GitHub Actions
 
-The workflow below uses our GitHub Actions:
+The workflow below uses the following GitHub Actions:
 1. https://github.com/aiops/logsight-setup-action
 2. https://github.com/aiops/logsight-verification-action
 ## Prerequisites
