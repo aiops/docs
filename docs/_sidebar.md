@@ -23,6 +23,7 @@
   - [Stage Verifier](/monitor_deployments/stage_verifier.md)
   - [Dashboard](/monitor_deployments/dashboard.md)
   - [Using the REST API](/monitor_deployments/using_the_rest_api.md)
+  - [Using GitHub Actions](/monitor_deployments/github_action.md)
 
 [//]: # (  - [Using the SDK]&#40;/monitor_deployments/using_the_sdk.md&#41;)
     
