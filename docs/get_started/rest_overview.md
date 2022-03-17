@@ -1,6 +1,6 @@
 # API Overview
 
-> To create application sources, send logs, get intelligent insights, and automate your workflows, build with logsight.ai REST API.
+> To create `application` sources, send `log messages`, get intelligent insights, and automate your workflows, build with logsight.ai REST API.
 
 
 + [REST API Swagger UI & OpenAPI](https://demo.logsight.ai/swagger-ui/index.html)

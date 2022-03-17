@@ -12,6 +12,7 @@
   - [Logstash](./send_logs/logstash.md)
   - [FluentBit](./send_logs/fluentbit.md)
   - [REST API](./send_logs/rest-api.md)
+  - [Upload files](./send_logs/upload_files.md)
 
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
@@ -48,6 +49,7 @@
     - [Overview](/videos/overview.md)
 
 - **Links**
-    - [Glossary](/_glossary?id=incident)
     - [Twitter @logsight](http://twitter.com/logsight)
     - [GitHub @GitHub](https://github.com/aiops)
+
+[//]: # (    -  [Glossary]&#40;/_glossary?id=incident&#41;)

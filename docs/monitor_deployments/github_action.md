@@ -36,7 +36,7 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
     application_id: ${ { steps.setup.outputs.application_id } }
     baseline_tag: { { github.sha } }
-    compare_tag: { { github.event.before } } 
+    candidate_tag: { { github.event.before } } 
     risk_threshold: 0
 ```
 
@@ -49,7 +49,7 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 > 
 > You need execution of **at least two workflows** (logs from two different commits needs to be collected) in order to perform the Stage Verifier.
 >
-> You can also set the **`compare_tag`: { { github.sha } }** --> in this way you will evaluate the deployment without comparison.
+> You can also set the **`candidate_tag`: { { github.sha } }** --> in this way you will evaluate the deployment without comparison.
 
 ## Guide 
 
@@ -57,7 +57,7 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 2. Read more at the inputs descriptions of the https://github.com/aiops/logsight-setup-action to correctly configure the FluentBit log collection depending on your input (e.g., docker containers, files, standard output, etc.)
 3. If you already have predefined config for FluentBit you can add the following config where $variables are replaced with concrete values. This opens up the connection to logsight.ai [Read more.](../send_logs/fluentbit.md)
 4. `baseline_tag` refers to the version of your repository that is already working (e.g., in production).
-5. `compare_tag` refers to the current release. 
+5. `candidate_tag` refers to the current release. 
 6. Both `tags` are strings, and you can use any to tag. Often we relate tags to the commit id (${ { github.sha } }) 
 ```yaml
 [FILTER]
