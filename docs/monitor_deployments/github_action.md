@@ -20,8 +20,8 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
   uses: aiops/logsight-setup-action@main
   id: setup
   with:
-    username: ${{ secrets.LOGSIGHT_USERNAME }}
-    password: ${{ secrets.LOGSIGHT_PASSWORD }}
+    username: ${ { secrets.LOGSIGHT_USERNAME } }
+    password: ${ { secrets.LOGSIGHT_PASSWORD } }
     application_name: ${{ github.ref }}
 
 - name: 🚀 STEPS FROM THE EXISTING WORKFLOW FROM YOUR APPLICATION
@@ -31,12 +31,12 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
   uses: aiops/logsight-verification-action@main
   id: verify-logs
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    username: ${{ secrets.LOGSIGHT_USERNAME }}
-    password: ${{ secrets.LOGSIGHT_PASSWORD }}
-    application_id: ${{ steps.setup.outputs.application_id }}
-    baseline_tag: {{ github.sha }}
-    compare_tag: {{ github.event.before }} 
+    github_token: ${ { secrets.GITHUB_TOKEN } }
+    username: ${ { secrets.LOGSIGHT_USERNAME } }
+    password: ${ { secrets.LOGSIGHT_PASSWORD } }
+    application_id: ${ { steps.setup.outputs.application_id } }
+    baseline_tag: { { github.sha } }
+    compare_tag: { { github.event.before } } 
     risk_threshold: 0
 ```
 
@@ -49,7 +49,7 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 > 
 > You need execution of **at least two workflows** (logs from two different commits needs to be collected) in order to perform the Stage Verifier.
 >
-> You can also set the **`compare_tag`: {{ github.sha }}** --> in this way you will evaluate the deployment without comparison.
+> You can also set the **`compare_tag`: { { github.sha } }** --> in this way you will evaluate the deployment without comparison.
 
 ## Guide 
 
