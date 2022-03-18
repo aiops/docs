@@ -8,6 +8,6 @@ Deploying new software releases is an exiting but often stressful process. With 
 
 + **[First Steps](/get_started/first_steps.md)**: Explore logsight.ai by loading sample data. Get familiar with the different dashboards.
 
-+ **[Integration](/send_logs/overview.md)**: Connect your log data sources with logsight.ai.
++ **[Integration](/integration/overview.md)**: Connect your log data sources with logsight.ai.
 
 

@@ -5,7 +5,7 @@
 `logsight.ai` is the next generation of [AIOps](https://en.wikipedia.org/wiki/Artificial_Intelligence_for_IT_Operations) platforms which rely on Deep Learning and AI-powered log analytics to manage DevOps assembly lines to enable continuous delivery and proactive troubleshooting.
 
 <div align=center>
-<img width="800" src="/get_started/ai_driven_devops.png"/>
+<img width="800" src="/get_started/imgs/ai_driven_devops.png"/>
 </div>
 
 + **[Code Inspector](/analyze_code/code_inspector)** is an AI-powered code reviewer trained to find logging statements with a low quality which are typically hard for a human to identify. Once 

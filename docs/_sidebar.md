@@ -1,18 +1,16 @@
 <!-- docs/_sidebar.md -->
 
 - **Get started**
-    - [Overview](/)
-    - [Deployment](/get_started/deployment.md)
-    - [API Overview](/get_started/rest_overview.md)
-    - [On-Premise Installation](/get_started/installation.md)
+  - [Overview](/)
+  - [Local Installation](/get_started/installation.md)
+  - [First Steps](/get_started/first_steps.md)
 
-[//]: # (    - [Installation]&#40;/get_started/installation.md&#41;)
-
-- **Send logs**
-  - [Logstash](./send_logs/logstash.md)
-  - [FluentBit](./send_logs/fluentbit.md)
-  - [REST API](./send_logs/rest-api.md)
-  - [Upload files](./send_logs/upload_files.md)
+- **Integration**
+  - [Overview](./integration/overview.md)
+  - [Logstash](./integration/logstash.md)
+  - [FluentBit](./integration/fluentbit.md)
+  - [REST API](./integration/rest-api.md)
+  - [Upload files](./integration/upload_files.md)
 
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
@@ -25,31 +23,18 @@
   - [Dashboard](/monitor_deployments/dashboard.md)
   - [Using the REST API](/monitor_deployments/using_the_rest_api.md)
   - [Using GitHub Actions](/monitor_deployments/github_action.md)
-
-[//]: # (  - [Using the SDK]&#40;/monitor_deployments/using_the_sdk.md&#41;)
     
 - **Improve code**
     - [Code Inspector](/analyze_code/code_inspector.md)
-
-[//]: # (    - [Dashboard]&#40;/analyze_code/dashboard.md&#41; )
   
 - **Administration**
-    - [User info](/administration/user_info.md)
-    - [View account](/administration/view_account.md)
-    - [Manage applications](/administration/manage_applications.md)
-
-[//]: # (  )
-[//]: # (- **Logsight UI**)
-
-[//]: # (    - [Variable Analysis]&#40;/logsight_ui/variable_analysis.md&#41;)
-
-[//]: # (    - [Integration]&#40;/logsight_ui/integration.md&#41;)
+  - [User info](/administration/user_info.md)
+  - [View account](/administration/view_account.md)
+  - [Manage applications](/administration/manage_applications.md)
     
 - **Videos**
-    - [Overview](/videos/overview.md)
+  - [Overview](/videos/overview.md)
 
 - **Links**
-    - [Twitter @logsight](http://twitter.com/logsight)
-    - [GitHub @GitHub](https://github.com/aiops)
-
-[//]: # (    -  [Glossary]&#40;/_glossary?id=incident&#41;)
+  - [Twitter @logsight](http://twitter.com/logsight)
+  - [GitHub @GitHub](https://github.com/aiops)
