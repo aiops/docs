@@ -1,14 +1,43 @@
 # Verify stages using GitHub Actions
 
+
+# Get started in few minutes with `Hello logsight.ai from Github Actions`
+This repository illustrates the [logsight.ai Stage Verifier](https://docs.logsight.ai/#/monitor_deployments/stage_verifier) via GitHub Actions.
+
+The repository contains [main.yml](https://github.com/aiops/hello-logsight/blob/main/.github/workflows/main.yml) workflow that:
+1. Set ups connection to logsight.ai
+2. Executes the [hello-logsight.py](https://github.com/aiops/hello-logsight/blob/main/hello_logsight.py) application, which generates logs
+3. Verifies the logs from the new deployment in comparison to the previous one
+
+## Hands-on
+### Requirements
+1. Register an account at [logsight.ai](https://demo.logsight.ai/)
+
+### Steps
+1. **Fork** the repository 
+2. **Setup repository secrets** by going into Settings => Secrets => Actions => New repository secret
+   1. `Name`: **LOGSIGHT_USERNAME** should have `Value` of your logsight.ai username
+   2. `Value`: **LOGSIGHT_PASSWORD** should have `Value` of your logsight.ai password
+   3. Make sure you use the exact same `Names`
+3. The repository contains two **pull requests** named **Baseline** and **Candidate** you can check them out at https://github.com/aiops/hello-logsight/pulls
+4. Merge the **Baseline** pull request into `main` by clicking on the **Baseline** request and clicking on **Merge pull request** => **Confirm Merge**
+5. Merge the **Candidate** pull request into `main` by clicking on the **Candidate** request and clicking on **Merge pull request** => **Confirm Merge**
+6. The Stage Verifier GitHub Actions 
+7. In the end, the workflow creates a report that specifies the **deployment risk**
+
+
+
 The workflow below uses the following GitHub Actions:
 1. https://github.com/aiops/logsight-setup-action
 2. https://github.com/aiops/logsight-verification-action
-## Prerequisites
+
+## About logsight.ai GitHub Actions
+### Prerequisites
 
 1. `Create and activate logsight user at https://logsight.ai`
 2. Select your favourite GitHub project and add the steps from Workflow configuration into your workflow
 
-## Workflow configuration
+### Workflow configuration
 logsight.ai enables seamless integration with `Github Actions`.
 
 To enable the logsight Stage Verifier as a Quality Gate into your workflow, add the following steps:
@@ -52,7 +81,7 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 >
 > You can also set the **`candidate_tag`: { { github.sha } }** --> in this way you will evaluate the deployment without comparison.
 
-## Guide 
+### Guide 
 
 1. `application_name` is a string that usually refers to the name of the service. Currently with ${ { github.ref } } is set to the branch name. However, you can change it to any desired string.
 2. Read more at the inputs descriptions of the https://github.com/aiops/logsight-setup-action to correctly configure the FluentBit log collection depending on your input (e.g., docker containers, files, standard output, etc.)
