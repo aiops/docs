@@ -6,29 +6,26 @@ Prerequisites ([Already performed these steps? Jump to Send Logs and Verify](/mo
 1. `Create and activate user`
 3. `Create application`
 
-Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
+Depending on your deployment (i.e., web service, or on-premise), you need to replace the placeholder ```$URL``` 
 with the correct value.
 
-+ web service: ```$URL = https://logsight.ai``` 
-+ demo service: ```$URL = https://demo.logsight.ai``` 
++ web service: ```$URL = https://logsight.ai```
 + on-premise service: ```$URL = http://localhost:8080```
 
-After setting up the prerequisites (i.e., creating user, activate user, login user, and create application), you can send logs to an application.
+After setting up the prerequisites (i.e., creating `user`, activate `user`, login `user`, and create `application`), you can send logs to an application.
 `logs` is a list of log messages.
 
-JSON-formatted log messages require a `timestamp` (we support timestamp formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)), a field `message` (string), and `level`, which is the log level.
+JSON-formatted log messages require a `timestamp` (we support timestamp formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)), and field `message` (string).
 
 We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
 
 To send logs, execute the following request.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST) (For more information click on the Request)
 ```
 POST /api/v1/logs
 ```
 
-
-JSON
 ```json
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
@@ -47,7 +44,6 @@ JSON
         ]
 }
 ```
-
 
 [Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```

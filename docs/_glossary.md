@@ -3,9 +3,9 @@
 
 [//]: # (### Anomaly types)
 
-[//]: # (To complete ...)
+To complete ... and define.
 
-#### Incident group
+#### Incident Detector group
 An incident group is a group of cognitive anomalies, flow anomalies and critical anomalies.
 
 #### Flow anomaly
@@ -48,7 +48,7 @@ Groups of log messages are clustered into a log template representing a state of
 
 [//]: # (To complete ...)
 
-#### Continuous verification
+#### Stage Verifier
 Continuous verification addresses reliability requirements of production systems. 
 It places automated health and quality gates in the release stages of DevOps pipelines.
 The gates validate the functionality, security or performance of applications.
@@ -79,3 +79,21 @@ A log level is a way of classifying log messages in terms of importance and urge
 | WARN 	| Unexpected state that is not an error, or is recoverable, and that a developer or operator should examine |
 | ERROR	| Error message logged just prior to raising an error |
 | FATAL	| Message recorded, when possible, as the process is terminating due to an error |
+
+#### Application
+
+
+#### User
+
+
+#### Log message
+
+
+#### Log Compare
+
+#### State is an abstraction of log message. Often the word `template` is used to refer to state. A `state` or `template` is the logging statement that was used to "print" the actual log message. For example, in printf("This is the %d log message", 5), a `state` would be `This is the * log message`, and the actual realisation of the state in a log message would be `This is the 5 log message`. logsight.ai automatically infers `states` from raw `log messages`.
+
+
+#### candidate
+
+#### baseline

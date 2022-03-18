@@ -12,6 +12,7 @@
   - [Logstash](./send_logs/logstash.md)
   - [FluentBit](./send_logs/fluentbit.md)
   - [REST API](./send_logs/rest-api.md)
+  - [Upload files](./send_logs/upload_files.md)
 
 - **Detect incidents**
   - [Incident Detector](/detect_incidents/incident_detector.md) 
@@ -23,6 +24,7 @@
   - [Stage Verifier](/monitor_deployments/stage_verifier.md)
   - [Dashboard](/monitor_deployments/dashboard.md)
   - [Using the REST API](/monitor_deployments/using_the_rest_api.md)
+  - [Using GitHub Actions](/monitor_deployments/github_action.md)
 
 [//]: # (  - [Using the SDK]&#40;/monitor_deployments/using_the_sdk.md&#41;)
     
@@ -47,6 +49,7 @@
     - [Overview](/videos/overview.md)
 
 - **Links**
-    - [Glossary](/_glossary?id=incident)
     - [Twitter @logsight](http://twitter.com/logsight)
     - [GitHub @GitHub](https://github.com/aiops)
+
+[//]: # (    -  [Glossary]&#40;/_glossary?id=incident&#41;)

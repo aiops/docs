@@ -1,16 +1,15 @@
 # FluentBit
 
-logsight.ai enables integration with FluentBit.
+logsight.ai enables integration with [FluentBit](https://fluentbit.io/).
 
 ## Prerequisites
 1. [Create and activate logsight.ai account](https://docs.logsight.ai/#/detect_incidents/using_the_rest_api?id=create-and-activate-user)
-2. [Create application](https://docs.logsight.ai/#/detect_incidents/using_the_rest_api?id=create-application)
+2. [Create `application`](https://docs.logsight.ai/#/detect_incidents/using_the_rest_api?id=create-application)
 
-Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
+Depending on your deployment (i.e., web service, or on-premise), you need to replace the placeholder ```$URL``` 
 with the correct value.
 
-+ web service: ```$URL = https://logsight.ai``` 
-+ demo service: ```$URL = https://demo.logsight.ai``` 
++ web service: ```$URL = https://logsight.ai```
 + on-premise service: ```$URL = http://localhost:8080```
 
 ## Install and Configure FluentBit
@@ -46,6 +45,5 @@ Logstash HTTP output is needed to send the logs from FluentBit.
     json_date_format iso8601
     json_date_key timestamp
 ```
-
 
 Restart FluentBit with the new config, and the logs will start flowing to logsight.ai.

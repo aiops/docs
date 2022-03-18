@@ -14,11 +14,10 @@ Verify
 5. `Flush (optional)`
 6. `Verify`
 
-Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
+Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
 with the correct value.
 
-+ web service: ```$URL = https://logsight.ai``` 
-+ demo service: ```$URL = https://demo.logsight.ai``` 
++ web service: ```$URL = https://logsight.ai```
 + on-premise service: ```$URL = http://localhost:8080```
 
 

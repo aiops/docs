@@ -1,6 +1,6 @@
 # Deployment scenarios
 
-> `logsight.ai` can be deployed as a standalone log management platform or an AI plug-in to existing log management systems such as Elastic / ELK Stack
+> `logsight.ai` can be deployed as a standalone platform or an AI plug-in to existing log management systems such as Elastic / ELK Stack.
 
 
 ## Standalone AI-powered platform 
