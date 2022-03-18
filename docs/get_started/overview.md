@@ -1,27 +1,9 @@
-# Overview
+# Logsight.ai
 
-> `logsight.ai` is an **intelligence platform which infuses AI to DevOps**
+Deploying new software releases is an exiting but often stressful process. With [logsight.ai](https://logsight.ai) you gain the confidence to release and optimize software faster, with high reliability for great customer experience. Test logsight by either signing up with our web service ([https://logsight.ai](https://logsight.ai)) or via a local installation.
 
-`logsight.ai` is the next generation of [AIOps](https://en.wikipedia.org/wiki/Artificial_Intelligence_for_IT_Operations) platforms which rely on Deep Learning and AI-powered log analytics to manage DevOps assembly lines to enable continuous delivery and proactive troubleshooting.
++ **[Local Installation](/get_started/installation.md)**: A guide for a local installation of logsight.ai in under 3 minutes.
 
-<div align=center>
-<img width="800" src="/get_started/ai_driven_devops.png"/>
-</div>
++ **[First Steps](/get_started/first_steps.md)**: Explore logsight.ai by loading sample data. Gget familiar with the different dashboards.
 
-+ **[Code Inspector](/analyze_code/code_inspector)** is an AI-powered code reviewer trained to find logging statements with a low quality which are typically hard for a human to identify. Once 
-  statements are located, Code 
-Inspector provides intelligent recommendations on how to improve code quality.
-
-+ **[Stage Verifier](/monitor_deployments/stage_verifier)** is an AI-powered continuous verification system that verifies software releases across deployment stages (e.g., testing, staging and 
-  production) ensuring their reliability.
-
-+ **[Incident Detector](/detect_incidents/incident_detector)** proactively identifies incidents in production and in real-time. It uses semantic technologies and AI to infer the meaning and risk of 
-  log records. The use of semantic 
-enables to provide more detailed explainations of the root cause of software failures. 
-
-To get started, contact our customer support team to start an enterprise proof of concept (PoC) or sign up directly from our website.
-`logsight.ai` is a cloud-based software-as-a-service (SaaS) solution.
-
-> [!NOTE]
-> By 2023, 40% of DevOps teams will use application and infrastructure monitoring platforms with integrated AI for IT operations platforms
-> (source Gartner)
++ **[Integration](/send_logs/overview.md)**: Connect your log data sources with logsight.ai.
