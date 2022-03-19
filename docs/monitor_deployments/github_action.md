@@ -1,4 +1,5 @@
 # Verify stages using GitHub Actions
+<div align=left><img src="/monitor_deployments/stage_verifier_overview.png" alt="drawing" style="width:40%;"/> </div>
 
 
 ## [Hello logsight.ai from Github Actions](https://github.com/aiops/hello-logsight)
