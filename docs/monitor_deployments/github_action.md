@@ -1,14 +1,14 @@
 # Verify stages using GitHub Actions
 
 
-## Hello logsight.ai from Github Actions
+## [Hello logsight.ai from Github Actions](https://github.com/aiops/hello-logsight)
 
 ### Hands-on
 #### Requirements
 1. Register and activate an account at [logsight.ai](https://demo.logsight.ai/)
 
 #### Steps
-1. **Fork** the repository 
+1. **Fork** the https://github.com/aiops/hello-logsight repository 
 2. Go to **Actions** and click on **I understand my workflows, go ahead and enable them**
 3. **Setup repository secrets** by going into **Settings** => **Secrets** => **Actions** => **New repository secret**
    1. `Name`: **LOGSIGHT_USERNAME** should have `Value` of your logsight.ai username
@@ -25,7 +25,7 @@
 
 
 
-The workflow below uses the following GitHub Actions:
+The workflow uses the following GitHub Actions:
 1. https://github.com/aiops/logsight-setup-action
 2. https://github.com/aiops/logsight-verification-action
 
@@ -51,21 +51,23 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
     username: ${ { secrets.LOGSIGHT_USERNAME } }
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
     application_name: ${{ github.ref }}
+    fluentbit_filelocation: /host$GITHUB_WORKSPACE/*.log
+    fluentbit_message: 'log'
 
 - name: 🚀 STEPS FROM THE EXISTING WORKFLOW FROM YOUR APPLICATION
 - name: 🚀 CONDUCT TESTS FROM YOUR OWN APPLICATION
 
-- name: Verify logs
+- name: Verify Logs
   uses: aiops/logsight-verification-action@main
   id: verify-logs
   with:
-    github_token: ${ { secrets.GITHUB_TOKEN } }
-    username: ${ { secrets.LOGSIGHT_USERNAME } }
-    password: ${ { secrets.LOGSIGHT_PASSWORD } }
-    application_id: ${ { steps.setup.outputs.application_id } }
-    baseline_tag: { { github.sha } }
-    candidate_tag: { { github.event.before } } 
-    risk_threshold: 0
+    github_token: ${{ secrets.GITHUB_TOKEN }}
+    username: ${{ secrets.LOGSIGHT_USERNAME }}
+    password: ${{ secrets.LOGSIGHT_PASSWORD }}
+    application_id: ${{ steps.setup.outputs.application_id }}
+    baseline_tag: ${{ github.event.before }}
+    candidate_tag: ${{ github.sha }}
+    risk_threshold: 10
 ```
 
 #### Important
@@ -88,19 +90,32 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 5. `candidate_tag` refers to the current release. 
 6. Both `tags` are strings, and you can use any to tag. Often we relate tags to the commit id (${ { github.sha } }) 
 ```yaml
+[INPUT]
+    Name $inputName
+    Path $fileLocation
+    multiline.parser  docker, cri
+    DB /tail_docker.db
+    Refresh_Interval 1
+[SERVICE]
+    Flush 1
+    Daemon Off
 [FILTER]
     Name modify
-    Match *
+    Match $matchPattern
     Add applicationId $applicationId
     Add tag $tag
     Rename $message message
-    Add basicAuthToken $basicAuthToken
 [OUTPUT]
     Name http
     Host $host
     Port $port
-    Format json_lines
-    json_date_format iso8601"
+    http_User $logsightUsername
+    http_Passwd $logsightPassword
+    tls On
+    uri /api/v1/logs/singles
+    Format json
+    json_date_format iso8601
+    json_date_key timestamp
 ```
 4. If you wish to use log collector different than FluentBit (e.g., Filebeat). Please replace the `logsight-setup-action` with https://github.com/aiops/logsight-init-action. The difference is that the `init` action does not setup FluentBit.
 5. If you use different log collector than FluentBit, then the step of log collection to logsight.ai should go after the `logsight-init-action` step. In this way you ensure your logs are sent to logsight.ai. We currently support range of log collectors. [Read more.](https://docs.logsight.ai/#/./send_logs/logstash)
