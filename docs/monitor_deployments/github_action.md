@@ -50,7 +50,7 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
   with:
     username: ${ { secrets.LOGSIGHT_USERNAME } }
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
-    application_name: ${{ github.ref }}
+    application_name: ${ { github.ref } }
     fluentbit_filelocation: /host$GITHUB_WORKSPACE/*.log
     fluentbit_message: 'log'
 
@@ -61,12 +61,12 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
   uses: aiops/logsight-verification-action@main
   id: verify-logs
   with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    username: ${{ secrets.LOGSIGHT_USERNAME }}
-    password: ${{ secrets.LOGSIGHT_PASSWORD }}
-    application_id: ${{ steps.setup.outputs.application_id }}
-    baseline_tag: ${{ github.event.before }}
-    candidate_tag: ${{ github.sha }}
+    github_token: ${ { secrets.GITHUB_TOKEN } }
+    username: ${ { secrets.LOGSIGHT_USERNAME } }
+    password: ${ { secrets.LOGSIGHT_PASSWORD } }
+    application_id: ${ { steps.setup.outputs.application_id } }
+    baseline_tag: ${ { github.event.before } }
+    candidate_tag: ${ { github.sha } }
     risk_threshold: 10
 ```
 
