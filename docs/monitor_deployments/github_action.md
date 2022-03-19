@@ -3,26 +3,25 @@
 
 ## [Hello logsight.ai from Github Actions](https://github.com/aiops/hello-logsight)
 
-#### Requirements
-1. Register and activate an account at [logsight.ai](https://demo.logsight.ai/)
-
 #### Steps
 2. **Fork** the repository https://github.com/aiops/hello-logsight
 3. Go to **Pull Requests** and click on **New pull request**
 4. Set `compare` to `candidate` and **Create pull request**.
-<div align=center><img src="./pullrq.png" alt="drawing" style="width:80%;"/> </div>
+<div align=center><img src="/monitor_deployments/pullrq.png" alt="drawing" style="width:80%;"/> </div>
 
 5. The **quality check will run**.
-<div align=center><img src="./check.png" alt="drawing" style="width:80%;"/> </div>
+<div align=center><img src="/monitor_deployments/check.png" alt="drawing" style="width:80%;"/> </div>
 
 6. If the check is failing, it will create an issue report that specifies the **deployment risk**. You can check the report in the [**Issues**](https://github.com/aiops/hello-logsight/issues).
 
+To open the detailed online report in the issue, you need to have [logsight.ai](https://logsight.ai) user account. Login and then click on the detailed report.
+
+## About logsight.ai GitHub Actions
 
 The workflow uses the following GitHub Actions:
 1. https://github.com/aiops/logsight-setup-action
 2. https://github.com/aiops/logsight-verification-action
 
-## About logsight.ai GitHub Actions
 ### Prerequisites
 
 1. `Create and activate logsight user at https://logsight.ai`
