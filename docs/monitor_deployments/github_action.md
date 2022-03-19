@@ -7,13 +7,15 @@
 1. Register and activate an account at [logsight.ai](https://demo.logsight.ai/)
 
 #### Steps
-1. **Fork** the repository https://github.com/aiops/hello-logsight
-2. Go to **Pull Requests** and click on **New pull request**
-3. Set `compare` to `base` and **Create pull request**. The quality check will run.
-4. Try the same by going in your **Forked repository** and open another Pull Request, now by setting `compare` to `candidate` and **Create Pull Request**. The quality check will run.
-![Issue](./check.png)
-5. After few minutes, if the check is not passing, it will create an issue report that specifies the **deployment risk**. You can check the report in the **Issues**.
+2. **Fork** the repository https://github.com/aiops/hello-logsight
+3. Go to **Pull Requests** and click on **New pull request**
+4. Set `compare` to `candidate` and **Create pull request**.
+<div align=center><img src="./pullrq.png" alt="drawing" style="width:80%;"/> </div>
 
+5. The **quality check will run**.
+<div align=center><img src="./check.png" alt="drawing" style="width:80%;"/> </div>
+
+6. If the check is failing, it will create an issue report that specifies the **deployment risk**. You can check the report in the [**Issues**](https://github.com/aiops/hello-logsight/issues).
 
 
 The workflow uses the following GitHub Actions:
