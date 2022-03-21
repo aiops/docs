@@ -62,7 +62,7 @@ The gates validate the functionality, security or performance of applications.
 [//]: # ()
 [//]: # (To complete ...)
 
-#### Tag
+#### _Tag_
 Tags make a point as a specific point in Git history.
 [Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging) is generally used to capture a point in history that is used for a marked version release (i.e. v1. 0.1).
 

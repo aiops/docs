@@ -1,6 +1,6 @@
 # Logsight.ai local installation
 
-The [logsight-install](https://github.com/aiops/logsight-install) github repository contains a collection of scripts and other resources helping to install [logsight.ai](https://logsight.ai) locally.
+The [logsight-install](https://github.com/aiops/logsight-install) github repository contains a collection of scripts and other resources helping to install logsight.ai locally.
 
 Clone the repository with git https or ssh:
 ```bash

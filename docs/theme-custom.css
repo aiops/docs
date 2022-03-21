@@ -40,3 +40,7 @@ p {
   margin-right: 0;
 }
 
+figure figcaption {
+  text-align: center;
+}
+

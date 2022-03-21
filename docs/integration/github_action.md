@@ -1,20 +1,20 @@
 # Verify stages using GitHub Actions
 
-The workflow below uses the following GitHub Actions:
-1. https://github.com/aiops/logsight-setup-action
-2. https://github.com/aiops/logsight-verification-action
+<!-- TODO: replace the links by the official marketplace links -->
+The following GitHub Actions are used to integrate logsight with [GitHub Workflows](https://docs.github.com/en/actions/using-workflows):
+1. [logsight-setup-action](https://github.com/aiops/logsight-setup-action)
+2. [logsight-verification-action](https://github.com/aiops/logsight-verification-action)
+
 ## Prerequisites
 
-1. `Create and activate logsight user at https://logsight.ai`
-2. Select your favourite GitHub project and add the steps from Workflow configuration into your workflow
+Create a logsight account at [https://logsight.ai](https://logsight.ai).
 
-## Workflow configuration
-logsight.ai enables seamless integration with `Github Actions`.
+## GitHub Workflow configuration
 
-To enable the logsight Stage Verifier as a Quality Gate into your workflow, add the following steps:
-1. If you wish, we recommend setting up `LOGSIGHT_USERNAME` and `LOGSIGHT_PASSWORD` as secrets to your repository:
-   1. go to `project settings -> secrets -> actions -> new repository secret`
-   2. or, proceed with writing the username and passwords as strings (we don't recommend this for safety reasons)
+Add the following steps to enable the logsight.ai Stage Verification as a Quality Gate into your workflow:
+We recommend setting up `LOGSIGHT_USERNAME` and `LOGSIGHT_PASSWORD` as secrets to your repository. Go to `project settings -> secrets -> actions -> new repository secret`. Alternatively, the username and password can be set as parameters in the GitHub Action definition. We do not recommend to do this for safety reasons.
+
+Add the `logsight-setup-action` and the `logsight-verification-action` into you GitHub Workflow definiton. 
 
 ```
 - name: Logsight Setup
@@ -41,17 +41,19 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
     risk_threshold: 0
 ```
 
-#### Important
-> Important is that `logsight-setup-action` is executed **as a step prior your application generates logs** (e.g., prior testing). 
-> 
-> The Stage Verifier is called afterwards with the execution of the `logsight-verification-action`.
-> 
-> `logsight-setup-action`  accepts inputs that configure the log collection via FluentBit. Please check https://github.com/aiops/logsight-setup-action for configuration. **By default is configured to collect logs from docker container execution**.
-> 
-> You need execution of **at least two workflows** (logs from two different commits needs to be collected) in order to perform the Stage Verifier.
->
-> You can also set the **`candidate_tag`: { { github.sha } }** --> in this way you will evaluate the deployment without comparison.
+The `logsight-setup-action` needs to be defined before the main steps of your workflow (e.g. prios building and testing). It will initialize the collection of log data during the execution of the workflow. [FluentBit](https://docs.fluentbit.io/manual/) is used to collect log data from configurable sources. The [readme](https://github.com/aiops/logsight-setup-action) of the `logsight-setup-action` provides additional information on how to configure the action. **With the default configuration the action collects logs from running docker containers.**
 
+The `logsight-verification-action` should be defined after all main workflow steps. It will request the analysis results of the log data that were collected during the workflow execution from logsight.ai. These results contain the deployment risk score summarizing the probability of failures when deploying the current version of the code. If this score exceeds a defined threshold, a GitHub Issue is created. 
+
+> You need at least **two executions of the GitHub Workflow** in your repository to execute the Stage Verification.
+
+As a workaround, you can set the configuraiton of the the `candidate_tag` to **`candidate_tag`: { { github.sha } }**. Thereby, the evauaton will be done without comparison.
+
+## Parameters
+
+TODO: Structured list of parameters, their meaning and the default values.
+
+<!-- This should contain a structured list of all parameters and their documentation
 ## Guide 
 
 1. `application_name` is a string that usually refers to the name of the service. Currently with ${ { github.ref } } is set to the branch name. However, you can change it to any desired string.
@@ -77,4 +79,6 @@ To enable the logsight Stage Verifier as a Quality Gate into your workflow, add 
 ```
 4. If you wish to use log collector different than FluentBit (e.g., Filebeat). Please replace the `logsight-setup-action` with https://github.com/aiops/logsight-init-action. The difference is that the `init` action does not setup FluentBit.
 5. If you use different log collector than FluentBit, then the step of log collection to logsight.ai should go after the `logsight-init-action` step. In this way you ensure your logs are sent to logsight.ai. We currently support range of log collectors. [Read more.](https://docs.logsight.ai/#/./send_logs/logstash)
+
+-->
 

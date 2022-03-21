@@ -1,43 +1,46 @@
 # FluentBit
 
-logsight.ai enables integration with [FluentBit](https://fluentbit.io/).
+[FluentBit](https://docs.fluentbit.io/manual/) can be **natively** integrated with logsight.ai. No proprietary output plugins are needed. The standard [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output is used to send log data to logsight.ai. This allows to use all FluentBit [inputs](https://docs.fluentbit.io/manual/pipeline/inputs) to connect to a variety of systems. 
 
 ## Prerequisites
-1. [Create and activate logsight.ai account](https://docs.logsight.ai/#/detect_incidents/using_the_rest_api?id=create-and-activate-user)
-2. [Create `application`](https://docs.logsight.ai/#/detect_incidents/using_the_rest_api?id=create-application)
 
-Depending on your deployment (i.e., web service, or on-premise), you need to replace the placeholder ```$URL``` 
-with the correct value.
+1. Create a logsight.ai account by either using the web service at [https://logsight.ai](https://logsight.ai) or a [local installation](/get_started/installation.md).
+<!-- TODO: The app creation together with other general things needs to be explained in a "User Guide" section -->
+2. Create an `application`. (This will point to a page with an explanation on how to create applications)
 
-+ web service: ```$URL = https://logsight.ai```
-+ on-premise service: ```$URL = http://localhost:8080```
+## Install and configure FluentBit
 
-## Install and Configure FluentBit
-[Install Fluentbit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit) using the official documentation.
+You need to install Fluentbit on your system. There are different ways to do so. Refer to the official [documentation](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit) for more details.
 
-### Configure FluentBit
-At first, you need to add two fields vial FluentBit filter which are important to make it compatible with logsight.ai
-```
+### Configure the FluentBit filter
+
+You need to configure a filter to make the log format of FluentBit compatible with logsight.ai.
+
+```ini
 [FILTER]
     Name modify
     Match *
-    Rename YOUR_MESSAGE_FIELD message
-    Add applicationId APPLICATION_ID # e.g., 70e975af-1761-4a1d-b135-0cbdfc2db080
-    # your tag, e.g., ("container_image_id")
-    Add "tag" "your_tag" # e.g., version of your deployment
+    Rename <current_message_key> message   
+    Add applicationId "<application_id>"
+    Add tag "<tag>"
 ```
 
-Logstash HTTP output is needed to send the logs from FluentBit. 
+This modification filter (`Name modify`) is applied to all log messages (`Match *`).
 
-> It is necessary that you MUST have message field (therefore, Rename YOUR_MESSAGE_FIELD message). Once can also Add message YOUR_MESSAGE_FIELD, however, this might be more tricky and it might require having a look at the [FluentBit Docs](https://docs.fluentbit.io/manual/).
->
-> It is also necessary that you MUST have `json_date_key timestamp` in the [ OUTPUT ].
-> 
-```
+If it is not already the case, the key of the log message needs to be renamed to `message`.
+
+Furthermore, logsight.ai expects two mandatory fields (`applicationId` and `tag`). Use the ID of the application that you previously created. We recommend to set the `tag` in a way that allows to **distinguish different versions** of the system from which the logs are collected. Alternatively, it can be set to a static value such as `Add tag "default"`.
+
+### Configure the FluentBit HTTP output
+
+FluentBit connects to logsight.ai via its native HTTP output.
+
+```ini
 [OUTPUT]
     Name http
-    Host $URL
-    Port 8080
+    Host <logsight.ai URL>
+    Port <logsight.ai Port>
+    tls On
     http_User LOGSIGHT_USERNAME
     http_Passwd LOGSIGHT_PASSWORD
     uri /api/v1/logs/singles
@@ -46,4 +49,10 @@ Logstash HTTP output is needed to send the logs from FluentBit.
     json_date_key timestamp
 ```
 
-Restart FluentBit with the new config, and the logs will start flowing to logsight.ai.
+For the web service, the `Host` and `Port` parameters need to be set to `Host https://logsight.ai` and `Port 443`. For the default [local installation](/get_started/installation) they are set to `Host http://localhost` and `Port 4200` (or any other URL and Port that was configured during the installation).
+
+The account credentials need to be used to set the parameters `http_User` and `http_Passwd`.
+
+Logs received by logsight.ai are expected to contain an ISO8601 timestamp which can be set using the parameter `json_date_format iso8601`. Furthermore, the timestamp key needs to be named `timestamp` which is ensured by setting `json_date_key timestamp`.
+
+Adding this configuration to FluentBit allows is to send log data to logsight.ai.

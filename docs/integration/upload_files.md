@@ -4,8 +4,9 @@ Logsight supports file upload to simplify ingest of batches of logs.
 
 - To upload files into logsight, first the user needs to create and select an `application`.
 
-![image](./upload_files.png)
-
+<div align=center>
+<img width="800" src="/integration/imgs/upload_files.png"/>
+</div>
 
 Currently, we support two log file formats for file upload that are automatically parsed:
 

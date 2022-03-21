@@ -7,25 +7,25 @@
 
 - **Integration**
   - [Overview](./integration/overview.md)
-  - [Logstash](./integration/logstash.md)
+  - [GitHub Action](/integration/github_action.md)
   - [FluentBit](./integration/fluentbit.md)
+  - [Logstash](./integration/logstash.md)
   - [REST API](./integration/rest-api.md)
   - [Upload files](./integration/upload_files.md)
 
-- **Detect incidents**
-  - [Incident Detector](/detect_incidents/incident_detector.md) 
-  - [Dashboard](/detect_incidents/dashboard.md) 
-  - [Incidents](/detect_incidents/incidents.md)
-  - [Using the REST API](/detect_incidents/using_the_rest_api.md)
- 
-- **Monitor deployments**
-  - [Stage Verifier](/monitor_deployments/stage_verifier.md)
-  - [Dashboard](/monitor_deployments/dashboard.md)
-  - [Using the REST API](/monitor_deployments/using_the_rest_api.md)
-  - [Using GitHub Actions](/monitor_deployments/github_action.md)
-    
-- **Improve code**
-    - [Code Inspector](/analyze_code/code_inspector.md)
+- **Logging code inspection**
+  - [Overview](/logging_code_inspection/overview.md)
+
+- **Stage verification**
+  - [Overview](/stage_verification/overview.md)
+  - [Dashboard](/stage_verification/dashboard.md)
+  - [Using the REST API](/stage_verification/using_the_rest_api.md)
+
+- **Incident detection**
+  - [Overview](/incident_detection/overview.md) 
+  - [Dashboard](/incident_detection/dashboard.md) 
+  - [Incidents](/incident_detection/incidents.md)
+  - [Using the REST API](/incident_detection/using_the_rest_api.md)
   
 - **Administration**
   - [User info](/administration/user_info.md)
