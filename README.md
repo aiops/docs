@@ -1,6 +1,5 @@
 # Logsight.ai docs
 
-
 ## Install docsify locally
 
 ### Linux
