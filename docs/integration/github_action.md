@@ -2,12 +2,9 @@
 
 <div align=right><img src="/monitor_deployments/stage_verifier_overview.png" alt="drawing" style="float:right;width:30%;"/> </div>
 
-Text
-
+Logsight.ai provides a seamless integration with [GitHub Workflows](https://docs.github.com/en/actions/using-workflows). All relevant log data are collected during the execution of the workflow. Analysing these data allows logsight.ai to compute a deployment risk score. This score indicates the probabiltiy of occuring failures when deploying the current state of the code.
 
 ## Quick start demo
-
-Text
 
 1. **Fork** the prepared [hello-logsight repository](https://github.com/aiops/hello-logsight) on GitHub
 2. Go to **Pull Requests** and click on **New pull request**
@@ -23,7 +20,7 @@ To open the detailed online report in the issue, you need to have [logsight.ai](
 
 ## Integration with an existing GitHub Workflow
 
-Text
+You can add the [logsight-setup-action](https://github.com/aiops/logsight-setup-action) and the [logsight-verification-action](https://github.com/aiops/logsight-verification-action) to your GitHub Workflow definiton. Former sets up the log data collection. Latter request the deployment risk score calculation from logsight.ai.
 
 ## Prerequisites
 

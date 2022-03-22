@@ -21,13 +21,13 @@ cd logsight-install
 
 We provide all logsight.ai services as [Docker Images](https://hub.docker.com/orgs/logsight/repositories) which you can spin up with docker-compse. All compose, configuration and utility script files are located in the ```docker-compose``` directory.
 
-The easiest way to do the installation is to run the utility script ```install.sh```. You need to accept the EULA when installing logsight.ai by setting ```accept-license``` as the only command line argument for the script:
+The easiest way to do the installation is to run the utility script ```install.sh```. You need to accept the EULA when installing logsight.ai by setting ```accept-license``` as the only command line argument for the script.
 
 ```bash
 ./docker-compose/install.sh accept-license
 ```
 
-The script will prompt for an Elasticsearch and a PostgreSQL password. Alternatively, it is possible to set the following environment variables before running the script:
+The script will prompt for an Elasticsearch and a PostgreSQL password. Alternatively, it is possible to set the following environment variables before running the script.
 
 ```bash
 export ELASTICSEARCH_PASSWORD=<set a password>
