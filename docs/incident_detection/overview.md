@@ -1,7 +1,7 @@
 # Incident Detector
 
 <div align=center>
-<img width="200" src="/detect_incidents/incident_detector.png"/>
+<img width="200" src="/incident_detection/incident_detector.png"/>
 </div>
 
 `logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
@@ -18,7 +18,7 @@
 5. `Notification`. We send you a notification when an incident is in progress.
 
 <div align=center>
-<img width="500" src="/detect_incidents/how_it_works.png"/>
+<img width="500" src="/incident_detection/how_it_works.png"/>
 </div>
 
 
@@ -32,7 +32,7 @@ In practice, this is not true. Failures are also associated with log messages of
 Manually defining rules to automatically classify records as anomalous by matching keywords such as “loss”, “lost”, etc. suffers from the same problem. 
 
 <div align=center>
-<img width="500" src="/detect_incidents/log_level_analysis.png"/>
+<img width="500" src="/incident_detection/log_level_analysis.png"/>
 </div>
 
 ### Semantic analysis
@@ -40,7 +40,7 @@ Manually defining rules to automatically classify records as anomalous by matchi
 Logsight Incident Detection takes a different approach. It extracts the semantic meaning of log messages, capture the contextual information from log sequences, and evaluates the risk that they are associated with an imminent failure. It does not rely on log level information or keywords. Logsight introduces an AI model that has learned from millions lines of software code the semantics of system failures. The model is applied to the logs across all different applications so you can get a precise insight on any incident across your stack.
 
 <div align=center>
-<img width="500" src="/detect_incidents/cognitive_analysis.png"/>
+<img width="500" src="/incident_detection/cognitive_analysis.png"/>
 </div>
 
 

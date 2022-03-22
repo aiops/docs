@@ -1,7 +1,7 @@
 # Stage Verifier
 
 <div align=center>
-<img width="200" src="/monitor_deployments/stage_verifier.png"/>
+<img width="200" src="/stage_verification/stage_verifier.png"/>
 </div>
 
 `logsight.ai` supports the continuous verification of deployments, comparing tests, detecting test flakiness 
@@ -18,7 +18,7 @@ Ship the logs of the baseline version and candidate version to our centralized l
 6. `Notification`. We send you a notification when we detect problems so you can rapidly roll back failed deployments.
 
 <div align=center>
-<img width="1000" src="/monitor_deployments/how_it_works.png"/>
+<img width="1000" src="/stage_verification/how_it_works.png"/>
 </div>
 
 
@@ -31,7 +31,7 @@ A log record usually contains: timestamp, level, message, component ID, etc.
 Feature vectors are needed since they enable AI-driven processing of logs. 
 
 <div align=center>
-<img width="600" src="/monitor_deployments/template_mining.png"/>
+<img width="600" src="/stage_verification/template_mining.png"/>
 </div>
 
 ### Semantic analysis

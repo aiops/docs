@@ -1,4 +1,4 @@
-# Code Inspector
+# Logging Code Inspection
 
 ![Code Inspector](./code_inspector.png)
 

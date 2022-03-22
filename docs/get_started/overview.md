@@ -1,27 +1,23 @@
-# Overview
+# Logsight.ai
 
-> `logsight.ai` is an **intelligence platform which infuses AI to DevOps**
+<!-- <img style="float: right;" width=400 src="/get_started/hero.png"/> -->
 
-`logsight.ai` is the next generation of [AIOps](https://en.wikipedia.org/wiki/Artificial_Intelligence_for_IT_Operations) platforms which rely on Deep Learning and AI-powered log analytics to manage DevOps pipelines to enable continuous delivery and proactive troubleshooting.
+Deploying new software releases is an exiting but often stressful process. With [logsight.ai](https://logsight.ai) you gain the confidence to release and optimize software faster, with high reliability for great customer experience. Test logsight by either signing up with our web service ([https://logsight.ai](https://logsight.ai)) or via a [local installation](/get_started/installation.md).
 
 <div align=center>
-<img width="300" src="/get_started/hero.png"/>
+<img width="500" src="/get_started/imgs/hero.png"/>
 </div>
 
-+ **[Code Inspector (in development)](/analyze_code/code_inspector)** is an AI-powered code reviewer trained to find log messages with a low quality which are typically hard for a human to identify. Once 
-  statements are located, Code 
-Inspector provides intelligent recommendations on how to improve code quality.
+You can integrate logsight.ai into your CI/CD pipeline and connect it with a variety of log data sources. It analyses collected logs, calculates deployment risk scores to provide confidence into you next release, and monitors your deployment to raise notifications in case of imminent problems.
 
-+ **[Stage Verifier](/monitor_deployments/stage_verifier)** is an AI-powered continuous verification system that verifies software releases across deployment stages (e.g., testing, staging and 
-  production) ensuring their reliability.
++ **[Local installation](/get_started/installation.md)**: A guide for a local installation of logsight.ai in under 3 minutes.
 
-+ **[Incident Detector](/detect_incidents/incident_detector)** proactively identifies incidents in production and in real-time. It uses semantic technologies and AI to infer the meaning and risk of 
-  log messages. The use of semantic 
-enables to provide more detailed explanations of the root cause of software failures. 
++ **[First steps](/get_started/first_steps.md)**: Explore logsight.ai by loading sample data. Get familiar with the different dashboards.
 
-To get started, contact our customer support team to start an enterprise proof of concept (PoC) or Sign up directly from our website.
-`logsight.ai` is a cloud-based and on-premise software-as-a-service (SaaS) solution.
++ **[Integration](/integration/overview.md)**: Integrate logsight.ai into your CI/CD pipeline and connect with a variety of log data sources.
 
-> [!NOTE]
-> By 2023, 40% of DevOps teams will use application and infrastructure monitoring platforms with integrated AI for IT operations platforms
-> (source Gartner)
++ **[Logging code inspection](/logging_code_inspection/overview.md)**: Optimize the logging in your code base. Get hints where log messages are missing in you code. Improve the semantic and syntactic quality of log messages in your code. (Work in progress)
+
++ **[Stage verification](/stage_verification/overview.md)**: Verify different CI/CD pipeline stages of your application. Compare logsight.ai log data analysis results between the previous and the next release to get insight into the deployment risk score. Gain confidence in you next release.
+
++ **[Incident detection](/incident_detection/overview.md)**: Monitor log data of applications in your produciont or pre-production environments. The incident detection of logsight.ai proactively detects problems and allows notification and alerting.

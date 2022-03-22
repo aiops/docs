@@ -1,0 +1,116 @@
+# GitHub Actions
+
+<div align=right><img src="/monitor_deployments/stage_verifier_overview.png" alt="drawing" style="float:right;width:30%;"/> </div>
+
+Logsight.ai provides a seamless integration with [GitHub Workflows](https://docs.github.com/en/actions/using-workflows). All relevant log data are collected during the execution of the workflow. Analysing these data allows logsight.ai to compute a deployment risk score. This score indicates the probabiltiy of occuring failures when deploying the current state of the code.
+
+## Quick start demo
+
+1. **Fork** the prepared [hello-logsight repository](https://github.com/aiops/hello-logsight) on GitHub
+2. Go to **Pull Requests** and click on **New pull request**
+3. Set `compare` to `candidate` and **Create pull request**.
+<div align=center><img src="/monitor_deployments/pullrq.png" alt="drawing" style="width:50%;"/> </div>
+
+4. The **quality check will run**.
+<div align=center><img src="/monitor_deployments/check.png" alt="drawing" style="width:50%;"/> </div>
+
+5. If the check is failing, it will create an issue report that specifies the **deployment risk**. You can check the report in the [**Issues**](https://github.com/aiops/hello-logsight/issues).
+
+To open the detailed online report in the issue, you need to have [logsight.ai](https://logsight.ai) user account. Login and then click on the detailed report.
+
+## Integration with an existing GitHub Workflow
+
+You can add the [logsight-setup-action](https://github.com/aiops/logsight-setup-action) and the [logsight-verification-action](https://github.com/aiops/logsight-verification-action) to your GitHub Workflow definiton. Former sets up the log data collection. Latter request the deployment risk score calculation from logsight.ai.
+
+## Prerequisites
+
+Create a logsight account at [https://logsight.ai](https://logsight.ai).
+
+## GitHub Workflow configuration
+
+Add the following steps to enable the logsight.ai Stage Verification as a Quality Gate into your workflow:
+We recommend setting up `LOGSIGHT_USERNAME` and `LOGSIGHT_PASSWORD` as secrets to your repository. Go to `project settings -> secrets -> actions -> new repository secret`. Alternatively, the username and password can be set as parameters in the GitHub Action definition. We do not recommend to do this for safety reasons.
+
+Add the `logsight-setup-action` and the `logsight-verification-action` into you GitHub Workflow definiton. 
+
+```
+- name: Logsight Setup
+  uses: aiops/logsight-setup-action@main
+  id: setup
+  with:
+    username: ${ { secrets.LOGSIGHT_USERNAME } }
+    password: ${ { secrets.LOGSIGHT_PASSWORD } }
+    application_name: ${ { github.ref } }
+    fluentbit_filelocation: /host$GITHUB_WORKSPACE/*.log
+    fluentbit_message: 'log'
+
+- name: 🚀 STEPS FROM THE EXISTING WORKFLOW FROM YOUR APPLICATION
+- name: 🚀 CONDUCT TESTS FROM YOUR OWN APPLICATION
+
+- name: Verify Logs
+  uses: aiops/logsight-verification-action@main
+  id: verify-logs
+  with:
+    github_token: ${ { secrets.GITHUB_TOKEN } }
+    username: ${ { secrets.LOGSIGHT_USERNAME } }
+    password: ${ { secrets.LOGSIGHT_PASSWORD } }
+    application_id: ${ { steps.setup.outputs.application_id } }
+    baseline_tag: ${ { github.event.before } }
+    candidate_tag: ${ { github.sha } }
+    risk_threshold: 10
+```
+
+The `logsight-setup-action` needs to be defined before the main steps of your workflow (e.g. prios building and testing). It will initialize the collection of log data during the execution of the workflow. [FluentBit](https://docs.fluentbit.io/manual/) is used to collect log data from configurable sources. The [readme](https://github.com/aiops/logsight-setup-action) of the `logsight-setup-action` provides additional information on how to configure the action. **With the default configuration the action collects logs from running docker containers.**
+
+The `logsight-verification-action` should be defined after all main workflow steps. It will request the analysis results of the log data that were collected during the workflow execution from logsight.ai. These results contain the deployment risk score summarizing the probability of failures when deploying the current version of the code. If this score exceeds a defined threshold, a GitHub Issue is created. 
+
+> You need at least **two executions of the GitHub Workflow** in your repository to execute the Stage Verification.
+
+As a workaround, you can set the configuraiton of the the `candidate_tag` to **`candidate_tag`: { { github.sha } }**. Thereby, the evauaton will be done without comparison.
+
+## Parameters
+
+TODO: Structured list of parameters, their meaning and the default values.
+
+<!-- This should contain a structured list of all parameters and their documentation
+## Guide 
+
+1. `application_name` is a string that usually refers to the name of the service. Currently with ${ { github.ref } } is set to the branch name. However, you can change it to any desired string.
+2. Read more at the inputs descriptions of the https://github.com/aiops/logsight-setup-action to correctly configure the FluentBit log collection depending on your input (e.g., docker containers, files, standard output, etc.)
+3. If you already have predefined config for FluentBit you can add the following config where $variables are replaced with concrete values. This opens up the connection to logsight.ai [Read more.](../send_logs/fluentbit.md)
+4. `baseline_tag` refers to the version of your repository that is already working (e.g., in production).
+5. `candidate_tag` refers to the current release. 
+6. Both `tags` are strings, and you can use any to tag. Often we relate tags to the commit id (${ { github.sha } }) 
+```yaml
+[INPUT]
+    Name $inputName
+    Path $fileLocation
+    multiline.parser  docker, cri
+    DB /tail_docker.db
+    Refresh_Interval 1
+[SERVICE]
+    Flush 1
+    Daemon Off
+[FILTER]
+    Name modify
+    Match $matchPattern
+    Add applicationId $applicationId
+    Add tag $tag
+    Rename $message message
+[OUTPUT]
+    Name http
+    Host $host
+    Port $port
+    http_User $logsightUsername
+    http_Passwd $logsightPassword
+    tls On
+    uri /api/v1/logs/singles
+    Format json
+    json_date_format iso8601
+    json_date_key timestamp
+```
+4. If you wish to use log collector different than FluentBit (e.g., Filebeat). Please replace the `logsight-setup-action` with https://github.com/aiops/logsight-init-action. The difference is that the `init` action does not setup FluentBit.
+5. If you use different log collector than FluentBit, then the step of log collection to logsight.ai should go after the `logsight-init-action` step. In this way you ensure your logs are sent to logsight.ai. We currently support range of log collectors. [Read more.](https://docs.logsight.ai/#/./send_logs/logstash)
+
+-->
+
