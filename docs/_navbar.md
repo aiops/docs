@@ -1,2 +1,2 @@
 + API docs
-  + [REST API](https://demo.logsight.ai/swagger-ui/index.html)
+  + [REST API](https://logsight.ai/swagger-ui/index.html)

@@ -21,7 +21,7 @@ We recommend sending logs in larger batches to minimize network calls. The user 
 
 To send logs, execute the following request.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST) (For more information click on the Request)
+[Request](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST) (For more information click on the Request)
 ```
 POST /api/v1/logs
 ```
@@ -45,7 +45,7 @@ POST /api/v1/logs
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
 Status 200 OK
 ```

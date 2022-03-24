@@ -17,7 +17,6 @@ Depending on your deployment (i.e., web service, demo or on-premise), you need t
 with the correct value.
 
 + web service: ```$URL = https://logsight.ai``` 
-+ demo service: ```$URL = https://demo.logsight.ai``` 
 + on-premise service: ```$URL = http://localhost:8080```
 
 
@@ -26,7 +25,7 @@ with the correct value.
 
 To create a user, send the following request.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 
 ```
 POST /api/v1/users
@@ -40,7 +39,7 @@ POST /api/v1/users
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
 
 ```
 Status 201 CREATED
@@ -67,7 +66,7 @@ consists of `userId` and a `activationToken`. There are two options to activate 
 2. Taking the `userId` and the `activationToken` and sending an activation request:
 
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
 
 ```
 POST /api/v1/users/activate
@@ -80,7 +79,7 @@ POST /api/v1/users/activate
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
 
 ```
 Status 200 OK
@@ -102,7 +101,7 @@ curl -X POST '$URL/api/v1/application'
 
 Clients can obtain a token by making the following call. 
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
 ```
 POST /api/v1/auth/login
@@ -115,7 +114,7 @@ POST /api/v1/auth/login
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
 
 ```
 Status 200 OK
@@ -140,7 +139,7 @@ background, several services are enabled that are ready to provide insights and 
 To create an application, send the following request (don't forget to add the token in the request header).
 For example, POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
 
 ```
 POST /api/v1/users/{userId}/applications
@@ -152,7 +151,7 @@ POST /api/v1/users/{userId}/applications
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
 
 ```
 Status 201 OK
@@ -181,7 +180,7 @@ We recommend sending logs in larger batches to minimize network calls. The user 
 
 To send logs, execute the following request.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
 POST /api/v1/logs
 ```
@@ -206,7 +205,7 @@ JSON
 ```
 
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```
 Status 200 OK
 ```
@@ -232,7 +231,7 @@ Status 200 OK
 
 To perform the `flush` operation after sending the logs, the client needs to send a request containing the last received `receiptId`.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
 ```
 POST /api/v1/logs/flush
 ```
@@ -242,7 +241,7 @@ POST /api/v1/logs/flush
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
 ```
 Status 200 OK
 ```
@@ -263,7 +262,7 @@ After sending the logs, the client can get insights from the logs in the form of
 
 If the user did not perform `flush` prior to the getting results, the `flushId` field should be left out.
 
-[Request](https://demo.logsight.ai/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
+[Request](https://logsight.ai/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
 ```
 POST /api/v1/logs/incidents
 ```
@@ -276,7 +275,7 @@ POST /api/v1/logs/incidents
 }
 ```
 
-[Response](https://demo.logsight.ai/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
+[Response](https://logsight.ai/swagger-ui/index.html#/Incidents/getIncidentResultUsingPOST)
 ```
 Status 200 OK
 ```
