@@ -2,7 +2,7 @@
 
 You can either use the logsight.ai web service at [https://logsight.ai](https://logsight.ai) or your [local installation](/get_started/installation.md) of logsight.ai.
 
-First, an account is needed. Click on **Sign-up** to creat one. Provide an email address and a password in the sign-up form.
+First, an account is needed. Click on **Sign-up** to create one. Provide an email address and a password in the sign-up form.
 
 <img style="display: block; margin-left: auto; margin-right: auto;" width="500" src="/get_started/imgs/sign_up.png"/>
 
