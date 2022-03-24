@@ -18,6 +18,12 @@ Logsight.ai provides a seamless integration with [GitHub Workflows](https://docs
 
 To open the detailed online report in the issue, you need to have [logsight.ai](https://logsight.ai) user account. Login and then click on the detailed report.
 
+6. In the detailed report you will see the log lines that are probable cause for the problem. You can fix the problem with the `candidate` branch: 
+   1. Set `HEARTBEAT=True` in the `hello_logsight.py` in your forked repository
+   2. **Commit** and check your already open pull request. The quality check will run again and this time will pass
+   3. If you wish, you can open `hello_logsight.py` and understand where it was failing
+<div align=center><img src="/integration/imgs/fix_branch.png" alt="drawing" style="width:80%;"/> </div>
+
 ## Integration with an existing GitHub Workflow
 
 You can add the [logsight-setup-action](https://github.com/aiops/logsight-setup-action) and the [logsight-verification-action](https://github.com/aiops/logsight-verification-action) to your GitHub Workflow definiton. Former sets up the log data collection. Latter request the deployment risk score calculation from logsight.ai.
