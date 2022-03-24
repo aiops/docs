@@ -22,6 +22,7 @@ with the correct value.
 
 
 ## Create and activate user
+
 ### Create user
 
 To create a user, send the following request.

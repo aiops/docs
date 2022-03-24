@@ -1,4 +1,4 @@
-# Verify stages using the REST API
+# Detect incidents using the REST API
 
 
 ## Steps

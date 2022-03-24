@@ -1,6 +1,9 @@
 # Logging Code Inspection
 
-![Code Inspector](./code_inspector.png)
+<div align=center>
+<img width="100" src="./code_inspector.png"/>
+</div>
+
 
 `logsight.ai` supports the semantic and linguistic analysis of code and log data,
 and provides recommendations to improve the quality of the logs.
