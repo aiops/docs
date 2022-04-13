@@ -111,7 +111,7 @@ The first three parameters (`url`, `email`, `password`) are required, while the 
 
 > [!NOTE]
 > Logsight.ai supports timestamps in ISO 8601 format. They must match the following regex expression
-> ```re
+> ```regex
 > ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(([+-]\d{2}:\d{2})|Z)?$
 > ```
 > You can use Filebeat's [timestamp processor](https://www.elastic.co/guide/en/beats/filebeat/current/processor-timestamp.html) to re-format the timestamp if the timestamp format of your logs does match this regex.
