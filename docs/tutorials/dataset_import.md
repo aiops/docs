@@ -93,7 +93,7 @@ output.logsight:
   application.name: "go_app"
   message_key: "Message"
   level_key: "Level"
-  timestamp_key: "EventTime
+  timestamp_key: "EventTime"
 ```
 We configure Filebeat to use `output.logsight` as its output. Note that this will not work with the native Filebeat binaries. Instead, we provide a custom Filebeat output for logsight.ai, which is available at [https://github.com/aiops/logsight-filebeat](https://github.com/aiops/logsight-filebeat). Later in this tutorial, we will show how to run the docker Filebeat container containing the logsight.ai output.
 
@@ -110,13 +110,13 @@ The first three parameters (`url`, `email`, `password`) are required, while the 
 `level_key` and `timestamp_key`: Similar to the `message_key` parameter, it is possible to define the fields that contain the log level and timestamp with these two parameters.
 
 > [!NOTE]
-> Logsight.ai supports timestamps in ISO 8601 format. They must match the following regex expression: 
+> Logsight.ai supports timestamps in ISO 8601 format. They must match the following regex expression
 > ```re
 > ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(([+-]\d{2}:\d{2})|Z)?$
 > ```
 > You can use Filebeat's [timestamp processor](https://www.elastic.co/guide/en/beats/filebeat/current/processor-timestamp.html) to re-format the timestamp if the timestamp format of your logs does match this regex.
 
-If you want to start importing your log file, you can skip to [Running the logsight.ai filebeat docker container](#running-the-logsight.ai-filebeat-docker-container). The following section will describe the import of a log dataset consisting of multiple files.
+If you want to start importing your log file, you can skip to [Running the logsight.ai filebeat docker container](#running-the-logsightai-filebeat-docker-container). The following section will describe the import of a log dataset consisting of multiple files.
 
 
 
