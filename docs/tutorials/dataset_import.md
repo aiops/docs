@@ -16,20 +16,20 @@ An [output plugin](https://github.com/aiops/logsight-filebeat) is used to config
 
 Subsequently, a step-by-step tutorial shows how to configure Filebeat to import log files to logsight.ai. Thereby, we first show how the import of a single file works. After that, we describe how a dataset consisting of several log files can be imported.
 
-### Logsight.ai
+### logsight.ai
 
 A logsight.ai endpoint is required to receive logs from Filebeat. One option is to use the web service available at [https://logsight.ai](https://logsight.ai). The other option is to install a local instance of logsight.ai. The installation process is described [here](/get_started/installation.md). In this tutorial, we assume a local installation but provide guidance on how to adjust the configurations to work with the web service.
 
 
-### Filebeat Configuration
+### Filebeat configuration
 
 Filebeat expects a configuration file that contains the definition of an input (log data source), all processing steps, and the output (log data destination). Create a text file and name it `filebeat.yml`. This file will contain the Filebeat configurations to import JSON log files to logsight.ai.
 
-## Reading a Single JSON Log File
+## Reading a cingle JSON log file
 
 First, we will show a configuration that lets Filebeat import a single log file to logsight.ai.
 
-### Log Data Input
+### Log data input
 
 Filebeat expects a configuration block that specifies the log data source. Throughout this tutorial, we will use Filebeat's [log file input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-log.html). Add the following configuration lines to your `filebeat.yml` file.
 
@@ -127,7 +127,7 @@ The first three parameters (`url`, `email`, `password`) are required. The other 
 If you want to start importing your log file, you can skip to [Running the logsight.ai filebeat docker container](#running-the-logsightai-filebeat-docker-container). The following section will describe the import of a log dataset consisting of multiple files.
 
 
-## Reading a JSON Log Dataset
+## Reading a JSON log dataset
 
 Working with various customers, we often observe historic log datasets stored in separate files and organized in specific directory structures. The following directory structure is a typical example.
 
