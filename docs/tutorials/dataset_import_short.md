@@ -1,14 +1,10 @@
-# Importing JSON log data into logsight.ai
+# Importing JSON log data into logsight.ai unsing Filebeat
 
-Logs are essential for troubleshooting and increasingly become part of regulatory requirements. But log data can offer far more than that. They provide critical insights into the behavior of your system during testing, staging, or deployment. Therefore, many organizations embrace the idea of logging, resulting in a growing prevalence of structured log management. A popular format to structure logs is `JSON`. This tutorial's focus will lie on JSON-structured logs. However, it can be applied to other log formats such as Syslog or NCSA with few adjustments.
-
-Logsight.ai is a log analytics platform that supports system troubleshooting by detecting incidents, enables the continuous verification of deployments, analyses test executions, and performs other log verification tasks. However, there might be situations where you want to analyze historical log data. For example, given security threats like the [Log4Shell](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) exploit, you want to know if your system was compromised in the past. Historic logs can also reveal frequently failing services that impact the performance of your system. Analyzing log data from several versions of your services allows tracking changes that help identify root causes of bugs. Identifying such problems can help organizations set the right focus while improving the system's fault tolerance.
-
-This tutorial will describe how logs stored in JSON files can be imported into logsight.ai. Aside from single file uploads, we will show possibilities to import log datasets consisting of multiple files potentially organized in specific directory structures.
+Logs are essential for troubleshooting and increasingly become part of regulatory requirements. Logsight.ai is a log analytics platform that supports system troubleshooting by detecting incidents, enables the continuous verification of deployments, analyses test executions, and performs other log verification tasks. This tutorial will describe how logs stored in JSON files can be imported into logsight.ai. Aside from single file uploads, we will show possibilities to import log datasets consisting of multiple files potentially organized in specific directory structures.
 
 ## Filebeat and logsight.ai
 
-We will use [Filebeat](https://www.elastic.co/beats/filebeat) with an logsight [plugin](https://github.com/aiops/logsight-filebeat) to import log files to logsight.ai. Filebeat is a lightweight service that can be configured to read logs from different [sources](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html), [process](https://www.elastic.co/guide/en/beats/filebeat/current/defining-processors.html) them, and send them to a configured [output destination](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-output.html). 
+We will use [Filebeat](https://www.elastic.co/beats/filebeat) with an logsight output [plugin](https://github.com/aiops/logsight-filebeat) to import log files to logsight.ai. Filebeat is a lightweight service that can be configured to read logs from different [sources](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-filebeat-options.html), [process](https://www.elastic.co/guide/en/beats/filebeat/current/defining-processors.html) them, and send them to a configured [output destination](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-output.html). 
 
 
 An [output plugin](https://github.com/aiops/logsight-filebeat) is used to configure logsight.ai as the Filebeat's output destination. It handles the API access and transmits logs in a structured format. We provide a compiled Filebeat binary which includes the logsight.ai output and ship it as a Docker [container](https://hub.docker.com/repository/docker/logsight/filebeat). However, you can compile your own Filebeat binary or build a custom container based on a specific Filebeat version. More information can be found [here](https://github.com/aiops/logsight-filebeat).
@@ -25,7 +21,7 @@ A logsight.ai endpoint is required to receive logs from Filebeat. One option is 
 
 Filebeat expects a configuration file that contains the definition of an input (log data source), all processing steps, and the output (log data destination). Create a text file and name it `filebeat.yml`. This file will contain the Filebeat configurations to import JSON log files to logsight.ai.
 
-## Reading a cingle JSON log file
+## Reading a single JSON log file
 
 First, we will show a configuration that lets Filebeat import a single log file to logsight.ai.
 

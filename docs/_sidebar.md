@@ -26,6 +26,9 @@
   - [Dashboard](/incident_detection/dashboard.md) 
   - [Incidents](/incident_detection/incidents.md)
   - [Using the REST API](/incident_detection/using_the_rest_api.md)
+
+- **Send data to logsight**
+  - [Files](/tutorials/dataset_import_short.md)
   
 - **Administration**
   - [User info](/administration/user_info.md)
