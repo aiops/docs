@@ -6,12 +6,10 @@
 Prerequisites ([Already performed these steps? Jump to Send Logs and Verify](/monitor_deployments/using_the_rest_api.md?id=send-logs))
 1. `Create and activate user`
 2. `Get token`
-3. `Create application`
 
 Verify
 
 4. `Send logs`
-5. `Flush (optional)`
 6. `Verify`
 
 Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
@@ -132,46 +130,9 @@ Status 200 OK
 }
 ```
 
-## Create application
-
-An application is an independent source of log data. An example of an application may be a payment
-service, database, or authentication service (a single app). By writing Application name and creating the app in the
-background, several services are enabled that are ready to provide insights and analysis for the shipped logs.
-
-To create an application, send the following request (don't forget to add the token in the request header).
-For example, POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
-
-```
-POST /api/v1/users/{userId}/applications
-```
-
-```json
-{
-  "applicatonName": "myservice"
-}
-```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
-
-```
-Status 201 OK
-```
-
-```json
-{
-  "applicationName": "myservice",
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f"
-}
-```
-
-The response contains an `applicationId` to be used in subsequent requests.
-
-
 ## Send logs
 
-After setting up the prerequisites (i.e., creating user, activate user, login user, and create application), you can send logs to an application.
+After setting up the prerequisites (i.e., creating user, activate user, and login user), you can send logs to an application.
 `logs` is a list of log messages.
 
 JSON-formatted log messages require a `timestamp` (we support timestamp formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)), a field `message` (string), and `level`, which is the log level.
@@ -189,8 +150,9 @@ POST /api/v1/logs
 JSON
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "tag": "v1.0.1",
+  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", //nullable
+  "applicationName": "myapp", //nullable
+  "tags": {"tag1": "value1", "tag2": "value2", "tagN": "valueN"},
   "logs": [
         {
           "level": "INFO",
@@ -205,6 +167,7 @@ JSON
         ]
 }
 ```
+One of `applicationId` or `applicationName` must be provided
 
 
 [Response](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
@@ -224,13 +187,10 @@ Status 200 OK
 + `receiptId` is identifier of the received log batch.
 + `source` tells the way that this batch was sent (via REST API)
 
-
-## Tag and flush
-
 ### Tag
 
 The `Stage Verifier` uses tags to compare logs. 
-A `tag` is any string that can identify a particular set of log records. 
+`Tags` are any (key, value) paris of strings that can identify a particular set of log records. 
 For example,
 
 + [Semantic versioning](https://semver.org/) (e.g., v1.0.0, v1.0.1)
@@ -242,8 +202,9 @@ POST /api/v1/logs
 ```
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "tag": "v1.0.2",
+  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", //nullable
+  "applicationName": "myapp", //nullable
+  "tags": {"version": "v1.1.0", "namespace": "my_namespace"},
   "logs": [
         {
           "level": "INFO",
@@ -270,43 +231,9 @@ Status 200 OK
 }
 ```
 
-### Flush
-
-> (Optional) The flush operation guarantees that all the logs sent are processed by logsight.ai before getting the results.
-
-To perform the `flush` operation after sending the logs, the client needs to send a request containing the last received `receiptId`.
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
-```
-POST /api/v1/logs/flush
-```
-```json
-{
-  "receiptId": "525c5234-9012-4f3b-8f64-c8a6ec418e7a"
-}
-```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
-```
-Status 200 OK
-```
-```json
-{
-  "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "status": "PENDING"
-}
-```
-
-+ `flushId` identifies a flush
-+ `status` "PENDING" means that the flush is being performed. <span style="color:red">Which other states can be returned?</span> 
-
-
 ## Verify
 
-After sending the logs, the client can compare logs indexed with different tags by making the following call. 
-
-If the user did not perform `flush` prior to the verification, the `flushId` field should be left out.
-Without `flush`, a verification will be made with the logs stored in logsight.ai.
+After sending the logs, the client can compare logs indexed with different tags by making the following call.
 
 [Request](https://logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
 ```
@@ -314,10 +241,8 @@ POST /api/v1/logs/compare
 ```
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "baselineTag": "v1.0.1",
-  "candidateTag": "v1.0.2",
-  "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" // optional
+  "baselineTags": {"version": "v1.0.0", "namespace": "my_namespace"},
+  "candidateTags": {"version": "v1.1.0", "namespace": "my_namespace"},
 }
 ```
 
@@ -327,8 +252,10 @@ Status 200 OK
 ```
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "compareId": "10293ksxXHSAix992",
+  "baselineTags": {"version": "v1.0.0", "namespace": "my_namespace"},
+  "candidateTags": {"version": "v1.1.0", "namespace": "my_namespace"},
+  "link": "$URL/pages/compare?compareId=10293ksxXHSAix992",
   "risk": 0,
   "totalLogCount": 4,
   "baselineLogCount": 2,
@@ -345,8 +272,7 @@ Status 200 OK
   "frequencyChangeReportPercentage": {"decrease": 0, "increase": 0},
   "recurringStatesTotalCount": 2,
   "recurringStatesFaultPercentage": 0,
-  "recurringStatesReportPercentage": 0,
-  "link": "$URL/pages/compare?applicationId=a26ab2f2-89e9-4e3a-bc9e-66011537f32f&baselineTag=v1.0.1&compareTag=v1.0.2",
+  "recurringStatesReportPercentage": 0
 }
 ```
 
@@ -371,7 +297,7 @@ Status 200 OK
 
 
 ### Detailed report view
-![Logs](./detailed_report.png ':size=1200')
+![Logs](./insights_verification.png ':size=1200')
 
 
 

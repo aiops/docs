@@ -46,7 +46,7 @@ Add the `logsight-setup-action` and the `logsight-verification-action` into you 
   with:
     username: ${ { secrets.LOGSIGHT_USERNAME } }
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
-    application_name: ${ { github.ref } }
+    application_name: ${ { github.event.repository.name } }
     fluentbit_filelocation: /host$GITHUB_WORKSPACE/*.log
     fluentbit_message: 'log'
 
@@ -60,7 +60,6 @@ Add the `logsight-setup-action` and the `logsight-verification-action` into you 
     github_token: ${ { secrets.GITHUB_TOKEN } }
     username: ${ { secrets.LOGSIGHT_USERNAME } }
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
-    application_id: ${ { steps.setup.outputs.application_id } }
     baseline_tag: ${ { github.event.before } }
     candidate_tag: ${ { github.sha } }
     risk_threshold: 10
@@ -72,7 +71,7 @@ The `logsight-verification-action` should be defined after all main workflow ste
 
 > You need at least **two executions of the GitHub Workflow** in your repository to execute the Stage Verification.
 
-As a workaround, you can set the configuraiton of the the `candidate_tag` to **`candidate_tag`: { { github.sha } }**. Thereby, the evauaton will be done without comparison.
+As a workaround, you can set the configuraiton of the the `candidate_tags` to **`candidate_tags`: ${ { github.sha } }**. Thereby, the evauaton will be done without comparison.
 
 ## Parameters
 
@@ -105,6 +104,7 @@ TODO: Structured list of parameters, their meaning and the default values.
     Rename $message message
 [OUTPUT]
     Name http
+    Match $matchPattern
     Host $host
     Port $port
     http_User $logsightUsername

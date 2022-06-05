@@ -28,8 +28,9 @@ POST /api/v1/logs
 
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "tag": "v1.0.1",
+  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", //nullable
+  "applicationName": "myapp", //nullable
+  "tags": {"tag1": "value1", "tag2": "value2", "tagN": "valueN"},
   "logs": [
         {
           "level": "INFO",
@@ -44,6 +45,7 @@ POST /api/v1/logs
         ]
 }
 ```
+One of `applicationId` or `applicationName` must be provided
 
 [Response](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
 ```

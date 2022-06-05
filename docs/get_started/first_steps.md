@@ -13,3 +13,16 @@ You will be redirected to the login form. Use the credentials from the sign-up p
 Next, you will see a list of integration options. Click on the button **Demo data** to load a log data set that allows you to explore logsight.ai. After the loading process is complete, you will see a dashboard that provides an overview of the demo system state. If this is your first time using logsight.ai, a step-by-step tutorial will be activated guiding you through the main dashboard elements of logsight.ai.
 
 <img style="display: block; margin-left: auto; margin-right: auto;" width="1000" src="/get_started/imgs/overview_dashboard.png"/>
+
+Next, navigate to Verification. It supports the continuous verification of deployments, comparing tests, detecting test flakiness 
+and other log verification tasks via the task of AI-powered `log compare`. 
+
+To create a verification and compare the two versions in order to detect incidents, select `applicationName` -> resource_manager with `version` -> v1.0.0 as baseline tags, and  `applicationName` -> resource_manager with `version` -> v1.1.0. 
+Then, click `Create` and after few seconds an entry will be shown in the table. 
+
+<img style="display: block; margin-left: auto; margin-right: auto;" width="1000" src="/get_started/imgs/create_verification.png"/>
+
+You can click on `Insights` to show the exact log messages that help you debug the problem.
+
+<img style="display: block; margin-left: auto; margin-right: auto;" width="1000" src="/get_started/imgs/insights_verification.png"/>
+

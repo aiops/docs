@@ -6,11 +6,9 @@
 Prerequisites ([Already performed these steps? Jump to Send Logs and Detect incidents](/detect_incidents/using_the_rest_api.md?id=send-logs))
 1. `Create and activate user`
 2. `Get token`
-3. `Create application`
 
 Detecting incidents
 4. `Send logs`
-5. `Flush (optional)`
 6. `Detect incidents`
 
 Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
@@ -130,43 +128,6 @@ Status 200 OK
 }
 ```
 
-## Create application
-
-An application is an independent source of log data. An example of an application may be a payment
-service, database, or authentication service (a single app). By writing Application name and creating the app in the
-background, several services are enabled that are ready to provide insights and analysis for the shipped logs.
-
-To create an application, send the following request (don't forget to add the token in the request header).
-For example, POST /api/v1/users/5441e771-1ea3-41c4-8f31-2e71828693de/applications
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
-
-```
-POST /api/v1/users/{userId}/applications
-```
-
-```json
-{
-  "applicatonName": "myservice"
-}
-```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Applications/createApplicationUsingPOST)
-
-```
-Status 201 OK
-```
-
-```json
-{
-  "applicationName": "myservice",
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f"
-}
-```
-
-The response contains an `applicationId` to be used in subsequent requests.
-
-
 ## Send logs
 
 After setting up the prerequisites (i.e., creating user, activate user, login user, and create application), you can send logs to an application.
@@ -188,7 +149,8 @@ JSON
 ```json
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "tag": "v1.0.1",
+  "applicationName": "myapp", //nullable
+  "tags": {"version": "v1.1.0", "namespace": "my_namespace"},
   "logs": [
         {
           "level": "INFO",
@@ -221,39 +183,6 @@ Status 200 OK
 + `logsCount` is the count of the log messages sent in the batch.
 + `receiptId` is identifier of the received log batch.
 + `source` tells the way that this batch was sent (via REST API)
-
-
-## Flush logs
-
-### Flush
-
-> (Optional) The flush operation guarantees that all the logs sent are processed by logsight.ai before getting the results.
-
-To perform the `flush` operation after sending the logs, the client needs to send a request containing the last received `receiptId`.
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
-```
-POST /api/v1/logs/flush
-```
-```json
-{
-  "receiptId": "525c5234-9012-4f3b-8f64-c8a6ec418e7a"
-}
-```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Control/createResultInitUsingPOST)
-```
-Status 200 OK
-```
-```json
-{
-  "flushId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "status": "PENDING"
-}
-```
-
-+ `flushId` identifies a flush
-+ `status` "PENDING" means that the flush is being performed. <span style="color:red">Which other states can be returned?</span> 
 
 
 ## Detect Incidents
