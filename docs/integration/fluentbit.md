@@ -6,7 +6,6 @@
 
 1. Create a logsight.ai account by either using the web service at [https://logsight.ai](https://logsight.ai) or a [local installation](/get_started/installation.md).
 <!-- TODO: The app creation together with other general things needs to be explained in a "User Guide" section -->
-2. Create an `application`. (This will point to a page with an explanation on how to create applications)
 
 ## Install and configure FluentBit
 
@@ -14,22 +13,36 @@ You need to install Fluentbit on your system. There are different ways to do so.
 
 ### Configure the FluentBit filter
 
-You need to configure a filter to make the log format of FluentBit compatible with logsight.ai.
+You need to configure filters to make the log format of FluentBit compatible with logsight.ai.
 
 ```ini
 [FILTER]
     Name modify
-    Match *
-    Rename <current_message_key> message   
-    Add applicationId "<application_id>"
-    Add tag "<tag>"
+    Match kube.*
+    Copy <key_application> applicationName
+    Copy <key_message> message
+    Copy <key_level> level
+    Copy <key_tag_1> tags.<key_tag_1>
+    Add tags.<key_tag_2> <value>
+    Copy <key_tag_n> tags.<key_tag_n>
+
+[FILTER]
+    Name nest
+    Match kube.*
+    Operation nest
+    Wildcard tags.*
+    Nested_under tags
+    Remove_prefix tags.
+
 ```
 
 This modification filter (`Name modify`) is applied to all log messages (`Match *`).
 
 If it is not already the case, the key of the log message needs to be renamed to `message`.
 
-Furthermore, logsight.ai expects two mandatory fields (`applicationId` and `tag`). Use the ID of the application that you previously created. We recommend to set the `tag` in a way that allows to **distinguish different versions** of the system from which the logs are collected. Alternatively, it can be set to a static value such as `Add tag "default"`.
+Furthermore, logsight.ai expects two mandatory fields (`applicationName` and `tags`). 
+An example of `applicationName` could be the name of your service. `applicationName` is a string that contains only alphanumeric characters, numbers, hyphen, and underscore.
+We recommend to set the `tags` in a way that allows to **distinguish different versions/locations/deployments** of the system from which the logs are collected. You can specify **any** amount of tags.
 
 ### Configure the FluentBit HTTP output
 

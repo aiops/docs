@@ -1,5 +1,5 @@
 # Logstash
-
+NEEEDS CHECKING
 logsight.ai enables integration with [Logstash](https://www.elastic.co/de/logstash/).
 
 ## Prerequisites
@@ -35,12 +35,18 @@ filter {
    # structuring the output event
    ruby {  
         code => '
-                # create an application in logsight http://localhost:4200/pages/profile or via the API and use the ID here
-		event.set("applicationId", event.get('applicationId'))
-		# tag can be set dynamically, e.g., container_image_id
-		event.set("tag", event.get('tag')) 
+		event.set("applicationName", event.get(<key_application>))
+		# tags can be set dynamically
+		event.set("<key_tag_1>", event.get(<key_tag_1>)) 
+		event.set("<key_tag_2>", event.get(<key_tag_2>)) 
+		event.set("<key_tag_n>", event.get(<key_tag_n>)) 
+		event.get("doc").each { |k, v|
+                event.set(k,v)
+            }
+            event.remove("doc")
                 # this needs to contain the message of the log 
-		event.set("message", event.get('[log][msg]'))
+		event.set("message", event.get('[log][<key_message>]'))
+		event.set("level", event.get('[log][<key_level>]'))
 		' 
         }
    # cleaning the message

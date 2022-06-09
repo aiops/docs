@@ -20,4 +20,4 @@ You can integrate logsight.ai into your CI/CD pipeline and connect it with a var
 
 + **[Stage verification](/stage_verification/overview.md)**: Verify different CI/CD pipeline stages of your application. Compare logsight.ai log data analysis results between the previous and the next release to get insight into the deployment risk score. Gain confidence in you next release.
 
-+ **[Incident detection](/incident_detection/overview.md)**: Monitor log data of applications in your produciont or pre-production environments. The incident detection of logsight.ai proactively detects problems and allows notification and alerting.
++ **[Incident detection](/incident_detection/overview.md)**: Monitor log data of applications in your production or pre-production environments. The incident detection of logsight.ai proactively detects problems and allows notification and alerting.

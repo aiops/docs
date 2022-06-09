@@ -9,9 +9,7 @@
   - [Overview](./integration/overview.md)
   - [GitHub Action](/integration/github_action.md)
   - [FluentBit](./integration/fluentbit.md)
-  - [Logstash](./integration/logstash.md)
   - [REST API](./integration/rest-api.md)
-  - [Upload files](./integration/upload_files.md)
 
 - **Logging code inspection**
   - [Overview](/logging_code_inspection/overview.md)
