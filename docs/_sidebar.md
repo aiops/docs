@@ -32,7 +32,10 @@
   - [User info](/administration/user_info.md)
   - [View account](/administration/view_account.md)
   - [Manage applications](/administration/manage_applications.md)
-    
+
+- **Tutorials**
+  - [Scaling with Kafka](/tutorials/scaling_logsight_kafka.md)
+  
 - **Videos**
   - [Overview](/videos/overview.md)
 

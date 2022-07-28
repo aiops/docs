@@ -17,7 +17,7 @@ Next, you will see a list of integration options. Click on the button **Demo dat
 Next, navigate to Verification. It supports the continuous verification of deployments, comparing tests, detecting test flakiness 
 and other log verification tasks via the task of AI-powered `log compare`. 
 
-To create a verification and compare the two versions in order to detect incidents, select `applicationName` -> resource_manager with `version` -> v1.0.0 as baseline tags, and  `applicationName` -> resource_manager with `version` -> v1.1.0. 
+To create a verification and compare the two versions in order to detect incidents, select `service` -> resource_manager with `version` -> v1.0.0 as baseline tags, and  `service` -> resource_manager with `version` -> v1.1.0. 
 Then, click `Create` and after few seconds an entry will be shown in the table. 
 
 <img style="display: block; margin-left: auto; margin-right: auto;" width="1000" src="/get_started/imgs/create_verification.png"/>
