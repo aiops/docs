@@ -11,8 +11,8 @@
   - [FluentBit](./integration/fluentbit.md)
   - [REST API](./integration/rest-api.md)
 
-- **Logging code inspection**
-  - [Overview](/logging_code_inspection/overview.md)
+- **Auto logging**
+  - [Overview](/auto_logging/overview.md)
 
 - **Stage verification**
   - [Overview](/stage_verification/overview.md)
