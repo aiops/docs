@@ -20,9 +20,7 @@
   - [Using the REST API](/stage_verification/using_the_rest_api.md)
 
 - **Incident detection**
-  - [Overview](/incident_detection/overview.md) 
-  - [Dashboard](/incident_detection/dashboard.md) 
-  - [Incidents](/incident_detection/incidents.md)
+  - [Overview](/incident_detection/overview.md)
   - [Using the REST API](/incident_detection/using_the_rest_api.md)
 
 - **Send data to logsight**

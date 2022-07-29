@@ -1,7 +1,7 @@
 # Logging Code Inspection
 
 <div align=center>
-<img width="100" src="./code_inspector.png"/>
+<img src="https://miro.medium.com/max/1400/1*BSsLmSii7-eUo20svru0zw.png"/>
 </div>
 
 
@@ -11,17 +11,15 @@ and provides recommendations to improve the quality of the logs.
 > [!NOTE]
 > The code inspector UI and API are in development.
 
-## Processing Workflow
+> [!NOTE]
+> We wrote a [medium](https://medium.com/@snedelkoski/software-engineering-needs-auto-logging-681185e9a4e1) post explaining the ideas behind autologging.
 
-1. `Shipping code/logs`. You set up a log collector or GitHub action to gather logs across your applications. This allows logsight.ai to process the logs.
-3. `AI-processing`. We analyze your code/logs to identify low quality log statements using various AI-models. 
-4. `Customer AI model`. We can also use specialised and customized AI-models to model customers' IT systems. 
-5. `Quality metrics`. Our AI-models quantify your code/log quality.
-6. `Notification`. We send you a notification when the quality is low according to best practices.
+> [!NOTE]
+>The community version will be on [Github](https://github.com/aiops/auto-logging). You can star the project to get regular updates on the progress.
 
-<div align=center>
-<img width="1000" src="/analyze_code/how_it_works.png"/>
-</div>
+
+
+![Logs](./animation_autologging.png)
 
 
 ## Intelligent NLU

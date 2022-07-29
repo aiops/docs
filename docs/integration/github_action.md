@@ -61,7 +61,7 @@ You need to have a [logsight.ai](https://demo.logsight.ai/) user account.
 
 To access the report, select the **Detailed onine report** link shown in the Github Report.
 
-<div align=center><img src="/integration/imgs/logsight_report.png" alt="drawing" style="width:50%;"/> </div>
+<div align=center><img src="https://raw.githubusercontent.com/aiops/hello-logsight/main/assets/logsight_report.png" alt="drawing" style="width:80%;"/> </div>
 
 6. In the detailed report you will see the log lines that are probable cause for the problem. You can fix the problem with the `candidate` branch: 
    1. Set `HEARTBEAT=True` in the `hello_logsight.py` in your forked repository
@@ -91,7 +91,7 @@ Add the `logsight-setup-action` and the `logsight-verification-action` into you 
   with:
     username: ${ { secrets.LOGSIGHT_USERNAME } }
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
-    application_name: ${ { github.event.repository.name } }
+    repository: ${ { github.event.repository.name } }
     fluentbit_filelocation: /host$GITHUB_WORKSPACE/*.log
     fluentbit_message: 'log'
 
@@ -105,6 +105,7 @@ Add the `logsight-setup-action` and the `logsight-verification-action` into you 
     github_token: ${ { secrets.GITHUB_TOKEN } }
     username: ${ { secrets.LOGSIGHT_USERNAME } }
     password: ${ { secrets.LOGSIGHT_PASSWORD } }
+    repository: ${ { github.event.repository.name } }
     baseline_tag: ${ { github.event.before } }
     candidate_tag: ${ { github.sha } }
     risk_threshold: 10

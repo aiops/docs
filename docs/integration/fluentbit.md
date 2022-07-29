@@ -16,23 +16,41 @@ You need to install Fluentbit on your system. There are different ways to do so.
 You need to configure filters to make the log format of FluentBit compatible with logsight.ai.
 
 ```ini
+[INPUT]
+    Name $inputName
+    Path $fileLocation
+    multiline.parser  docker, cri
+    DB /tail_docker.db
+    Refresh_Interval 1
+[SERVICE]
+    Flush 1
+    Daemon Off
 [FILTER]
     Name modify
-    Match kube.*
-    Copy <key_application> applicationName
-    Copy <key_message> message
-    Copy <key_level> level
-    Copy <key_tag_1> tags.<key_tag_1>
-    Add tags.<key_tag_2> <value>
-    Copy <key_tag_n> tags.<key_tag_n>
-
+    Match $matchPattern
+    Rename $message message
+    Add tags.version $version
+    Add tags.repository $repository
 [FILTER]
     Name nest
-    Match kube.*
+    Match $matchPattern
     Operation nest
     Wildcard tags.*
     Nested_under tags
     Remove_prefix tags.
+[OUTPUT]
+    Name http
+    Match $matchPattern
+    Host $host
+    Port $port
+    http_User $logsightUsername
+    http_Passwd $logsightPassword
+    tls On
+    uri /api/v1/logs/singles
+    Format json
+    json_date_format iso8601
+    json_date_key timestamp
+    Retry_Limit False"
 
 ```
 
@@ -40,27 +58,9 @@ This modification filter (`Name modify`) is applied to all log messages (`Match 
 
 If it is not already the case, the key of the log message needs to be renamed to `message`.
 
-Furthermore, logsight.ai expects two mandatory fields (`applicationName` and `tags`). 
-An example of `applicationName` could be the name of your service. `applicationName` is a string that contains only alphanumeric characters, numbers, hyphen, and underscore.
+Furthermore, logsight.ai expects `tags`. 
+An example of `tags` could be the name of your service or repository.
 We recommend to set the `tags` in a way that allows to **distinguish different versions/locations/deployments** of the system from which the logs are collected. You can specify **any** amount of tags.
-
-### Configure the FluentBit HTTP output
-
-FluentBit connects to logsight.ai via its native HTTP output.
-
-```ini
-[OUTPUT]
-    Name http
-    Host <logsight.ai URL>
-    Port <logsight.ai Port>
-    tls On
-    http_User LOGSIGHT_USERNAME
-    http_Passwd LOGSIGHT_PASSWORD
-    uri /api/v1/logs/singles
-    Format json
-    json_date_format iso8601
-    json_date_key timestamp
-```
 
 For the web service, the `Host` and `Port` parameters need to be set to `Host https://logsight.ai` and `Port 443`. For the default [local installation](/get_started/installation) they are set to `Host http://localhost` and `Port 4200` (or any other URL and Port that was configured during the installation).
 
