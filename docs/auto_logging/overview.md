@@ -19,7 +19,7 @@ and provides recommendations to improve the quality of the logs.
 
 
 
-![Logs](./animation_autologging.png)
+![Logs](./animation_autologging.gif)
 
 
 ## Intelligent NLU
