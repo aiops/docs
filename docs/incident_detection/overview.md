@@ -1,9 +1,5 @@
 # Incident Detector
 
-<div align=center>
-<img width="200" src="/incident_detection/incident_detector.png"/>
-</div>
-
 `logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
 
 > [!NOTE]
@@ -18,7 +14,7 @@
 5. `Notification`. We send you a notification when an incident is in progress.
 
 <div align=center>
-<img width="500" src="/incident_detection/how_it_works.png"/>
+    <img width="800" src="/incident_detection/how_it_works.png"/>
 </div>
 
 

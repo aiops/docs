@@ -1,4 +1,5 @@
 :root {
+  --base-font-family: "Avenir";
   --base-font-size: 15px;
   --content-max-width  : 100em;
   --navbar-root-margin  : 0 0 0 .5em;

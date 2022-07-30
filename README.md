@@ -44,4 +44,4 @@ git push
 
 Use, e.g., https://error404.atomseo.com, to test that all the links are working 
 
-+ https://error404.atomseo.com/SeoCheck/Report/docs.logsight.ai/2021-10-09-1/free?from=
++ https://error404.atomseo.com/SeoCheck/Report/docs.logsight.ai/2022-07-30/free?from=

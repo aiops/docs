@@ -1,12 +1,7 @@
 # Stage Verifier
 
-<div align=center>
-<img width="200" src="/stage_verification/stage_verifier.png"/>
-</div>
-
 `logsight.ai` supports the continuous verification of deployments, comparing tests, detecting test flakiness 
 and other log verification tasks via the task of AI-powered `log compare`.
-
 
 ## Processing Workflow
 

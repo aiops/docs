@@ -5,7 +5,7 @@
 Deploying new software releases is an exiting but often stressful process. With [logsight.ai](https://logsight.ai) you gain the confidence to release and optimize software faster, with high reliability for great customer experience. Test logsight by either signing up with our web service [logsight.ai](https://logsight.ai) or via a [local installation](/get_started/installation.md).
 
 <div align=center>
-<img width="600" src="/get_started/imgs/hero1.svg"/>
+    <img width="800" src="/get_started/imgs/hero1.svg"/>
 </div>
 
 
