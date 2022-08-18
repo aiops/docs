@@ -67,6 +67,9 @@ This technique converts log records, which describe a state of an application, i
 <img width="600" src="/stage_verification/template_mining.png"/>
 </div>
 
+Continuous verification also uses semantic analysis and natural language understanding (NLU) to compare logs. 
+Its AI-model was trained to understand the hidden and underlying latent semantics of words in logs messages.
+This allows to compare logs and discover differences which are correlated with failures.
 
 ### A/B State Analysis
 
@@ -100,14 +103,5 @@ In this example, the deployment risk was considered to be High
 One benefit of this approach is that it can easily be used by less-experienced troubleshooting developers or testers.
 -->
 
-
-
-
-
-
-
 > [!NOTE]
-> Continuous verification also uses semantic analysis and natural language understanding (NLU) to compare logs. 
-It uses an AI-model trained to understand the hidden and underlying latent semantics of words in logs messages.
-This allows to compare logs and discover differences which are correlated with failures.  
-
+> With logsight.ai UI, version A of an application is called `Baseline` and version B is called `Candidate`
