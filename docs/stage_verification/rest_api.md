@@ -1,22 +1,18 @@
-# Verify stages using the REST API
+# REST API
+
+> [!NOTE]
+> Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
+with the correct value.
+> + web service: ```$URL = https://logsight.ai```
+> + on-premise service: ```$URL = http://localhost:8080```
 
 
 ## Steps
 
-Prerequisites ([Already performed these steps? Jump to Send Logs and Verify](/monitor_deployments/using_the_rest_api.md?id=send-logs))
 1. `Create and activate user`
 2. `Get token`
-
-Verify
-
-4. `Send logs`
-6. `Verify`
-
-Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
-with the correct value.
-
-+ web service: ```$URL = https://logsight.ai```
-+ on-premise service: ```$URL = http://localhost:8080```
+3. `Send logs`
+4. `Verify`
 
 
 ## Create and activate user

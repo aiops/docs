@@ -1,4 +1,4 @@
-# Importing JSON log data into logsight unsing Filebeat
+# Filebeat
 
 Logs are essential for troubleshooting and increasingly become part of regulatory requirements. But log data can offer far more than that. They provide critical insights into the behavior of your system during testing, staging, or deployment. Therefore, many organizations embrace the idea of logging, resulting in a growing prevalence of structured log management. A popular format to structure logs is `JSON`. This tutorial's focus will lie on JSON-structured logs. However, it can be applied to other log formats such as Syslog or NCSA with few adjustments.
 

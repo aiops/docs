@@ -1,4 +1,4 @@
-# Logsight.ai local installation
+# Local Installation
 
 The [logsight-install](https://github.com/aiops/logsight-install) github repository contains a collection of scripts and other resources helping to install logsight.ai locally.
 

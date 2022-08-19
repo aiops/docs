@@ -2,26 +2,26 @@
 
 - **Get started**
   - [Overview](/)
-  - [Local Installation](/get_started/installation.md)
-  - [First Steps](/get_started/first_steps.md)
+  - [Online System](/get_started/online_system.md)
+  - [Local Installation](/get_started/local_installation.md)
 
 - **Integration**
   - [GitHub Action](/integration/github_action.md)
-  - [FluentBit](./integration/fluentbit.md)
-  - [REST API](./integration/rest-api.md)
-  - [Filebeat](integration/filebeat_short.md)
+  - [FluentBit](/integration/fluentbit.md)
+  - [Filebeat](/integration/filebeat_short.md)
+  - [REST API](/integration/rest_api.md)
 
 - **Auto logging**
   - [Overview](/auto_logging/overview.md)
 
 - **Stage verification**
   - [Overview](/stage_verification/overview.md)
-  - [Dashboard](/stage_verification/dashboard.md)
-  - [Using the REST API](/stage_verification/using_the_rest_api.md)
+  - [User Interface](/stage_verification/user_interface.md)
+  - [REST API](/stage_verification/rest_api.md)
 
 - **Incident detection**
   - [Overview](/incident_detection/overview.md)
-  - [Using the REST API](/incident_detection/using_the_rest_api.md)
+  - [REST API](/incident_detection/rest_api.md)
 
 - **Administration**
   - [User info](/administration/user_info.md)

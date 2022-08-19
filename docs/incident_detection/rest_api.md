@@ -1,21 +1,18 @@
-# Detect incidents using the REST API
+# REST API
+
+> [!NOTE]
+> Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
+with the correct value.
+> + web service: ```$URL = https://logsight.ai```
+> + on-premise service: ```$URL = http://localhost:8080```
 
 
 ## Steps
 
-Prerequisites ([Already performed these steps? Jump to Send Logs and Detect incidents](/detect_incidents/using_the_rest_api.md?id=send-logs))
 1. `Create and activate user`
 2. `Get token`
-
-Detecting incidents
-4. `Send logs`
-6. `Detect incidents`
-
-Depending on your deployment (i.e., web service, demo or on-premise), you need to replace the placeholder ```$URL``` 
-with the correct value.
-
-+ web service: ```$URL = https://logsight.ai``` 
-+ on-premise service: ```$URL = http://localhost:8080```
+3. `Send logs`
+4. `Detect incidents`
 
 
 ## Create and activate user

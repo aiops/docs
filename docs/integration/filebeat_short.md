@@ -1,4 +1,4 @@
-# Importing JSON log data into logsight.ai unsing Filebeat
+# Filebeat
 
 Logs are essential for troubleshooting and increasingly become part of regulatory requirements. Logsight.ai is a log analytics platform that supports system troubleshooting by detecting incidents, enables the continuous verification of deployments, analyses test executions, and performs other log verification tasks. This tutorial will describe how logs stored in JSON files can be imported into logsight.ai. Aside from single file uploads, we will show possibilities to import log datasets consisting of multiple files potentially organized in specific directory structures.
 

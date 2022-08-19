@@ -4,7 +4,7 @@ Logsight verification response returns a report containing overview of the parti
 In the JSON, the most important key for debugging purposes is the link of the detailed verification report, which is always composed of http(s)://URL/pages/compare/insights?compareId=YOUR_COMPARE_ID
 When the detailed report is open, the user will see the following screen, which contains all necessary information about the troubleshooting process
 
-![Logs](./verification-example.png ':size=1200')
+![Logs](./insights_2.png ':size=1200')
 
 ### How to troubleshoot?
 First, the most important is to analyze the `State overview` information. 
@@ -14,7 +14,7 @@ After checking these overview statistics, as in the example above, we see 1 adde
 
 We observe 1 added state, which has medium risk.
 
-![Logs](./verification-example-1.png ':size=1200')
+![Logs](./state_analysis.png ':size=1200')
 
 The most important columns for troubleshooting in the table are Risk, Description (added states), Level, and Semantics.
 If there are many states to analyze, we suggest the following process for debugging:

@@ -1,16 +1,15 @@
 # REST API
 
-## Steps
-
-Prerequisites ([Already performed these steps? Jump to Send Logs and Verify](/monitor_deployments/using_the_rest_api.md?id=send-logs))
-1. `Create and activate user`
-3. `Create application`
-
-Depending on your deployment (i.e., web service, or on-premise), you need to replace the placeholder ```$URL``` 
+> [!NOTE]
+> Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
 with the correct value.
+> + web service: ```$URL = https://logsight.ai```
+> + on-premise service: ```$URL = http://localhost:8080```
 
-+ web service: ```$URL = https://logsight.ai```
-+ on-premise service: ```$URL = http://localhost:8080```
+
+Prerequisites
+1. `Create and activate user`
+2. `Create application`
 
 After setting up the prerequisites (i.e., creating `user`, activate `user`, login `user`, and create `application`), you can send logs to an application.
 `logs` is a list of log messages.

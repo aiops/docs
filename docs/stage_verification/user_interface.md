@@ -1,4 +1,4 @@
-# Stage Verifier Dashboard
+# Stage Verification User Interface
 
 > The `Stage Verifier` dashboard provides a detailed view of verification results by `logsight.ai`
 <br>
@@ -13,7 +13,7 @@ Each verification can have different statuses, e.g., when its created status is 
 
 ### Insights
 
-![Logs](./verification_marked.png ':size=1200')
+![Logs](./insights.png ':size=1200')
 
 `ID` Identifier of a specific verification request. 
 

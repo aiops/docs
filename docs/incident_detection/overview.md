@@ -1,22 +1,9 @@
-# Incident Detector
+# Incident Detection
 
 `logsight.ai` provides an easy to use incident detection and root cause investigation solution which does not require to setup manual rules and thresholds 
 
 > [!NOTE]
 > The incident detector REST API is in development. The feature is available only via the UI.
-
-## Processing Workflow
-
-1. `Shipping logs`. You set up a log collector to gather logs across your infrastructure and ship the logs to our centralized logging platform.
-2. `AI-processing`. We search and analyze your logs to identify uncommon patterns and structures using various AI-models. 
-3. `Customer AI model`. We can also use specialised and customized AI-models to model customers' IT systems. 
-4. `Incident detection`. Our AI-models are capable of identifying ongoing outages and incidents.
-5. `Notification`. We send you a notification when an incident is in progress.
-
-<div align=center>
-    <img width="800" src="/incident_detection/how_it_works.png"/>
-</div>
-
 
 ## Intelligent Detection
 

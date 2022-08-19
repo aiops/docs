@@ -1,4 +1,4 @@
-# First steps
+# Online System
 
 You can either use the logsight.ai web service at [https://logsight.ai](https://logsight.ai) or your [local installation](/get_started/installation.md) of logsight.ai.
 
