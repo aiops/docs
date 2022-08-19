@@ -2,10 +2,12 @@
 
 The [logsight-install](https://github.com/aiops/logsight-install) github repository contains a collection of scripts and other resources helping to install logsight.ai locally.
 
-Clone the repository with git https or ssh:
+Clone the repository with git https:
 ```bash
 git clone git@github.com:aiops/logsight-install.git
 ```
+
+or ssh:
 
 ```bash
 git clone https://github.com/aiops/logsight-install.git
@@ -18,10 +20,7 @@ cd logsight-install
 ```
 
 > [!NOTE]
-> If you have cloned the logsight-install repository already, you should check it for updates by runing
-> ```bash
-> git pull
-> ```
+> If you have cloned the logsight-install repository already, you should check it for updates by runing: git pull
 
 ## Installation with docker-compose
 
