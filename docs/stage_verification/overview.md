@@ -1,45 +1,48 @@
 # Stage Verification
 
-`logsight.ai` supports the continuous verification of deployments, comparing tests, detecting test flakiness 
-and other log verification tasks via the task of AI-powered `log compare`.
+`logsight.ai` supports the continuous verification of deployments, comparing tests, and other log verification tasks.
 
 <div align=center>
     <img width="400"  src="/stage_verification/concept.png"/>
 </div>
 
 
-## Intelligent Verification
+## Introduction
 
 ### Log Analysis
 
-The development of reliable software typically involves the adoption of interactive debugging and log file analysis. 
-While debugging tools became very sophisticated over the years, the same cannot be said about the tools available for log analysis.  
+The development of reliable software typically involves the use of interactive debugging tools and the analysis of log files. 
+While debugging tools became very sophisticated over the years, the same cannot be said about the solutions available for log analysis.  
 
-The benefit of a debugger is that it lets developers see all the "states" of a program during execution.
-By state, we refer to a line of code executed with the data stored in variables.
-Debuggers are used manually during code development by developers.
+The benefit of a debugger is that it lets developers see all the "states" of a program during its execution.
+By state, we refer to a line of code executed and the data stored in variables.
+Developers manually use debuggers during code development.
 
 When testing software via, e.g., unit or integration testing, it is common to rely on another method: log file analysis.
-With this method, states executed by a program are recorded in a log file which are later analysed by developers.
-Since a program can take too many states, developers carefully select relevant/critical states which should be reported.
-These states are often considered important or useful for program monitoring and/or locating faults.
+With this method, the states executed by a program are recorded in a log file which is later analysed by developers.
+Since a program can generate a large quantity of states, developers carefully select the states considered important or useful for program monitoring and/or locating faults.
 
 
 ### Manual vs. Automated Verification
 
-During testing, and once the program completes its execution, developers manually scan log files to check if new critical states were recorded.
-The task consists in comparing the log records of program version A and version B. It is a form of software A/B testing.
+During testing, and once the program completes its execution, developers manually scan log files to check if error states were recorded.
+The task consists in comparing the log records of version B of a program with the logs of version A.
+It is a form of software A/B testing.
+
 One current limitation of log file analysis is that it is still a manual task. 
-This is especially true since log files are often very large and can have complex structure.
+This limitation is aggravated when log files are large and with a complex structure.
 
-At logsight.ai, we looked into ways to automate log file analysis. 
-Our solution works based on the important notion of state previously discussed.
+At logsight.ai, we automate log file analysis. 
+Our solution works based on the important notion of state.
 
 
-### States
+## States
 
-A state includes a level/severity (e.g., warning), and a textual description which is often parametrized with
-the current values of variables, return values of function calls or any other state information.
+### State Mining 
+
+In simple terms, a state is a logging statement used to record valuable runtime information about applications.
+A state includes a level or severity (e.g., warning), and a textual description which is often parametrized with
+the current values of variables and context information (e.g., thread id, request id).
    
     logging.warning('Unable to connect to database: %s:%s', ip, port)
 
@@ -47,78 +50,92 @@ At runtime, if reached, the state above will generate a log record similar to:
 
     2017-05-16 11:32:09 WARN Unable to connect to database: 192.168.0.1:9090
 
-To find the states reached by an application using log records, we rely on `state mining`. 
-This technique converts log records, which describe a state of an application, into a feature vector of variables/values. 
+To find the states generated/reached by an application using log records, we rely on `state mining`. 
+This technique converts log file records into a feature vector of variables/values. 
 
 <div align=center>
-<img width="600" src="/stage_verification/state_mining.png"/>
+    <img width="600" src="/stage_verification/state_mining.png"/>
 </div>
+
+| Timestamp | Level | Log message                                   | **State**                       | Variables           | **Semantics** |
+|:---------:|-------|-----------------------------------------------|---------------------------------|---------------------|:-------------:|
+|    8h21   | INFO  | Customer id=111-222 data stored (thread 1234) | Customer id=$1 data stored ($2) | $1=111-222, $2=1234 |      INFO     |
+
+
+### State Semantics
 
 Continuous verification also uses semantic analysis and natural language understanding (NLU) to compare logs. 
 Its AI-model was trained to understand the hidden and underlying latent semantics of words in logs messages.
 This allows to compare logs and discover differences which are correlated with failures.
 
-
-### A/B State Analysis
-
-Our approach to verification compares two runs versions of the same application to identify critical differences in the log records generated.
-This spotting-the-differences approach uses `state mining` identify the states reached by each version A and version B.
-Based on the changes of state frequency, count, severity, and semantics, a deployment risk is calculated.  
-
-The following table shows an example.
-
-+ State ID 1 was generated by both versions A and B. Since state count change from A to B was low (+8%), the deployment risk is None.      
-+ State ID 2 is similar to state ID 1. Since there is a moderate -34% drop of the number of states recorded in version B, the deployment risk is set as Low.  
-+ State ID 3 is similar to state ID 2. But in this case, its level is warning (WARN) and it has been a +162% increase in version B. Thus, the deployment risk is Medium.
-+ State ID 4 was added in version B. Since it is new, with a +12 count, and it has the level WARN, the deployment risk is set to High.
-+ State ID 5 was removed in version B. Since an ERROR was remove from the application, the deployment risk is None.
-
-| ID | Timestamp | Level | Log message                         | State                        |  A  |  B  | Change |  Risk  |
-|:--:|:---------:|-------|-------------------------------------|------------------------------|:---:|:---:|:------:|:------:|
-|  1 |    8h21   | INFO  | Customer id=111-222 data stored     | Customer id=$1 data stored   | Yes | Yes |   +8%  |  None  |
-|  2 |    8h22   | INFO  | Processing request req=A12-345      | Processing request req=$1    | Yes | Yes |  -34%  |   Low  |
-|  3 |    8h24   | WARN  | Retrying (#15) request req=A22-222  | Retrying ($1) request req=$2 | Yes | Yes |  +162% | Medium |
-|  4 |    8h31   | WARN  | Cannot connect to: 192.168.0.1:9090 | Unable to connect to: $1:$2  |  No | Yes |   +12  |  High  |
-|  5 |    8h35   | ERROR | Insufficient memory (64GB)          | Insufficient memory ($1)     | Yes |  No |   -7   |  None  |
-
-Table. Example verifying version B with respect to version A    
-
-The final risk is calculated by considering each individual risk. 
-In this example, the deployment risk was considered to be High
+    Image of states being extended with a color
 
 
-### How is Deployment Risk Calculated?
+## Verification
 
-The deployment risk is calculated using th following table. 
-A risk score is assigned for each state occurring in version A and version B.  
-For example, if version B has a new state labelled as error but with no semantic anomaly, the state receives a risk score of 50 points. 
+Our approach to verification compares two runs (versions) of the same application to identify critical differences in the states generated.
+This spotting-the-differences approach identifies the states reached by each version A and version B.
+Based on the changes of state frequency, count, severity, and semantics, a `risk score` is calculated for each state.
+Afterwards, a `deployment risk` is calculated based on all the individual risk scores.  
 
-| State     | Error Level | Semantic Anomaly | Frequency Change | Risk |
-|-----------|:-----------:|:----------------:|:----------------:|:----:|
-| Added     |     Yes     |        Yes       |                  |  80  |
-|           |     Yes     |        No        |                  |  50  |
-|           |      No     |        Yes       |                  |  50  |
-|           |      No     |        No        |                  |   0  |
-| Deleted   |             |                  |                  |   0  |
-| Recurring |     Yes     |        No        |        No        |  30  |
-|           |      No     |        Yes       |        No        |  30  |
-|           |      No     |        No        |        No        |   0  |
-|           |     Yes     |        No        |        Yes       |  50  |
-|           |      No     |        Yes       |        Yes       |  50  |
-|           |      No     |        No        |        Yes       |  10  |
 
-Table. Risk score assigned to individual states   
+### Risk Score
 
-For each state, a risk score is calculated. Afterwards, the deployment risk is calculated using the following formulae. 
+The following table shows an example on how the risk score is calculated.
 
-+ Deployment Risk = max(risk of all states) + min(average risk of top-k states, 100 - max risk)
++ State ID 1 was generated by both versions A and B. Since state count change from A to B was low (+8%), the risk score is 0.      
++ State ID 2 is similar to state ID 1. Since there is a significant -94% drop of the number of INFO states recorded in version B, the risk is set as 10.  
++ State ID 3 is similar to state ID 2. But in this case, its level is warning (WARN) and it has been a +162% increase in version B. Thus, the risk is 50.
++ State ID 4 was added in version B. Since it is new, with a +12 count, and it has the level WARN, the risk score is set to 50.
++ State ID 5 was removed in version B. Since an ERROR state was remove from the application, the risk is 0.
 
-If the Deployment Risk is greater thant the deployment risk threshold (e.g., 80), the verification gate stops the deployment. 
+
+| ID | Timestamp | Level | Semantics | Log message                         | State                        |  A  |  B  | Change | Risk Score |
+|:--:|:---------:|-------|:---------:|-------------------------------------|------------------------------|:---:|:---:|:------:|:----------:|
+|  1 |    8h21   | INFO  |    INFO   | Customer id=111-222 data stored     | Customer id=$1 data stored   | Yes | Yes |   +8%  |      0     |
+|  2 |    8h22   | INFO  |    INFO   | Processing request req=A12-345      | Processing request req=$1    | Yes | Yes |  -94%  |     10     |
+|  3 |    8h24   | WARN  |    INFO   | Retrying (#15) request req=A22-222  | Retrying ($1) request req=$2 | Yes | Yes |  +162% |     50     |
+|  4 |    8h31   | INFO  |   ERROR   | Cannot connect to: 192.168.0.1:9090 | Unable to connect to: $1:$2  |  No | Yes |   +12  |     50     |
+|  5 |    8h35   | ERROR |   ERROR   | Insufficient memory (64GB)          | Insufficient memory ($1)     | Yes |  No |   -7   |      0     |
+
+Table. Example of risk score calculation    
+
+
+The risk score is set using the following table. 
+For example, if a version has a new Added state labelled with Error Level = Yes but with Semantic Anomaly = No, the state receives a risk score of 50 points. 
+
+| State     | Error Level | Semantic Anomaly | Frequency Change | Risk Score |
+|-----------|:-----------:|:----------------:|:----------------:|:----------:|
+| Added     |     Yes     |        Yes       |                  |     80     |
+|           |     Yes     |        No        |                  |     50     |
+|           |      No     |        Yes       |                  |     50     |
+|           |      No     |        No        |                  |      0     |
+| Deleted   |             |                  |                  |      0     |
+| Recurring |     Yes     |        No        |        No        |     30     |
+|           |      No     |        Yes       |        No        |     30     |
+|           |      No     |        No        |        No        |      0     |
+|           |     Yes     |        No        |        Yes       |     50     |
+|           |      No     |        Yes       |        Yes       |     50     |
+|           |      No     |        No        |        Yes       |     10     |
+
+Table. Mapping between state characteristics and risk score     
+
+
+### Deployment Risk
+
+The deployment risk is calculated by considering each individual risk score. 
+The following formulae is used: 
+
++ Deployment Risk = max(risk score of all states) + min(average risk score of top-k states, 100 - max risk score)
+
+If the deployment risk is greater thant the deployment risk threshold (e.g., 80), the verification gate stops the deployment. 
 
 
 <!---
 One benefit of this approach is that it can easily be used by less-experienced troubleshooting developers or testers.
 -->
+
+
 
 > [!NOTE]
 > With logsight.ai UI, version A of an application is called `Baseline` and version B is called `Candidate`
