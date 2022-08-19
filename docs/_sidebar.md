@@ -6,7 +6,7 @@
   - [Local Installation](/get_started/local_installation.md)
 
 - **Integration**
-  - [GitHub Action](/integration/github_action.md)
+  - [GitHub Actions](/integration/github_actions.md)
   - [FluentBit](/integration/fluentbit.md)
   - [Filebeat](/integration/filebeat_short.md)
   - [REST API](/integration/rest_api.md)

@@ -1,25 +1,24 @@
-# Logging Code Inspection
-
-<div align=center>
-<img src="https://miro.medium.com/max/1400/1*BSsLmSii7-eUo20svru0zw.png"/>
-</div>
+# Auto Logging
 
 
 `logsight.ai` supports the semantic and linguistic analysis of code and log data,
-and provides recommendations to improve the quality of the logs.
+and provides recommendations to improve the quality of the logs. 
+
+
+<div align=center>
+    <img width="500" src="https://miro.medium.com/max/1400/1*BSsLmSii7-eUo20svru0zw.png"/>
+</div>
 
 > [!NOTE]
-> The code inspector UI and API are in development.
+> The code inspector UI and API are in development. The community version will be on [Github](https://github.com/aiops/auto-logging). You can star the project to get regular updates on the progress.
+We wrote a [medium](https://medium.com/@snedelkoski/software-engineering-needs-auto-logging-681185e9a4e1) post explaining the ideas behind autologging.
 
-> [!NOTE]
-> We wrote a [medium](https://medium.com/@snedelkoski/software-engineering-needs-auto-logging-681185e9a4e1) post explaining the ideas behind autologging.
-
-> [!NOTE]
->The community version will be on [Github](https://github.com/aiops/auto-logging). You can star the project to get regular updates on the progress.
-
-
+## In a nutshell
 
 ![Logs](./animation_autologging.gif)
+
+
+
 
 
 ## Intelligent NLU
@@ -46,5 +45,3 @@ Unfortunately, many log messages are unclear and lack contextual information. Th
 NLU and large AI models trained capture de facto best practices.
 This knowledge is distilled into neural models which qualify log quality in real time.
 
-> [!NOTE]
-> Quantitative code quality metrics provide a guide for better and faster CI/CD
