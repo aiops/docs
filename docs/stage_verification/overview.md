@@ -54,15 +54,15 @@ To find the states generated/reached by an application using log records, we rel
 This technique converts log file records into a feature vector of variables/values. 
 For example, the following log record,
 
-| Timestamp | Level | Log message                                   | 
-|:---------:|-------|-----------------------------------------------|
-|    8h21   | INFO  | Customer id=111-222 data stored (thread 1234) |
+| Timestamp | Level | Log message                          | 
+|:---------:|-------|--------------------------------------|
+|    8h31   | INFO  | Cannot connect to: 192.168.0.1:9090  |
 
 is abstracted using state mining to:
 
-| Timestamp | State                           | Variables           |  Level  | 
-|:---------:|---------------------------------|---------------------|:-------:|
-|    8h21   | Customer id=$1 data stored ($2) | $1=111-222, $2=1234 |  INFO   |
+| Timestamp | State                    | Variables               | Level | 
+|:---------:|--------------------------|-------------------------|:-----:|
+|    8h31   | Cannot connect to: $1:$2 | $1=192.168.0.1, $2=9090 |  INFO |
 
 
 ### State Semantics
@@ -73,9 +73,9 @@ This allows to compare logs and discover differences which are correlated with f
 
 As an example, the state shown previously is extended to include semantic information.  
 
-| Timestamp | State                           | Variables           |  Level  | Semantics  |
-|:---------:|---------------------------------|---------------------|:-------:|:----------:|
-|    8h21   | Customer id=$1 data stored ($2) | $1=111-222, $2=1234 |  INFO   |    INFO    |
+| Timestamp | State                      | Variables               |  Level  | Semantics |
+|:---------:|----------------------------|-------------------------|:-------:|:---------:|
+|    8h31   | Cannot connect to: $1:$2   | $1=192.168.0.1, $2=9090 |  INFO   |   ERROR   |
 
 
 ## Verification
@@ -102,14 +102,14 @@ The following table shows an example on how the risk score is calculated.
 |  1 |    8h21   | INFO  |    INFO   | Customer id=111-222 data stored     | Customer id=$1 data stored   | Yes | Yes |   +8%  |      0     |
 |  2 |    8h22   | INFO  |    INFO   | Processing request req=A12-345      | Processing request req=$1    | Yes | Yes |  -94%  |     10     |
 |  3 |    8h24   | WARN  |    INFO   | Retrying (#15) request req=A22-222  | Retrying ($1) request req=$2 | Yes | Yes |  +162% |     50     |
-|  4 |    8h31   | INFO  |   ERROR   | Cannot connect to: 192.168.0.1:9090 | Unable to connect to: $1:$2  |  No | Yes |   +12  |     50     |
+|  4 |    8h31   | INFO  |   ERROR   | Cannot connect to: 192.168.0.1:9090 | Cannot connect to: $1:$2     |  No | Yes |   +12  |     50     |
 |  5 |    8h35   | ERROR |   ERROR   | Insufficient memory (64GB)          | Insufficient memory ($1)     | Yes |  No |   -7   |      0     |
 
 Table 1. Example of risk score calculation    
 
 
 The risk score is set using the following table. 
-For example, if a version has a new Added state labelled with Error Level = Yes but with Semantic Anomaly = No, the state receives a risk score of 50 points. 
+For example, if a version has a new Added state labelled with Level = Error, but with Semantics != Anomaly, the state receives a risk score of 50 points. 
 
 | State     | Level = Error | Semantics = Anomaly | Change = High  | Risk Score |
 |-----------|:-------------:|:-------------------:|:---------:|:----------:|
