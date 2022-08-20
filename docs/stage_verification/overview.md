@@ -133,13 +133,13 @@ Table 2. Mapping between state characteristics and risk score
 The deployment risk is calculated by considering each individual risk score. 
 The following formulae is used: 
 
-+ Deployment Risk = max(risk score of all states) + min(average risk score of top-k states, 100 - max risk score)
++ Deployment Risk = max(risk score of all states) + min(average risk score, 100 - max risk score)
 
 If the deployment risk is greater thant the deployment risk threshold (e.g., 80), the verification gate stops the deployment. 
 
-For example, the deployment risk (k=2) of the states from Table 1 is:
+For example, the deployment risk of the states from Table 1 is:
 
-+ max([0, 10, 50, 50, 0]) + min(average([50, 50]), 100 - max([0, 10, 50, 50, 0])) = 50 + min(50, 100 - 50) = 100
++ max([0, 10, 50, 50, 0]) + min(average([0, 10, 50, 50, 0]), 100 - max([0, 10, 50, 50, 0])) = 50 + min(22, 100 - 50) = 72
 
 <!---
 One benefit of this approach is that it can easily be used by less-experienced troubleshooting developers or testers.
