@@ -52,14 +52,17 @@ At runtime, if reached, the state above will generate a log record similar to:
 
 To find the states generated/reached by an application using log records, we rely on `state mining`. 
 This technique converts log file records into a feature vector of variables/values. 
+For example, the following log record,
 
-<div align=center>
-    <img width="600" src="/stage_verification/state_mining.png"/>
-</div>
+| Timestamp | Level | Log message                                   | 
+|:---------:|-------|-----------------------------------------------|
+|    8h21   | INFO  | Customer id=111-222 data stored (thread 1234) |
 
-| Timestamp | Level | Log message                                   | **State**                       | Variables           | **Semantics** |
-|:---------:|-------|-----------------------------------------------|---------------------------------|---------------------|:-------------:|
-|    8h21   | INFO  | Customer id=111-222 data stored (thread 1234) | Customer id=$1 data stored ($2) | $1=111-222, $2=1234 |      INFO     |
+is abstracted using state mining to:
+
+| Timestamp | State                           | Variables           |  Level  | 
+|:---------:|---------------------------------|---------------------|:-------:|
+|    8h21   | Customer id=$1 data stored ($2) | $1=111-222, $2=1234 |  INFO   |
 
 
 ### State Semantics
@@ -68,7 +71,11 @@ Continuous verification also uses semantic analysis and natural language underst
 Its AI-model was trained to understand the hidden and underlying latent semantics of words in logs messages.
 This allows to compare logs and discover differences which are correlated with failures.
 
-    Image of states being extended with a color
+As an example, the state shown previously is extended to include semantic information.  
+
+| Timestamp | State                           | Variables           |  Level  | Semantics  |
+|:---------:|---------------------------------|---------------------|:-------:|:----------:|
+|    8h21   | Customer id=$1 data stored ($2) | $1=111-222, $2=1234 |  INFO   |    INFO    |
 
 
 ## Verification
@@ -98,27 +105,27 @@ The following table shows an example on how the risk score is calculated.
 |  4 |    8h31   | INFO  |   ERROR   | Cannot connect to: 192.168.0.1:9090 | Unable to connect to: $1:$2  |  No | Yes |   +12  |     50     |
 |  5 |    8h35   | ERROR |   ERROR   | Insufficient memory (64GB)          | Insufficient memory ($1)     | Yes |  No |   -7   |      0     |
 
-Table. Example of risk score calculation    
+Table 1. Example of risk score calculation    
 
 
 The risk score is set using the following table. 
 For example, if a version has a new Added state labelled with Error Level = Yes but with Semantic Anomaly = No, the state receives a risk score of 50 points. 
 
-| State     | Error Level | Semantic Anomaly | Frequency Change | Risk Score |
-|-----------|:-----------:|:----------------:|:----------------:|:----------:|
-| Added     |     Yes     |        Yes       |                  |     80     |
-|           |     Yes     |        No        |                  |     50     |
-|           |      No     |        Yes       |                  |     50     |
-|           |      No     |        No        |                  |      0     |
-| Deleted   |             |                  |                  |      0     |
-| Recurring |     Yes     |        No        |        No        |     30     |
-|           |      No     |        Yes       |        No        |     30     |
-|           |      No     |        No        |        No        |      0     |
-|           |     Yes     |        No        |        Yes       |     50     |
-|           |      No     |        Yes       |        Yes       |     50     |
-|           |      No     |        No        |        Yes       |     10     |
+| State     | Level = Error | Semantics = Anomaly | Change = High  | Risk Score |
+|-----------|:-------------:|:-------------------:|:---------:|:----------:|
+| Added     |      Yes      |         Yes         |           |     80     |
+|           |      Yes      |         No          |           |     50     |
+|           |      No       |         Yes         |           |     50     |
+|           |      No       |         No          |           |      0     |
+| Deleted   |               |                     |           |      0     |
+| Recurring |      Yes      |         No          |    No     |     30     |
+|           |      No       |         Yes         |    No     |     30     |
+|           |      No       |         No          |    No     |      0     |
+|           |      Yes      |         No          |    Yes    |     50     |
+|           |      No       |         Yes         |    Yes    |     50     |
+|           |      No       |         No          |    Yes    |     10     |
 
-Table. Mapping between state characteristics and risk score     
+Table 2. Mapping between state characteristics and risk score     
 
 
 ### Deployment Risk
@@ -130,12 +137,18 @@ The following formulae is used:
 
 If the deployment risk is greater thant the deployment risk threshold (e.g., 80), the verification gate stops the deployment. 
 
+For example, the deployment risk (k=2) of the states from Table 1 is:
+
++ max([0, 10, 50, 50, 0]) + min(average([50, 50]), 100 - max([0, 10, 50, 50, 0])) = 50 + min(50, 100 - 50) = 100
 
 <!---
 One benefit of this approach is that it can easily be used by less-experienced troubleshooting developers or testers.
 -->
 
 
-
 > [!NOTE]
 > With logsight.ai UI, version A of an application is called `Baseline` and version B is called `Candidate`
+
+<div align=center>
+    <img width="600" src="/stage_verification/state_mining.png"/>
+</div>
