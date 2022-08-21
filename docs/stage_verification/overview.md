@@ -75,7 +75,7 @@ As an example, the state shown previously is extended to include semantic inform
 
 | Timestamp | State                      | Variables               |  Level  | Semantics |
 |:---------:|----------------------------|-------------------------|:-------:|:---------:|
-|    8h31   | Cannot connect to: $1:$2   | $1=192.168.0.1, $2=9090 |  INFO   |   ERROR   |
+|    8h31   | Cannot connect to: $1:$2   | $1=192.168.0.1, $2=9090 |  INFO   |   FAULT   |
 
 
 ## Verification
@@ -99,31 +99,31 @@ The following table shows an example on how the risk score is calculated.
 
 | ID | Timestamp | Level | Semantics | Log message                         | State                        |  A  |  B  | Change | Risk Score |
 |:--:|:---------:|-------|:---------:|-------------------------------------|------------------------------|:---:|:---:|:------:|:----------:|
-|  1 |    8h21   | INFO  |    INFO   | Customer id=111-222 data stored     | Customer id=$1 data stored   | Yes | Yes |   +8%  |      0     |
-|  2 |    8h22   | INFO  |    INFO   | Processing request req=A12-345      | Processing request req=$1    | Yes | Yes |  -94%  |     10     |
-|  3 |    8h24   | WARN  |    INFO   | Retrying (#15) request req=A22-222  | Retrying ($1) request req=$2 | Yes | Yes |  +162% |     50     |
-|  4 |    8h31   | INFO  |   ERROR   | Cannot connect to: 192.168.0.1:9090 | Cannot connect to: $1:$2     |  No | Yes |   +12  |     50     |
-|  5 |    8h35   | ERROR |   ERROR   | Insufficient memory (64GB)          | Insufficient memory ($1)     | Yes |  No |   -7   |      0     |
+|  1 |    8h21   | INFO  |    REPORT   | Customer id=111-222 data stored     | Customer id=$1 data stored   | Yes | Yes |   +8%  |      0     |
+|  2 |    8h22   | INFO  |    REPORT   | Processing request req=A12-345      | Processing request req=$1    | Yes | Yes |  -94%  |     10     |
+|  3 |    8h24   | WARN  |    REPORT   | Retrying (#15) request req=A22-222  | Retrying ($1) request req=$2 | Yes | Yes |  +162% |     50     |
+|  4 |    8h31   | INFO  |   FAULT   | Cannot connect to: 192.168.0.1:9090 | Cannot connect to: $1:$2     |  No | Yes |   +12  |     50     |
+|  5 |    8h35   | ERROR |   FAULT   | Insufficient memory (64GB)          | Insufficient memory ($1)     | Yes |  No |   -7   |      0     |
 
 Table 1. Example of risk score calculation    
 
 
 The risk score is set using the following table. 
-For example, if a version has a new Added state labelled with Level = Error, but with Semantics != Anomaly, the state receives a risk score of 50 points. 
+For example, if a version has a new Added state labelled with Level = ERROR, but with Semantics != FAULT, the state receives a risk score of 50 points. 
 
-| State     | Level = Error | Semantics = Anomaly | Change = High  | Risk Score |
-|-----------|:-------------:|:-------------------:|:---------:|:----------:|
-| Added     |      Yes      |         Yes         |           |     80     |
-|           |      Yes      |         No          |           |     50     |
-|           |      No       |         Yes         |           |     50     |
-|           |      No       |         No          |           |      0     |
-| Deleted   |               |                     |           |      0     |
-| Recurring |      Yes      |         No          |    No     |     30     |
-|           |      No       |         Yes         |    No     |     30     |
-|           |      No       |         No          |    No     |      0     |
-|           |      Yes      |         No          |    Yes    |     50     |
-|           |      No       |         Yes         |    Yes    |     50     |
-|           |      No       |         No          |    Yes    |     10     |
+| State     | Level = ERROR | Semantics = FAULT | Change = High | Risk Score |
+|-----------|:-------------:|:-----------------:|:-------------:|:----------:|
+| Added     |      Yes      |        Yes        |               |     80     |
+|           |      Yes      |        No         |               |     50     |
+|           |      No       |        Yes        |               |     50     |
+|           |      No       |        No         |               |      0     |
+| Deleted   |               |                   |               |      0     |
+| Recurring |      Yes      |        No         |      No       |     30     |
+|           |      No       |        Yes        |      No       |     30     |
+|           |      No       |        No         |      No       |      0     |
+|           |      Yes      |        No         |      Yes      |     50     |
+|           |      No       |        Yes        |      Yes      |     50     |
+|           |      No       |        No         |      Yes      |     10     |
 
 Table 2. Mapping between state characteristics and risk score     
 
@@ -148,7 +148,3 @@ One benefit of this approach is that it can easily be used by less-experienced t
 
 > [!NOTE]
 > With logsight.ai UI, version A of an application is called `Baseline` and version B is called `Candidate`
-
-<div align=center>
-    <img width="600" src="/stage_verification/state_mining.png"/>
-</div>

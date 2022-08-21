@@ -32,7 +32,7 @@ Ship the logs of the baseline version, candidate version, or production logs to 
 6. `Notification`. We send you a notification when we detect problems so you can rapidly roll back failed deployments and quickly fix issues.
 
 <div align=center>
-<img width="1000" src="/stage_verification/how_it_works.png"/>
+    <img width="1000" src="get_started/imgs/how_it_works.png"/>
 </div>
 
 
