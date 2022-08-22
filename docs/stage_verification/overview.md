@@ -127,19 +127,22 @@ For example, if a version has a new Added state labelled with Level = ERROR, but
 
 Table 2. Mapping between state characteristics and risk score     
 
+> [!ATTENTION] 
+> Level = ERROR: indicates that the log level of a state is Error or Warning 
 
+ 
 ### Deployment Risk
 
 The deployment risk is calculated by considering each individual risk score. 
-The following formulae is used: 
+The following formula is used: 
 
 + Deployment Risk = max(risk score of all states) + min(average risk score, 100 - max risk score)
 
-If the deployment risk is greater thant the deployment risk threshold (e.g., 80), the verification gate stops the deployment. 
-
+If the deployment risk is greater than the deployment risk threshold (e.g., 80), the verification gate stops the deployment. 
 For example, the deployment risk of the states from Table 1 is:
 
-+ max([0, 10, 50, 50, 0]) + min(average([0, 10, 50, 50, 0]), 100 - max([0, 10, 50, 50, 0])) = 50 + min(22, 100 - 50) = 72
++ max([0, 10, 50, 50, 0]) + min(average([0, 10, 50, 50, 0]), 100 - max([0, 10, 50, 50, 0])) = 50 + min(22, 100 - 50) 
++ = 72
 
 <!---
 One benefit of this approach is that it can easily be used by less-experienced troubleshooting developers or testers.

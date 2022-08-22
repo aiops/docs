@@ -1,8 +1,14 @@
 # Filebeat
 
-Logs are essential for troubleshooting and increasingly become part of regulatory requirements. But log data can offer far more than that. They provide critical insights into the behavior of your system during testing, staging, or deployment. Therefore, many organizations embrace the idea of logging, resulting in a growing prevalence of structured log management. A popular format to structure logs is `JSON`. This tutorial's focus will lie on JSON-structured logs. However, it can be applied to other log formats such as Syslog or NCSA with few adjustments.
-
-Logsight is a log analytics platform that supports system troubleshooting by detecting incidents, enables the continuous verification of deployments, analyses test executions, and performs other log verification tasks. However, there might be situations where you want to analyze historical log data. For example, given security threats like the [Log4Shell](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) exploit, you want to know if your system was compromised in the past. Historic logs can also reveal frequently failing services that impact the performance of your system. Analyzing log data from several versions of your services allows tracking changes that help identify root causes of bugs. Finding such problems can help organizations set the right focus while improving the system's fault tolerance.
+Logs are essential for troubleshooting and increasingly become part of regulatory requirements.
+But log data can offer far more than that.
+They provide critical insights into the behavior of your system during testing, staging, or deployment. 
+Therefore, many organizations embrace the idea of logging, resulting in a growing prevalence of structured log management. A popular format to structure logs is `JSON`. This tutorial's focus will lie on JSON-structured logs. 
+However, it can be applied to other log formats such as Syslog or NCSA with few adjustments.
+Logsight is a log analytics platform that supports system troubleshooting by detecting incidents, enables the continuous verification of deployments, analyses test executions, and performs other log verification tasks. However, there might be situations where you want to analyze historical log data. For example, given security threats like the [Log4Shell](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-45046) exploit, you want to know if your system was compromised in the past.
+Historic logs can also reveal frequently failing services that impact the performance of your system.
+Analyzing log data from several versions of your services allows tracking changes that help identify root causes of bugs.
+Finding such problems can help organizations set the right focus while improving the system's fault tolerance.
 
 In this tutorial, we show how JSON log files can be imported into logsight. One option is to use the web service available at [https://logsight.ai](https://logsight.ai). Another option is to install a local instance of logsight. The installation process is described [here](/get_started/installation.md). In this tutorial, we primarly focus on the webservice. However, there are comments guiding the configuration adjustment to enable sending log data to an on-premise installation of logsight.
 

@@ -1,6 +1,9 @@
 # FluentBit
 
-[FluentBit](https://docs.fluentbit.io/manual/) can be **natively** integrated with logsight.ai. No proprietary output plugins are needed. The standard [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output is used to send log data to logsight.ai. This allows to use all FluentBit [inputs](https://docs.fluentbit.io/manual/pipeline/inputs) to connect to a variety of systems. 
+[FluentBit](https://docs.fluentbit.io/manual/) can be **natively** integrated with logsight.ai. 
+No proprietary output plugins are needed. 
+The standard [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output is used to send log data to logsight.ai. 
+This allows to use all FluentBit [inputs](https://docs.fluentbit.io/manual/pipeline/inputs) to connect to a variety of systems. 
 
 ## Prerequisites
 

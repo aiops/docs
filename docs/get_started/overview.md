@@ -26,9 +26,9 @@ Logsight analyses collected logs, calculates deployment risk scores to provide c
 
 1. `Shipping logs`. You set up a log collector to gather logs across your deployments.
 Ship the logs of the baseline version, candidate version, or production logs to our centralized logging platform.
-2. `AI-processing`. We search and analyze your logs to identify any deployment and production abnormality using various AI-models.
+2. `Indexing`. We index and pre-process your logs to extract the most important information.  
 4. `Customer AI model`. We can also use specialised and customized AI-models to model customers' IT systems. 
-5. `Stage Verifier`. Using real-time comparisons and semantic analysis, our AI-models are capable of identifying anomalies and regressions.
+5. `AI-processing`. Using AI-models, NLP and semantic analysis, we are capable of identifying anomalies and regressions.
 6. `Notification`. We send you a notification when we detect problems so you can rapidly roll back failed deployments and quickly fix issues.
 
 <div align=center>
