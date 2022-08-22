@@ -14,100 +14,27 @@ For an on-premise deployment, replace the placeholder ```$URL``` with ```$URL = 
 
 ## Steps
 
-1. `Create and activate user`
-2. `Get token`
-3. `Send logs`
-4. `Verify`
+1. Create and activate user
+2. Get token
+3. Send logs
+4. Verify
 
 
 ## Create and activate user
 
 ### Create user
 
-To create a user, send the following request.
+To create a user, send the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)):
 
-[Request](https://logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
+<!-- tabs:start -->
+#### **Request**
 
+Endpoint
 ```
 POST /api/v1/users
 ```
 
-```json
-{
-  "email": "user@company.com",
-  "password": "userPassword",
-  "repeatPassword": "userPassword"
-}
-```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Users/createUserUsingPOST)
-
-```
-Status 201 CREATED
-```
-
-```json
-{
-    "userId": "5441e771-1ea3-41c4-8f31-2e71828693de"
-}
-```
-The response that is returned by the endpoint will be the `userId` of the created user. The `userId` has usages in subsequent requests (e.g., when creating application).
-
-
-### Activate user 
-
-> Not needed in on-premise installation
-
-After the user creation, the user receives an email with activation link. The activation link, for example:
-
-`$URL/auth/activate?userId=5441e771-1ea3-41c4-8f31-2e71828693de&activationToken=60af8472-fed8-46f0-9e9b-4f986c2b24dc`
-
-consists of `userId` and a `activationToken`. There are two options to activate the user:
-1. Clicking on the link
-2. Taking the `userId` and the `activationToken` and sending an activation request:
-
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
-
-```
-POST /api/v1/users/activate
-```
-
-```json
-{
-  "activationToken": "60af8472-fed8-46f0-9e9b-4f986c2b24dc",
-  "userId": "5441e771-1ea3-41c4-8f31-2e71828693de"
-}
-```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)
-
-```
-Status 200 OK
-```
-
-After user activation, the user needs to authenticate by sending the following request
-
-
-## Get token
-
-Requests, such as creating application, sending logs and verify, require to obtain an authorization token (valid for 10 days).
-
-```
-curl -X POST '$URL/api/v1/application'
-     -H 'Content-Type: application/json'
-     -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9...'
-     -d '{"applicatonName": "myservice"}'
-```
-
-Clients can obtain a token by making the following call. 
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
-
-```
-POST /api/v1/auth/login
-```
-
+Data
 ```json
 {
   "email": "user@company.com",
@@ -115,12 +42,91 @@ POST /api/v1/auth/login
 }
 ```
 
-[Response](https://logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)
+Example
+```
+curl -X POST "https://logsight.ai/api/v1/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"email\": \"user@company.com\", \"password\": \"userPassword\"}"
+```
 
+#### **Response**
+
+The `userId` of the created user is returned. 
+The `userId` is used in subsequent requests.
+
+```
+Status 201 CREATED
+```
+```json
+{
+    "userId": "5441e771-1ea3-41c4-8f31-2e71828693de"
+}
+```
+<!-- tabs:end -->
+
+After the user creation, an email is sent with an activation link containing the `userId` and `activationToken`: 
+
+```
+$URL/auth/activate?userId=5441e771-1ea3-41c4-8f31-2e71828693de&activationToken=60af8472-fed8-46f0-9e9b-4f986c2b24dc
+```
+
+### Activate user 
+
+> User activation if not required for on-premise installations
+
+To activate a user, send the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Users/activateUserUsingPOST)) using the `userId` and the `activationToken` received by email.
+
+
+<!-- tabs:start -->
+#### **Request**
+Endpoint
+```
+POST /api/v1/users/activate
+```
+Data
+```json
+{
+  "activationToken": "60af8472-fed8-46f0-9e9b-4f986c2b24dc",
+  "userId": "5441e771-1ea3-41c4-8f31-2e71828693de"
+}
+```
+Example
+```
+curl -X POST "https://logsight.ai:443/api/v1/users/activate" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"activationToken\": \"60af8472-fed8-46f0-9e9b-4f986c2b24dc\", \"userId\": \"5441e771-1ea3-41c4-8f31-2e71828693de\"}"
+```
+#### **Response**
 ```
 Status 200 OK
 ```
+<!-- tabs:end -->
 
+
+## Get token
+
+An authorization token is required to invoke functionalities.
+Each token is valid for 10 days.
+To receive a token, send the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Authentication/loginUsingPOST)):
+
+<!-- tabs:start -->
+#### **Request**
+Endpoint
+```
+POST /api/v1/auth/login
+```
+Data
+```json
+{
+  "email": "user@company.com",
+  "password": "userPassword"
+}
+```
+Example
+```
+curl -X POST "https://logsight.ai/api/v1/auth/login" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"email\": \"user@company.com\", \"password\": \"userPassword\"}"
+```
+#### **Response**
+```
+Status 200 OK
+```
+Data
 ```json
 {
   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9…",
@@ -130,29 +136,35 @@ Status 200 OK
   }
 }
 ```
+<!-- tabs:end -->
 
 ## Send logs
 
 After setting up the prerequisites (i.e., creating user, activate user, and login user), you can send logs to an application.
-`logs` is a list of log messages.
+We recommend sending logs in larger batches to minimize network calls. 
+The user can send as many log batches as he wants. 
+They will be automatically processed though our analysis pipeline.
 
-JSON-formatted log messages require a `timestamp` (we support timestamp formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)), a field `message` (string), and `level`, which is the log level.
+To send logs, execute the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)):
 
-We recommend sending logs in larger batches to minimize network calls. The user can send as many log batches as he wants. They will be automatically processed though our analysis pipeline and the deep learning methods.
-
-To send logs, execute the following request.
-
-[Request](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+<!-- tabs:start -->
+#### **Request**
+Endpoint
 ```
 POST /api/v1/logs
 ```
+Data
 
++ `applicationId` or `applicationName` must be provided
++ `logs` is a list of log messages
++ `timestamp` supported follow the formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html))
++ `level` is the log level
++ `message` is a string
 
-JSON
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", //nullable
-  "applicationName": "myapp", //nullable
+  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", // nullable
+  "applicationName": "myapp", // nullable
   "tags": {"tag1": "value1", "tag2": "value2", "tagN": "valueN"},
   "logs": [
         {
@@ -168,13 +180,15 @@ JSON
         ]
 }
 ```
-One of `applicationId` or `applicationName` must be provided
-
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+Example
+```
+curl -X POST "https://logsight.ai/api/v1/logs" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"logs\": [ { \"id\": \"string\", \"level\": \"string\", \"message\": \"string\", \"tags\": { \"additionalProp1\": \"string\", \"additionalProp2\": \"string\", \"additionalProp3\": \"string\" }, \"timestamp\": \"string\" } ], \"tags\": { \"additionalProp1\": \"string\", \"additionalProp2\": \"string\", \"additionalProp3\": \"string\" }}"
+```
+#### **Response**
 ```
 Status 200 OK
 ```
+Data
 ```json
 {
   "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
@@ -183,28 +197,31 @@ Status 200 OK
   "source": "restBatch"
 }
 ```
-
 + `logsCount` is the count of the log messages sent in the batch.
 + `receiptId` is identifier of the received log batch.
 + `source` tells the way that this batch was sent (via REST API)
+<!-- tabs:end -->
 
-### Tag
 
-The `Stage Verifier` uses tags to compare logs. 
-`Tags` are any (key, value) paris of strings that can identify a particular set of log records. 
-For example,
+The Stage Verifier can use `tags` to index the logs and to identify a particular set of log records to compare.
+Tags are pairs (key, value). For example,
 
-+ [Semantic versioning](https://semver.org/) (e.g., v1.0.0, v1.0.1)
-+ Test run number (e.g., run_1, run_2)
++ version = v1.0.0
++ test_id = AB123CD
 
-[Request](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+To send logs with tags, execute the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)):
+
+<!-- tabs:start -->
+#### **Request**
+Endpoint
 ```
 POST /api/v1/logs
 ```
+Data
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", //nullable
-  "applicationName": "myapp", //nullable
+  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", // nullable
+  "applicationName": "myapp", // nullable
   "tags": {"version": "v1.1.0", "namespace": "my_namespace"},
   "logs": [
         {
@@ -218,8 +235,11 @@ POST /api/v1/logs
         ]
 }
 ```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)
+Example
+```
+---
+```
+#### **Response**
 ```
 Status 200 OK
 ```
@@ -231,23 +251,31 @@ Status 200 OK
   "source": "restBatch"
 }
 ```
+<!-- tabs:end -->
+
 
 ## Verify
 
-After sending the logs, the client can compare logs indexed with different tags by making the following call.
+After sending the logs, you can compare logs indexed with different tags by send the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)):
 
-[Request](https://logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
+<!-- tabs:start -->
+#### **Request**
+Endpoint
 ```
 POST /api/v1/logs/compare
 ```
+Data
 ```json
 {
   "baselineTags": {"version": "v1.0.0", "namespace": "my_namespace"},
   "candidateTags": {"version": "v1.1.0", "namespace": "my_namespace"},
 }
 ```
-
-[Response](https://logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)
+Example
+```
+---
+```
+#### **Response**
 ```
 Status 200 OK
 ```
@@ -295,19 +323,4 @@ Status 200 OK
 + `recurringStatesFaultPercentage` - Percentage of recurring states, which are identified as fault.
 + `recurringStatesReportPercentage` - Percentage of recurring states, which are identified as report.
 + `link` - Link that points to the UI where the user can see a detailed report.
-
-
-### Detailed report view
-![Logs](./insights_verification.png ':size=1200')
-
-
-
-
-
-
-
-
-
-
-
- 
+<!-- tabs:end -->
