@@ -111,24 +111,21 @@ Table 1. Example of risk score calculation
 The risk score is set using the following table. 
 For example, if a version has a new Added state labelled with Level = ERROR, but with Semantics != FAULT, the state receives a risk score of 50 points. 
 
-| State     | Level = ERROR | Semantics = FAULT | Change = High | Risk Score |
-|-----------|:-------------:|:-----------------:|:-------------:|:----------:|
-| Added     |      Yes      |        Yes        |               |     80     |
-|           |      Yes      |        No         |               |     50     |
-|           |      No       |        Yes        |               |     50     |
-|           |      No       |        No         |               |      0     |
-| Deleted   |               |                   |               |      0     |
-| Recurring |      Yes      |        No         |      No       |     30     |
-|           |      No       |        Yes        |      No       |     30     |
-|           |      No       |        No         |      No       |      0     |
-|           |      Yes      |        No         |      Yes      |     50     |
-|           |      No       |        Yes        |      Yes      |     50     |
-|           |      No       |        No         |      Yes      |     10     |
+| State     | Level = ERROR* | Semantics = FAULT | Change = High | Risk Score |
+|-----------|:--------------:|:-----------------:|:-------------:|:----------:|
+| Added     |      Yes       |        Yes        |               |     80     |
+|           |      Yes       |        No         |               |     50     |
+|           |       No       |        Yes        |               |     50     |
+|           |       No       |        No         |               |      0     |
+| Deleted   |                |                   |               |      0     |
+| Recurring |      Yes       |        No         |      No       |     30     |
+|           |       No       |        Yes        |      No       |     30     |
+|           |       No       |        No         |      No       |      0     |
+|           |      Yes       |        No         |      Yes      |     50     |
+|           |       No       |        Yes        |      Yes      |     50     |
+|           |       No       |        No         |      Yes      |     10     |
 
-Table 2. Mapping between state characteristics and risk score     
-
-> [!ATTENTION] 
-> Level = ERROR: indicates that the log level of a state is Error or Warning 
+Table 2. Mapping between state characteristics and risk score (* ERROR, CRITICAL or FATAL)
 
  
 ### Deployment Risk
