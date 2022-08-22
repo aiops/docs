@@ -1,10 +1,15 @@
 # REST API
 
-> [!NOTE]
-> Depending on your deployment (i.e., web service or on-premise), you need to replace the placeholder ```$URL``` 
-with the correct value.
-> + web service: ```$URL = https://logsight.ai```
-> + on-premise service: ```$URL = http://localhost:8080```
+
+<!-- tabs:start -->
+
+#### **web service**
+For a web service deployment, replace the placeholder ```$URL``` with ```$URL = https://logsight.ai```
+
+#### **on-premise**
+For an on-premise deployment, replace the placeholder ```$URL``` with ```$URL = http://localhost:8080```
+
+<!-- tabs:end -->
 
 
 ## Steps
