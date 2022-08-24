@@ -11,9 +11,7 @@ For an on-premise deployment, replace the placeholder ```$URL``` with ```$URL = 
 
 <!-- tabs:end -->
 
-
-## Steps
-
+Steps:
 1. Create and activate user
 2. Get token
 3. Send logs

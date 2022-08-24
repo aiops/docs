@@ -9,7 +9,6 @@
   - [GitHub Actions](/integration/github_actions.md)
   - [FluentBit](/integration/fluentbit.md)
   - [Filebeat](/integration/filebeat_short.md)
-  - [REST API](/integration/rest_api.md)
 
 - **Auto logging**
   - [Overview](/auto_logging/overview.md)

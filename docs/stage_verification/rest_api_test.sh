@@ -50,25 +50,42 @@ send_logs () {
   N=$1
   TAG_1=$2
   TAG_2=$3
+  shift
+  shift
+  shift
+  STATES=("$@")
 
-  for i in {1..$N}
+  echo "STATES:" $STATES
+
+  for j in {1..$N}
   do
-     echo "Sending message block #$i"
-     send_log "INFO" "Connecting to db: 192.168.5.$i" $TAG_1 $TAG_2
-     send_log "INFO" "Loading data block $i" $TAG_1 $TAG_2
-     send_log "ERROR" "Cannot connect to cache id: $i" $TAG_1 $TAG_2
-     send_log "INFO" "Redirected request to backup" $TAG_1 $TAG_2
+     echo "Sending message block #$j"
+
+     for i in "${STATES[@]}"
+     do
+
+       if [[ " ${i} " =~ "E1" ]]; then
+          send_log "ERROR" "Cannot connect to cache id: $j" $TAG_1 $TAG_2
+       fi
+       if [[ " ${i} " =~ "E2" ]]; then
+          send_log "ERROR" "Failure connecting: 192.168.5.$j" $TAG_1 $TAG_2
+       fi
+       if [[ " ${i} " =~ "E3" ]]; then
+          send_log "ERROR" "Failure to load customer data" $TAG_1 $TAG_2
+       fi
+       if [[ " ${i} " =~ "R1" ]]; then
+          send_log "INFO" "Connecting to db: 192.168.5.$j" $TAG_1 $TAG_2
+       fi
+       if [[ " ${i} " =~ "R2" ]]; then
+          send_log "INFO" "Redirected request to backup" $TAG_1 $TAG_2
+       fi
+       if [[ " ${i} " =~ "R2" ]]; then
+          send_log "INFO" "Loading data block $j" $TAG_1 $TAG_2
+       fi
+
+     done
   done
 }
-
-echo 'Send logs'
-send_logs 5 "v1" "EU"
-send_logs 7 "v2" "EU"
-echo "Sending extra messages"
-for i in {1..10}
-do
-  send_log "ERROR" "Failure to load customer data" "v2" "EU"
-done
 
 compare () {
   TAG_1=$1
@@ -82,6 +99,32 @@ compare () {
   echo 'JSON:' $JSON
 }
 
-sleep 60
+
+echo 'Send logs'
+# "EU" "E1" "E2" "R1" "R2" "R3"
+# c(v1, v2), Risk = 100
+# c(v2, v3), Risk = 0
+# c(v3, v4), Risk = 100
+# c(v4, v5), Risk = 31
+
+states=("E1" "R1" "R2" "R3")
+send_logs 5 "v1" "EU" ${states[@]}
+
+states=("E1" "E2" "R1" "R2" "R3")
+send_logs 5 "v2" "EU" ${states[@]}
+
+states=("R1" "R2" "R3")
+send_logs 5 "v3" "EU" ${states[@]}
+
+states=("E1" "R1" "R2" "R3")
+send_logs 5 "v4" "EU" ${states[@]}
+
+states=("E1" "R1" "R2" "R3")
+send_logs 5 "v5" "EU" ${states[@]}
+
 echo 'Compare logs'
+sleep 60
 compare "v1" "v2"
+compare "v2" "v3"
+compare "v3" "v4"
+compare "v4" "v5"

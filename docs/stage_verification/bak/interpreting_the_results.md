@@ -14,7 +14,7 @@ After checking these overview statistics, as in the example above, we see 1 adde
 
 We observe 1 added state, which has medium risk.
 
-![Logs](imgs/state_analysis.png ':size=1200')
+![Logs](../imgs/state_analysis.png ':size=1200')
 
 The most important columns for troubleshooting in the table are Risk, Description (added states), Level, and Semantics.
 If there are many states to analyze, we suggest the following process for debugging:

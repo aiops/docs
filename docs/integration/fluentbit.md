@@ -1,6 +1,6 @@
 # FluentBit
 
-[FluentBit](https://docs.fluentbit.io/manual/) can be **natively** integrated with logsight.ai. 
+[FluentBit](https://docs.fluentbit.io/manual/) can be natively integrated with logsight.ai. 
 No proprietary output plugins are needed. 
 The standard [HTTP](https://docs.fluentbit.io/manual/pipeline/outputs/http) output is used to send log data to logsight.ai. 
 This allows to use all FluentBit [inputs](https://docs.fluentbit.io/manual/pipeline/inputs) to connect to a variety of systems. 
@@ -12,9 +12,11 @@ This allows to use all FluentBit [inputs](https://docs.fluentbit.io/manual/pipel
 
 ## Install and configure FluentBit
 
+
+### Install
 You need to install Fluentbit on your system. There are different ways to do so. Refer to the official [documentation](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit) for more details.
 
-### Configure the FluentBit filter
+### Configure 
 
 You need to configure filters to make the log format of FluentBit compatible with logsight.ai.
 
