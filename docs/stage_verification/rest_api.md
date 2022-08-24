@@ -33,7 +33,6 @@ Endpoint
 ```
 POST /api/v1/users
 ```
-
 Data
 ```json
 {
@@ -155,17 +154,15 @@ POST /api/v1/logs
 ```
 Data
 
-+ `applicationId` or `applicationName` must be provided
++ `tags` are pairs (tag, value) used to index and identify sets of logs, e.g., (version, v1.0.0), (namespace, docker_01)
 + `logs` is a list of log messages
-+ `timestamp` supported follow the formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html))
++ `timestamp` supported follow the formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)
 + `level` is the log level
 + `message` is a string
 
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", // nullable
-  "applicationName": "myapp", // nullable
-  "tags": {"tag1": "value1", "tag2": "value2", "tagN": "valueN"},
+  "tags": {"version": "v1.0.0", "namespace": "docker_01", "region": "EU"},
   "logs": [
         {
           "level": "INFO",
@@ -191,66 +188,16 @@ Status 200 OK
 Data
 ```json
 {
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "logsCount": 2,
-  "receiptId": "525c5234-9012-4f3b-8f64-c8a6ec418e7a",
-  "source": "restBatch"
+  "receiptId": "3eb1f26c-b3fa-44cc-93ef-db5a123e6dbd",
+  "logsCount": 1,
+  "batchId": "becc0a2b-4d52-4d82-a994-be9518126c0b",
+  "status": "PROCESSING"
 }
 ```
-+ `logsCount` is the count of the log messages sent in the batch.
-+ `receiptId` is identifier of the received log batch.
-+ `source` tells the way that this batch was sent (via REST API)
-<!-- tabs:end -->
-
-
-The Stage Verifier can use `tags` to index the logs and to identify a particular set of log records to compare.
-Tags are pairs (key, value). For example,
-
-+ version = v1.0.0
-+ test_id = AB123CD
-
-To send logs with tags, execute the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)):
-
-<!-- tabs:start -->
-#### **Request**
-Endpoint
-```
-POST /api/v1/logs
-```
-Data
-```json
-{
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f", // nullable
-  "applicationName": "myapp", // nullable
-  "tags": {"version": "v1.1.0", "namespace": "my_namespace"},
-  "logs": [
-        {
-          "level": "INFO",
-          "timestamp":"2021-03-23T01:02:51.00700",
-          "message":"Finished job execution: Process received messages via MessagingSubsystems for: OpenText; Duration: 0:00:00.006"},
-        {
-          "level": "INFO",
-          "timestamp":"2021-03-23T01:02:51.00700",
-          "message":"Finished job execution: Send waiting messages via MessagingSubsystems; Duration: 0:00:00.005"}
-        ]
-}
-```
-Example
-```
----
-```
-#### **Response**
-```
-Status 200 OK
-```
-```json
-{
-  "applicationId": "a26ab2f2-89e9-4e3a-bc9e-66011537f32f",
-  "logsCount": 2,
-  "receiptId": "525c5234-9012-4f3b-8f64-c8a6ec418e7a",
-  "source": "restBatch"
-}
-```
++ `receiptId` is identifier of the received log batch
++ `logsCount` is the count of the log messages sent in the batch
++ `batchId` id of the batch sent 
++ `status` status of the data sent
 <!-- tabs:end -->
 
 
@@ -268,12 +215,12 @@ Data
 ```json
 {
   "baselineTags": {"version": "v1.0.0", "namespace": "my_namespace"},
-  "candidateTags": {"version": "v1.1.0", "namespace": "my_namespace"},
+  "candidateTags": {"version": "v1.1.0", "namespace": "my_namespace"}
 }
 ```
 Example
 ```
----
+curl -X POST "https://logsight.ai/api/v1/logs/compare" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"baselineTags\": { \"additionalProp1\": \"string\", \"additionalProp2\": \"string\", \"additionalProp3\": \"string\" }, \"candidateTags\": { \"additionalProp1\": \"string\", \"additionalProp2\": \"string\", \"additionalProp3\": \"string\" }, \"logReceiptId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"}"
 ```
 #### **Response**
 ```
@@ -281,27 +228,39 @@ Status 200 OK
 ```
 ```json
 {
-  "compareId": "10293ksxXHSAix992",
-  "baselineTags": {"version": "v1.0.0", "namespace": "my_namespace"},
-  "candidateTags": {"version": "v1.1.0", "namespace": "my_namespace"},
-  "link": "$URL/pages/compare?compareId=10293ksxXHSAix992",
-  "risk": 0,
-  "totalLogCount": 4,
-  "baselineLogCount": 2,
-  "candidateLogCount": 2,
-  "candidateChangePercentage": 0,
-  "addedStatesTotalCount": 0,
-  "addedStatesFaultPercentage": 0,
+  "link": "$URL/pages/compare?compareId=OEXgyoIBS8fluoWJkMPW",
+  "baselineTags": {
+    "version": "v1.0.0",
+    "namespace": "my_namespace"
+  },
+  "candidateTags": {
+    "version": "v1.1.0",
+    "namespace": "my_namespace"
+  },
+  "compareId": "OEXgyoIBS8fluoWJkMPW",
+  "risk": 100,
+  "totalLogCount": 58,
+  "baselineLogCount": 20,
+  "candidateLogCount": 38,
+  "candidateChangePercentage": 32,
+  "addedStatesTotalCount": 1,
   "addedStatesReportPercentage": 0,
+  "addedStatesFaultPercentage": 100,
   "deletedStatesTotalCount": 0,
-  "deletedStatesFaultPercentage": 0,
   "deletedStatesReportPercentage": 0,
-  "frequencyChangeTotalCount": 0, 
-  "frequencyChangeFaultPercentage": {"decrease": 0, "increase": 0},
-  "frequencyChangeReportPercentage": {"decrease": 0, "increase": 0},
-  "recurringStatesTotalCount": 2,
-  "recurringStatesFaultPercentage": 0,
-  "recurringStatesReportPercentage": 0
+  "deletedStatesFaultPercentage": 0,
+  "recurringStatesTotalCount": 4,
+  "recurringStatesReportPercentage": 0,
+  "recurringStatesFaultPercentage": 100,
+  "frequencyChangeTotalCount": 4,
+  "frequencyChangeReportPercentage": {
+    "increase": 75,
+    "decrease": 0
+  },
+  "frequencyChangeFaultPercentage": {
+    "increase": 25,
+    "decrease": 0
+  }
 }
 ```
 
