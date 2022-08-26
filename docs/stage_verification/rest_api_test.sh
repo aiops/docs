@@ -37,7 +37,7 @@ send_log () {
   JSON=$(curl -s -X POST "https://logsight.ai/api/v1/logs" \
     -H "accept: */*" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" \
     -d "{
-      \"tags\": {\"Version\": \"$TAG_1\", \"Region\": \"$TAG_2\"},
+      \"tags\": {\"version\": \"$TAG_1\", \"region\": \"$TAG_2\"},
       \"logs\": [{
               \"level\": \"$LEVEL\",
               \"timestamp\": \"$DATE_WITH_TIME\",
@@ -64,14 +64,17 @@ send_logs () {
      for i in "${STATES[@]}"
      do
 
-       if [[ " ${i} " =~ "E1" ]]; then
+       if [[ " ${i} " =~ "EL1" ]]; then
           send_log "ERROR" "Cannot connect to cache id: $j" $TAG_1 $TAG_2
        fi
-       if [[ " ${i} " =~ "E2" ]]; then
-          send_log "ERROR" "Failure connecting: 192.168.5.$j" $TAG_1 $TAG_2
+       if [[ " ${i} " =~ "ES1" ]]; then
+          send_log "INFO" "Failure to store customer data ($j)" $TAG_1 $TAG_2
        fi
-       if [[ " ${i} " =~ "E3" ]]; then
+       if [[ " ${i} " =~ "ELS1" ]]; then
           send_log "ERROR" "Failure to load customer data" $TAG_1 $TAG_2
+       fi
+       if [[ " ${i} " =~ "ELS2" ]]; then
+          send_log "ERROR" "Failure connecting: 192.168.5.$j" $TAG_1 $TAG_2
        fi
        if [[ " ${i} " =~ "R1" ]]; then
           send_log "INFO" "Connecting to db: 192.168.5.$j" $TAG_1 $TAG_2
@@ -93,38 +96,50 @@ compare () {
   JSON=$(curl -s -X POST "https://logsight.ai/api/v1/logs/compare" \
     -H "accept: */*" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" \
     -d "{
-        \"baselineTags\": { \"Version\": \"$TAG_1\", \"Region\": \"EU\"},
-        \"candidateTags\": { \"Version\": \"$TAG_2\", \"Region\": \"EU\"}
+        \"baselineTags\": { \"version\": \"$TAG_1\", \"region\": \"EU\"},
+        \"candidateTags\": { \"version\": \"$TAG_2\", \"region\": \"EU\"}
     }")
   echo 'JSON:' $JSON
 }
 
 
 echo 'Send logs'
-# "EU" "E1" "E2" "R1" "R2" "R3"
+# "EL1" "ES1" "ELS1" "ELS2" "R1" "R2" "R3"
 # c(v1, v2), Risk = 100
 # c(v2, v3), Risk = 0
 # c(v3, v4), Risk = 100
 # c(v4, v5), Risk = 31
 
-states=("E1" "R1" "R2" "R3")
+states=("R1" "R2" "R3")
 send_logs 5 "v1" "EU" ${states[@]}
 
-states=("E1" "E2" "R1" "R2" "R3")
+states=("EL1" "R1" "R2" "R3")
 send_logs 5 "v2" "EU" ${states[@]}
 
-states=("R1" "R2" "R3")
+states=("EL1" "ES1" "R1" "R2" "R3")
 send_logs 5 "v3" "EU" ${states[@]}
 
-states=("E1" "R1" "R2" "R3")
+states=("EL1" "ES1" "ELS1" "R1" "R2" "R3")
 send_logs 5 "v4" "EU" ${states[@]}
 
-states=("E1" "R1" "R2" "R3")
+states=("EL1" "ES1" "ELS1" "R1" "R2" "R3")
 send_logs 5 "v5" "EU" ${states[@]}
 
-echo 'Compare logs'
+states=("EL1" "ES1" "R1" "R2" "R3")
+send_logs 5 "v6" "EU" ${states[@]}
+
+states=("EL1" "R1" "R2" "R3")
+send_logs 5 "v7" "EU" ${states[@]}
+
+states=("ES1" "R1" "R2" "R3")
+send_logs 5 "v8" "EU" ${states[@]}
+
+echo 'Compare logs...sleeping 60 seconds...'
 sleep 60
 compare "v1" "v2"
 compare "v2" "v3"
 compare "v3" "v4"
 compare "v4" "v5"
+compare "v5" "v6"
+compare "v6" "v7"
+compare "v7" "v8"
