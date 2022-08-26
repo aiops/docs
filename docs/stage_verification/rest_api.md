@@ -4,10 +4,10 @@
 <!-- tabs:start -->
 
 #### **web service**
-For a web service deployment, replace the placeholder ```$URL``` with ```$URL = https://logsight.ai```
+If you use logsight.ai web service, replace the placeholder ```$URL``` with ```$URL = https://logsight.ai```
 
 #### **on-premise**
-For an on-premise deployment, replace the placeholder ```$URL``` with ```$URL = http://localhost:8080```
+If you use logsight.ai on-premise, replace the placeholder ```$URL``` with ```$URL = http://localhost:8080```
 
 <!-- tabs:end -->
 
@@ -137,9 +137,9 @@ Data
 
 ## Send logs
 
-After setting up the prerequisites (i.e., creating user, activate user, and login user), you can send logs to an application.
+After setting up the prerequisites (i.e., creating user, activate user, and login), you can send logs of an application.
 We recommend sending logs in larger batches to minimize network calls. 
-The user can send as many log batches as he wants. 
+You can send as many log batches as you need. 
 They will be automatically processed though our analysis pipeline.
 
 To send logs, execute the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Logs/sendLogListUsingPOST)):
@@ -154,9 +154,9 @@ Data
 
 + `tags` are pairs (tag, value) used to index and identify sets of logs, e.g., (version, v1.0.0), (namespace, docker_01)
 + `logs` is a list of log messages
-+ `timestamp` supported follow the formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)
++ `timestamp` follow the formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)
 + `level` is the log level
-+ `message` is a string
++ `message` is a text string
 
 ```json
 {
@@ -201,7 +201,7 @@ Data
 
 ## Verify
 
-After sending the logs, you can compare logs indexed with different tags by send the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)):
+After sending the logs, you can compare logs using the tags attached during indexing by send the following request ([specification](https://logsight.ai/swagger-ui/index.html#/Compare/getCompareResultsUsingPOST)):
 
 <!-- tabs:start -->
 #### **Request**
@@ -262,22 +262,22 @@ Status 200 OK
 }
 ```
 
-+ `risk` - Risk score of the comparison. In case of deployments (new version comparing with old version), the risk translates to `deployment risk`.
-+ `totalLogCount` - The total count of log messages from both `tags`.
-+ `baselineLogCount` - The total count of log messages from the `baselineTag`.
-+ `candidateLogCount` -  The total count of log messages from the `compareTag`.
-+ `candidateChangePercentage` - The percentage change in total count of logs from the `candidateTag` compared to `baselineTag`.
-+ `addedStatesTotalCount` - Total number of added states from the `candidateTag` compared to `baselineTag`.
-+ `addedStatesFaultPercentage` - Percentage of added states, which are identified as faults.
-+ `addedStatesReportPercentage` - Percentage of added states, which are identified as report (normal behaviour).
-+ `deletedStatesTotalCount` - The total count of deleted states from the `candidateTag` compared to `baselineTag`.
-+ `deletedStatesFaultPercentage` - Percentage of deleted states, which are identified as faults.
-+ `deletedStatesReportPercentage` - Percentage of deleted states, which are identified as report.
-+ `frequencyChangeTotalCount` - The total count of states that changed in occurrence frequency from the `candidateTag` compared to `baselineTag`.
-+ `frequencyChangeFaultPercentage` - Percentage of states that changed in occurrence frequency, which are identified as faults.
-+ `frequencyChangeReportPercentage` - Percentage of states that changed in occurrence frequency, which are identified as report.
-+ `recurringStatesTotalCount` -  The total count of recurring states from the `candidateTag` compared to `baselineTag`.
-+ `recurringStatesFaultPercentage` - Percentage of recurring states, which are identified as fault.
-+ `recurringStatesReportPercentage` - Percentage of recurring states, which are identified as report.
-+ `link` - Link that points to the UI where the user can see a detailed report.
++ `risk`. Deployment risk score.
++ `totalLogCount`. Total count of log messages from both `tags`.
++ `baselineLogCount`. Total count of log messages from the `baselineTag`.
++ `candidateLogCount`. Total count of log messages from the `compareTag`.
++ `candidateChangePercentage`. Percentage change in total count of logs from the `candidateTag` compared to `baselineTag`.
++ `addedStatesTotalCount`. Total number of added states from the `candidateTag` compared to `baselineTag`.
++ `addedStatesFaultPercentage`. Percentage of added states identified as FAULT.
++ `addedStatesReportPercentage`. Percentage of added states identified as REPORT.
++ `deletedStatesTotalCount`. Total count of deleted states from the `candidateTag` compared to `baselineTag`.
++ `deletedStatesFaultPercentage`. Percentage of deleted states identified as FAULT.
++ `deletedStatesReportPercentage`. Percentage of deleted states identified as REPORT.
++ `frequencyChangeTotalCount`. Total count of states that changed in occurrence frequency from the `candidateTag` compared to `baselineTag`.
++ `frequencyChangeFaultPercentage`. Percentage of states that changed in occurrence frequency identified as FAULT.
++ `frequencyChangeReportPercentage`. Percentage of states that changed in occurrence frequency identified as REPORT.
++ `recurringStatesTotalCount`. Total count of recurring states from the `candidateTag` compared to `baselineTag`.
++ `recurringStatesFaultPercentage`. Percentage of recurring states identified as REPORT.
++ `recurringStatesReportPercentage`. Percentage of recurring states identified as REPORT.
++ `link`. Webpage link with a detailed report.
 <!-- tabs:end -->
