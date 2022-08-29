@@ -152,7 +152,7 @@ POST /api/v1/logs
 ```
 Data
 
-+ `tags` are pairs (tag, value) used to index and identify sets of logs, e.g., (version, v1.0.0), (namespace, docker_01)
++ `tags` are custom pairs (key, value) you choose to index and identify sets of logs, e.g., (version, v1.0.0), (namespace, docker_01)
 + `logs` is a list of log messages
 + `timestamp` follow the formats supported by [dateutil parser](https://dateutil.readthedocs.io/en/stable/parser.html)
 + `level` is the log level
@@ -160,7 +160,7 @@ Data
 
 ```json
 {
-  "tags": {"version": "v1.0.0", "namespace": "docker_01", "region": "EU"},
+  "tags": {"my_tag": "my_key", "version": "v1.0.0", "namespace": "docker_01", "region": "EU"},
   "logs": [
         {
           "level": "INFO",
