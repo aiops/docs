@@ -143,3 +143,17 @@ compare "v4" "v5"
 compare "v5" "v6"
 compare "v6" "v7"
 compare "v7" "v8"
+
+
+# if you do POST request to https://logsight.ai/api/v1/logs/tags/values
+# with body {"tagName": "yourtagname"} it returns the values for each tag
+
+list_logs () {
+  JSON=$(curl -s -X POST "https://logsight.ai/api/v1/logs/tags/filter" \
+    -H "accept: */*" -H "Content-Type: application/json" -H "Authorization: Bearer $TOKEN" \
+    -d "{}")
+
+  echo 'JSON:' $JSON
+}
+echo 'List logs'
+list_logs
