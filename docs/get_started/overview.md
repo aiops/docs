@@ -41,5 +41,5 @@ Ship the logs of the baseline version, candidate version, or production logs to 
 You can use logsight by either signing up with our web service [logsight.ai](https://logsight.ai) or via a [local installation](/get_started/installation.md).
 
 + **[Online system](/get_started/online_system.md)**. Explore logsight.ai by loading sample data. Get familiar with the different dashboards.
-+ **[Local installation](/get_started/local_installation.md)**. Guide for a local installation of logsight.ai in under 3 minutes.
++ **[Local installation](/get_started/installation.md)**. Guide for a local installation of logsight.ai in under 3 minutes.
 + **[Integration](/integration/overview.md)**. Integrate logsight.ai into your CI/CD pipeline and connect with a variety of log data sources.

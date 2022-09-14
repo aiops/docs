@@ -3,7 +3,7 @@
 - **Get started**
   - [Overview](/)
   - [Online System](/get_started/online_system.md)
-  - [Local Installation](/get_started/local_installation.md)
+  - [Local Installation](/get_started/installation.md)
 
 - **Integration**
   - [GitHub Actions](/integration/github_actions.md)
