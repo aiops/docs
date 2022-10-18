@@ -18,6 +18,7 @@
   - [User Interface](/stage_verification/user_interface.md)
   - [REST API](/stage_verification/rest_api.md)
   - [Configuration](/stage_verification/configuration.md)
+  - [Testing in Production](/stage_verification/testing_in_production.md)
 
 - **Incident detection**
   - [Overview](/incident_detection/overview.md)
