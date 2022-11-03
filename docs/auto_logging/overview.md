@@ -11,9 +11,9 @@ We wrote a [medium](https://medium.com/@snedelkoski/software-engineering-needs-a
 
 ## In a nutshell
 
-<video autoplay loop muted>
-  <source src="./autologging.mp4" type="video/mp4">
-</video>
+![Logs](./animation_autologging.gif)
+
+
 
 ## Intelligent NLU
 
