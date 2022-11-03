@@ -10,7 +10,7 @@
   - [FluentBit](/integration/fluentbit.md)
   - [Filebeat](/integration/filebeat_short.md)
 
-- **Auto logging**
+- **Log writer**
   - [Overview](/auto_logging/overview.md)
 
 - **Stage verification**

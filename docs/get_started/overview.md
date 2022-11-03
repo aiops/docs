@@ -15,7 +15,7 @@ With [logsight.ai](https://logsight.ai) you gain the confidence to release and o
 You can integrate logsight.ai into your CI/CD pipeline and connect to a variety of log data sources.
 Logsight analyses collected logs, calculates deployment risk scores to provide confidence into you next release, and monitors your deployment to raise notifications in case of imminent problems.
 
-+ **[Auto Logging](/logging_code_inspection/overview.md)**. Optimize the logging of your code base. Get hints where log messages are missing in your code. Improve the semantic and syntactic quality of log messages (coming soon).
++ **[Log Writer](/auto_logging/overview.md)**. Optimize the logging of your code base. Get hints where log messages are missing in your code. Improve the semantic and syntactic quality of log messages (coming soon).
 
 + **[Stage Verification](/stage_verification/overview.md)**. Verify different CI/CD pipeline stages of your application. Compare logsight.ai log data analysis results between the previous and the next release to get insight into the deployment risk score. Gain confidence in you next release.
 

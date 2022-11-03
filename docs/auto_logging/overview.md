@@ -1,25 +1,19 @@
-# Auto Logging
+# Log Writer
 
 
 `logsight.ai` supports the semantic and linguistic analysis of code and log data,
 and provides recommendations to improve the quality of the logs. 
 
 
-<div align=center>
-    <img width="500" src="https://miro.medium.com/max/1400/1*BSsLmSii7-eUo20svru0zw.png"/>
-</div>
-
 > [!NOTE]
-> The code inspector UI and API are in development. The community version will be on [Github](https://github.com/aiops/auto-logging). You can star the project to get regular updates on the progress.
-We wrote a [medium](https://medium.com/@snedelkoski/software-engineering-needs-auto-logging-681185e9a4e1) post explaining the ideas behind autologging.
+> The feature is under development. The community version will be on [Github](https://github.com/aiops/log-writer). You can star the project to get regular updates on the progress.
+We wrote a [medium](https://medium.com/@snedelkoski/software-engineering-needs-auto-logging-681185e9a4e1) post explaining the ideas behind the log writer.
 
 ## In a nutshell
 
-![Logs](./animation_autologging.gif)
-
-
-
-
+<video autoplay loop muted>
+  <source src="./autologging.mp4" type="video/mp4">
+</video>
 
 ## Intelligent NLU
 
